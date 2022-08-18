@@ -1,0 +1,20 @@
+PODS:
+  - Atributika (4.10.1)
+  - PureLayout (3.1.9)
+
+DEPENDENCIES:
+  - Atributika
+  - PureLayout
+
+SPEC REPOS:
+  trunk:
+    - Atributika
+    - PureLayout
+
+SPEC CHECKSUMS:
+  Atributika: 47e778507cfb3cd2c996278b0285221a62e97d71
+  PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
+
+PODFILE CHECKSUM: 72cfd9586cc60373cd38f09e94027f6c634fdca0
+
+COCOAPODS: 1.11.3

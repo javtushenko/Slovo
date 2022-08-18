@@ -7,41 +7,250 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1306312B286B480E00CD2607 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306312A286B480E00CD2607 /* UIColor + Extension.swift */; };
+		1306312C286B480E00CD2607 /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306312A286B480E00CD2607 /* UIColor + Extension.swift */; };
+		1306312E286B4FD000CD2607 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306312D286B4FD000CD2607 /* BoardCell.swift */; };
+		1306312F286B4FD000CD2607 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306312D286B4FD000CD2607 /* BoardCell.swift */; };
+		13099B58286A13A800C8E2C5 /* WordsLoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13099B57286A13A800C8E2C5 /* WordsLoadService.swift */; };
+		1333E83128A6468B003FE3E5 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E83028A6468B003FE3E5 /* KeyboardManager.swift */; };
+		1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E83328A64D83003FE3E5 /* DIContainer.swift */; };
+		1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E84128A65538003FE3E5 /* PopupViewController.swift */; };
+		136AC17628AACD5600972C60 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AC17528AACD5600972C60 /* ProfileView.swift */; };
+		136AC17728AACD5600972C60 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AC17528AACD5600972C60 /* ProfileView.swift */; };
+		137B249D28719628003618B2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B249C28719628003618B2 /* Key.swift */; };
+		137B24A428719E00003618B2 /* LetterStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B24A328719E00003618B2 /* LetterStorage.swift */; };
+		137FBFFA286A019C0004FDDE /* StartAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137FBFF9286A019C0004FDDE /* StartAppTests.swift */; };
+		1386CCBD28A662B000251C9C /* UIView + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCBC28A662B000251C9C /* UIView + Helpers.swift */; };
+		1386CCBE28A662B500251C9C /* UIView + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCBC28A662B000251C9C /* UIView + Helpers.swift */; };
+		1386CCC028A662E300251C9C /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCBF28A662E300251C9C /* Display.swift */; };
+		1386CCCC28A77BBB00251C9C /* StopPopupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCC628A77BBB00251C9C /* StopPopupPresenter.swift */; };
+		1386CCCD28A77BBB00251C9C /* StopPopupRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCC728A77BBB00251C9C /* StopPopupRouter.swift */; };
+		1386CCCE28A77BBB00251C9C /* StopPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCC828A77BBB00251C9C /* StopPopupViewController.swift */; };
+		1386CCCF28A77BBB00251C9C /* StopPopupProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCC928A77BBB00251C9C /* StopPopupProtocols.swift */; };
+		1386CCD028A77BBB00251C9C /* StopPopupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCCA28A77BBB00251C9C /* StopPopupInteractor.swift */; };
+		1386CCD128A77BBB00251C9C /* StopPopupModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCCB28A77BBB00251C9C /* StopPopupModuleConfigurator.swift */; };
+		1386CCD328A77C2300251C9C /* StopPopupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCD228A77C2300251C9C /* StopPopupViewModel.swift */; };
+		1386CCD528A7925500251C9C /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCD428A7925500251C9C /* UIFont + Extension.swift */; };
+		1386CCD628A7925500251C9C /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCD428A7925500251C9C /* UIFont + Extension.swift */; };
+		1386CCDE28A7E88000251C9C /* BonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCDD28A7E88000251C9C /* BonusView.swift */; };
+		1386CCDF28A7E88000251C9C /* BonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCDD28A7E88000251C9C /* BonusView.swift */; };
+		1386CCE128A7E91F00251C9C /* BonusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCE028A7E91F00251C9C /* BonusViewModel.swift */; };
+		1386CCE228A7E91F00251C9C /* BonusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCE028A7E91F00251C9C /* BonusViewModel.swift */; };
 		13ADEA33285F469900C6AA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA32285F469900C6AA23 /* AppDelegate.swift */; };
 		13ADEA35285F469900C6AA23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA34285F469900C6AA23 /* SceneDelegate.swift */; };
-		13ADEA37285F469900C6AA23 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA36285F469900C6AA23 /* ViewController.swift */; };
-		13ADEA3A285F469900C6AA23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13ADEA38285F469900C6AA23 /* Main.storyboard */; };
 		13ADEA3C285F469A00C6AA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13ADEA3B285F469A00C6AA23 /* Assets.xcassets */; };
-		13ADEA3F285F469A00C6AA23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13ADEA3D285F469A00C6AA23 /* LaunchScreen.storyboard */; };
+		13ADEA49285F478F00C6AA23 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA48285F478F00C6AA23 /* KeyboardView.swift */; };
+		13ADEA4B285F47CA00C6AA23 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA4A285F47CA00C6AA23 /* BoardView.swift */; };
+		13ADEA4D285F502900C6AA23 /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA4C285F502900C6AA23 /* KeyCell.swift */; };
+		13D718DA28638E88009ACC03 /* MainGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D428638E88009ACC03 /* MainGamePresenter.swift */; };
+		13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D528638E88009ACC03 /* MainGameRouter.swift */; };
+		13D718DC28638E88009ACC03 /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D628638E88009ACC03 /* MainGameViewController.swift */; };
+		13D718DD28638E88009ACC03 /* MainGameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D728638E88009ACC03 /* MainGameProtocols.swift */; };
+		13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D828638E88009ACC03 /* MainGameInteractor.swift */; };
+		13D718DF28638E88009ACC03 /* MainGameModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */; };
+		46FA1979FCA04A69D69FC8E2 /* Pods_Slovo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12DFD01E5AD33F75E3B6212 /* Pods_Slovo.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		137FBFFB286A019C0004FDDE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13ADEA27285F469900C6AA23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13ADEA2E285F469900C6AA23;
+			remoteInfo = Slovo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		13E55F2428AE7E0300E510DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		1306312A286B480E00CD2607 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		1306312D286B4FD000CD2607 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
+		13099B57286A13A800C8E2C5 /* WordsLoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsLoadService.swift; sourceTree = "<group>"; };
+		1333E83028A6468B003FE3E5 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
+		1333E83328A64D83003FE3E5 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		1333E84128A65538003FE3E5 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		136AC17528AACD5600972C60 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		137B249C28719628003618B2 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		137B24A328719E00003618B2 /* LetterStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterStorage.swift; sourceTree = "<group>"; };
+		137FBFF7286A019C0004FDDE /* UnitTestsSlovo.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTestsSlovo.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		137FBFF9286A019C0004FDDE /* StartAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppTests.swift; sourceTree = "<group>"; };
+		1386CCBC28A662B000251C9C /* UIView + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Helpers.swift"; sourceTree = "<group>"; };
+		1386CCBF28A662E300251C9C /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		1386CCC628A77BBB00251C9C /* StopPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupPresenter.swift; sourceTree = "<group>"; };
+		1386CCC728A77BBB00251C9C /* StopPopupRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupRouter.swift; sourceTree = "<group>"; };
+		1386CCC828A77BBB00251C9C /* StopPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupViewController.swift; sourceTree = "<group>"; };
+		1386CCC928A77BBB00251C9C /* StopPopupProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupProtocols.swift; sourceTree = "<group>"; };
+		1386CCCA28A77BBB00251C9C /* StopPopupInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupInteractor.swift; sourceTree = "<group>"; };
+		1386CCCB28A77BBB00251C9C /* StopPopupModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupModuleConfigurator.swift; sourceTree = "<group>"; };
+		1386CCD228A77C2300251C9C /* StopPopupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupViewModel.swift; sourceTree = "<group>"; };
+		1386CCD428A7925500251C9C /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
+		1386CCDD28A7E88000251C9C /* BonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusView.swift; sourceTree = "<group>"; };
+		1386CCE028A7E91F00251C9C /* BonusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusViewModel.swift; sourceTree = "<group>"; };
 		13ADEA2F285F469900C6AA23 /* Slovo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slovo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13ADEA32285F469900C6AA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13ADEA34285F469900C6AA23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		13ADEA36285F469900C6AA23 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		13ADEA39285F469900C6AA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		13ADEA3B285F469A00C6AA23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		13ADEA3E285F469A00C6AA23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		13ADEA40285F469A00C6AA23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13ADEA48285F478F00C6AA23 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		13ADEA4A285F47CA00C6AA23 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		13ADEA4C285F502900C6AA23 /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
+		13D718D428638E88009ACC03 /* MainGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGamePresenter.swift; sourceTree = "<group>"; };
+		13D718D528638E88009ACC03 /* MainGameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameRouter.swift; sourceTree = "<group>"; };
+		13D718D628638E88009ACC03 /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
+		13D718D728638E88009ACC03 /* MainGameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameProtocols.swift; sourceTree = "<group>"; };
+		13D718D828638E88009ACC03 /* MainGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameInteractor.swift; sourceTree = "<group>"; };
+		13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameModuleConfigurator.swift; sourceTree = "<group>"; };
+		4F1F554652DBF159DF95C844 /* Pods-Slovo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slovo.debug.xcconfig"; path = "Target Support Files/Pods-Slovo/Pods-Slovo.debug.xcconfig"; sourceTree = "<group>"; };
+		A30BB63DEDD25BC919A33ADB /* Pods-Slovo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slovo.release.xcconfig"; path = "Target Support Files/Pods-Slovo/Pods-Slovo.release.xcconfig"; sourceTree = "<group>"; };
+		D12DFD01E5AD33F75E3B6212 /* Pods_Slovo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slovo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		13ADEA2C285F469900C6AA23 /* Frameworks */ = {
+		137FBFF4286A019C0004FDDE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13ADEA2C285F469900C6AA23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46FA1979FCA04A69D69FC8E2 /* Pods_Slovo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13063128286B47D200CD2607 /* UIKit+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1386CCBC28A662B000251C9C /* UIView + Helpers.swift */,
+				1306312A286B480E00CD2607 /* UIColor + Extension.swift */,
+				1386CCD428A7925500251C9C /* UIFont + Extension.swift */,
+			);
+			path = "UIKit+Extension";
+			sourceTree = "<group>";
+		};
+		13063129286B47EA00CD2607 /* BoardCell */ = {
+			isa = PBXGroup;
+			children = (
+				1306312D286B4FD000CD2607 /* BoardCell.swift */,
+			);
+			path = BoardCell;
+			sourceTree = "<group>";
+		};
+		13099B56286A137800C8E2C5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				13099B57286A13A800C8E2C5 /* WordsLoadService.swift */,
+				137B24A328719E00003618B2 /* LetterStorage.swift */,
+				1333E83028A6468B003FE3E5 /* KeyboardManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		1333E83228A64D58003FE3E5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1333E83328A64D83003FE3E5 /* DIContainer.swift */,
+				1386CCBF28A662E300251C9C /* Display.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1333E83A28A654CE003FE3E5 /* StopPopup */ = {
+			isa = PBXGroup;
+			children = (
+				1386CCC628A77BBB00251C9C /* StopPopupPresenter.swift */,
+				1386CCC728A77BBB00251C9C /* StopPopupRouter.swift */,
+				1386CCC828A77BBB00251C9C /* StopPopupViewController.swift */,
+				1386CCD228A77C2300251C9C /* StopPopupViewModel.swift */,
+				1386CCC928A77BBB00251C9C /* StopPopupProtocols.swift */,
+				1386CCCA28A77BBB00251C9C /* StopPopupInteractor.swift */,
+				1386CCCB28A77BBB00251C9C /* StopPopupModuleConfigurator.swift */,
+			);
+			name = StopPopup;
+			sourceTree = "<group>";
+		};
+		1333E84028A65524003FE3E5 /* PopupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1333E84128A65538003FE3E5 /* PopupViewController.swift */,
+			);
+			path = PopupViewController;
+			sourceTree = "<group>";
+		};
+		137B249B287195D6003618B2 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				137B249C28719628003618B2 /* Key.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		137FBFF8286A019C0004FDDE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				137FC000286A01B30004FDDE /* MainGameTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		137FC000286A01B30004FDDE /* MainGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				137FBFF9286A019C0004FDDE /* StartAppTests.swift */,
+			);
+			path = MainGameTests;
+			sourceTree = "<group>";
+		};
+		137FC002286A02500004FDDE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				1333E83A28A654CE003FE3E5 /* StopPopup */,
+				13D718E128638F18009ACC03 /* MainGame */,
+			);
+			name = ViewControllers;
+			path = MainGame;
+			sourceTree = "<group>";
+		};
+		1386CCDC28A7E85E00251C9C /* BonusView */ = {
+			isa = PBXGroup;
+			children = (
+				1386CCDD28A7E88000251C9C /* BonusView.swift */,
+				1386CCE028A7E91F00251C9C /* BonusViewModel.swift */,
+				136AC17528AACD5600972C60 /* ProfileView.swift */,
+			);
+			path = BonusView;
+			sourceTree = "<group>";
+		};
 		13ADEA26285F469900C6AA23 = {
 			isa = PBXGroup;
 			children = (
-				13ADEA31285F469900C6AA23 /* Slovo */,
 				13ADEA30285F469900C6AA23 /* Products */,
+				D4F99FAA7C6B8649C36773B2 /* Pods */,
+				C3BD2E3E18CB94042D153AC0 /* Frameworks */,
+				13D718E328638F49009ACC03 /* Config */,
+				1333E83228A64D58003FE3E5 /* Helpers */,
+				13099B56286A137800C8E2C5 /* Managers */,
+				137FC002286A02500004FDDE /* ViewControllers */,
+				13D718E528638F60009ACC03 /* UILibrary */,
+				137FBFF8286A019C0004FDDE /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,34 +258,122 @@
 			isa = PBXGroup;
 			children = (
 				13ADEA2F285F469900C6AA23 /* Slovo.app */,
+				137FBFF7286A019C0004FDDE /* UnitTestsSlovo.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13ADEA31285F469900C6AA23 /* Slovo */ = {
+		13D718E128638F18009ACC03 /* MainGame */ = {
+			isa = PBXGroup;
+			children = (
+				13D718D628638E88009ACC03 /* MainGameViewController.swift */,
+				13D718D428638E88009ACC03 /* MainGamePresenter.swift */,
+				13D718D528638E88009ACC03 /* MainGameRouter.swift */,
+				13D718D728638E88009ACC03 /* MainGameProtocols.swift */,
+				13D718D828638E88009ACC03 /* MainGameInteractor.swift */,
+				13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */,
+				13D718E628639041009ACC03 /* KeyboardView */,
+				13D718E82863905D009ACC03 /* BoardView */,
+			);
+			name = MainGame;
+			sourceTree = "<group>";
+		};
+		13D718E328638F49009ACC03 /* Config */ = {
 			isa = PBXGroup;
 			children = (
 				13ADEA32285F469900C6AA23 /* AppDelegate.swift */,
-				13ADEA34285F469900C6AA23 /* SceneDelegate.swift */,
-				13ADEA36285F469900C6AA23 /* ViewController.swift */,
-				13ADEA38285F469900C6AA23 /* Main.storyboard */,
 				13ADEA3B285F469A00C6AA23 /* Assets.xcassets */,
-				13ADEA3D285F469A00C6AA23 /* LaunchScreen.storyboard */,
+				13ADEA34285F469900C6AA23 /* SceneDelegate.swift */,
 				13ADEA40285F469A00C6AA23 /* Info.plist */,
 			);
-			path = Slovo;
+			path = Config;
+			sourceTree = "<group>";
+		};
+		13D718E528638F60009ACC03 /* UILibrary */ = {
+			isa = PBXGroup;
+			children = (
+				1386CCDC28A7E85E00251C9C /* BonusView */,
+				1333E84028A65524003FE3E5 /* PopupViewController */,
+				137B249B287195D6003618B2 /* Entity */,
+				13063129286B47EA00CD2607 /* BoardCell */,
+				13D718E728639050009ACC03 /* KeyCell */,
+				13063128286B47D200CD2607 /* UIKit+Extension */,
+			);
+			path = UILibrary;
+			sourceTree = "<group>";
+		};
+		13D718E628639041009ACC03 /* KeyboardView */ = {
+			isa = PBXGroup;
+			children = (
+				13ADEA48285F478F00C6AA23 /* KeyboardView.swift */,
+			);
+			path = KeyboardView;
+			sourceTree = "<group>";
+		};
+		13D718E728639050009ACC03 /* KeyCell */ = {
+			isa = PBXGroup;
+			children = (
+				13ADEA4C285F502900C6AA23 /* KeyCell.swift */,
+			);
+			path = KeyCell;
+			sourceTree = "<group>";
+		};
+		13D718E82863905D009ACC03 /* BoardView */ = {
+			isa = PBXGroup;
+			children = (
+				13ADEA4A285F47CA00C6AA23 /* BoardView.swift */,
+			);
+			path = BoardView;
+			sourceTree = "<group>";
+		};
+		C3BD2E3E18CB94042D153AC0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D12DFD01E5AD33F75E3B6212 /* Pods_Slovo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4F99FAA7C6B8649C36773B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F1F554652DBF159DF95C844 /* Pods-Slovo.debug.xcconfig */,
+				A30BB63DEDD25BC919A33ADB /* Pods-Slovo.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		137FBFF6286A019C0004FDDE /* UnitTestsSlovo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 137FBFFD286A019C0004FDDE /* Build configuration list for PBXNativeTarget "UnitTestsSlovo" */;
+			buildPhases = (
+				137FBFF3286A019C0004FDDE /* Sources */,
+				137FBFF4286A019C0004FDDE /* Frameworks */,
+				137FBFF5286A019C0004FDDE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				137FBFFC286A019C0004FDDE /* PBXTargetDependency */,
+			);
+			name = UnitTestsSlovo;
+			productName = UnitTestsSlovo;
+			productReference = 137FBFF7286A019C0004FDDE /* UnitTestsSlovo.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		13ADEA2E285F469900C6AA23 /* Slovo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13ADEA43285F469A00C6AA23 /* Build configuration list for PBXNativeTarget "Slovo" */;
 			buildPhases = (
+				7506A2C50FA83CCAA2A9E3D6 /* [CP] Check Pods Manifest.lock */,
 				13ADEA2B285F469900C6AA23 /* Sources */,
 				13ADEA2C285F469900C6AA23 /* Frameworks */,
 				13ADEA2D285F469900C6AA23 /* Resources */,
+				36B87FD81CE3677D73C00021 /* [CP] Embed Pods Frameworks */,
+				13E55F2428AE7E0300E510DE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -97,6 +394,10 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					137FBFF6286A019C0004FDDE = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 13ADEA2E285F469900C6AA23;
+					};
 					13ADEA2E285F469900C6AA23 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -116,56 +417,175 @@
 			projectRoot = "";
 			targets = (
 				13ADEA2E285F469900C6AA23 /* Slovo */,
+				137FBFF6286A019C0004FDDE /* UnitTestsSlovo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		137FBFF5286A019C0004FDDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13ADEA2D285F469900C6AA23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13ADEA3F285F469A00C6AA23 /* LaunchScreen.storyboard in Resources */,
 				13ADEA3C285F469A00C6AA23 /* Assets.xcassets in Resources */,
-				13ADEA3A285F469900C6AA23 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		36B87FD81CE3677D73C00021 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Slovo/Pods-Slovo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Slovo/Pods-Slovo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Slovo/Pods-Slovo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7506A2C50FA83CCAA2A9E3D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Slovo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		137FBFF3286A019C0004FDDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				136AC17728AACD5600972C60 /* ProfileView.swift in Sources */,
+				1386CCDF28A7E88000251C9C /* BonusView.swift in Sources */,
+				1386CCD628A7925500251C9C /* UIFont + Extension.swift in Sources */,
+				1386CCBE28A662B500251C9C /* UIView + Helpers.swift in Sources */,
+				1386CCE228A7E91F00251C9C /* BonusViewModel.swift in Sources */,
+				137FBFFA286A019C0004FDDE /* StartAppTests.swift in Sources */,
+				1306312F286B4FD000CD2607 /* BoardCell.swift in Sources */,
+				1306312C286B480E00CD2607 /* UIColor + Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13ADEA2B285F469900C6AA23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13ADEA37285F469900C6AA23 /* ViewController.swift in Sources */,
+				13D718DA28638E88009ACC03 /* MainGamePresenter.swift in Sources */,
+				1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */,
+				1386CCCF28A77BBB00251C9C /* StopPopupProtocols.swift in Sources */,
+				13ADEA49285F478F00C6AA23 /* KeyboardView.swift in Sources */,
+				13D718DF28638E88009ACC03 /* MainGameModuleConfigurator.swift in Sources */,
+				1333E83128A6468B003FE3E5 /* KeyboardManager.swift in Sources */,
+				137B24A428719E00003618B2 /* LetterStorage.swift in Sources */,
+				13D718DC28638E88009ACC03 /* MainGameViewController.swift in Sources */,
+				13ADEA4D285F502900C6AA23 /* KeyCell.swift in Sources */,
+				13099B58286A13A800C8E2C5 /* WordsLoadService.swift in Sources */,
+				1386CCCE28A77BBB00251C9C /* StopPopupViewController.swift in Sources */,
+				13ADEA4B285F47CA00C6AA23 /* BoardView.swift in Sources */,
+				1386CCDE28A7E88000251C9C /* BonusView.swift in Sources */,
+				13D718DD28638E88009ACC03 /* MainGameProtocols.swift in Sources */,
+				1386CCCD28A77BBB00251C9C /* StopPopupRouter.swift in Sources */,
 				13ADEA33285F469900C6AA23 /* AppDelegate.swift in Sources */,
+				1386CCBD28A662B000251C9C /* UIView + Helpers.swift in Sources */,
 				13ADEA35285F469900C6AA23 /* SceneDelegate.swift in Sources */,
+				1306312B286B480E00CD2607 /* UIColor + Extension.swift in Sources */,
+				137B249D28719628003618B2 /* Key.swift in Sources */,
+				1386CCC028A662E300251C9C /* Display.swift in Sources */,
+				13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */,
+				1386CCD528A7925500251C9C /* UIFont + Extension.swift in Sources */,
+				1386CCD328A77C2300251C9C /* StopPopupViewModel.swift in Sources */,
+				136AC17628AACD5600972C60 /* ProfileView.swift in Sources */,
+				1386CCD028A77BBB00251C9C /* StopPopupInteractor.swift in Sources */,
+				1386CCD128A77BBB00251C9C /* StopPopupModuleConfigurator.swift in Sources */,
+				1306312E286B4FD000CD2607 /* BoardCell.swift in Sources */,
+				1386CCE128A7E91F00251C9C /* BonusViewModel.swift in Sources */,
+				1386CCCC28A77BBB00251C9C /* StopPopupPresenter.swift in Sources */,
+				1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */,
+				13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		13ADEA38285F469900C6AA23 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13ADEA39285F469900C6AA23 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		137FBFFC286A019C0004FDDE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13ADEA2E285F469900C6AA23 /* Slovo */;
+			targetProxy = 137FBFFB286A019C0004FDDE /* PBXContainerItemProxy */;
 		};
-		13ADEA3D285F469A00C6AA23 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				13ADEA3E285F469A00C6AA23 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		137FBFFE286A019C0004FDDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9H42AN9X2T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JNStudio.UnitTestsSlovo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slovo.app/Slovo";
+			};
+			name = Debug;
+		};
+		137FBFFF286A019C0004FDDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9H42AN9X2T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JNStudio.UnitTestsSlovo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slovo.app/Slovo";
+			};
+			name = Release;
+		};
 		13ADEA41285F469A00C6AA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -217,7 +637,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -272,7 +692,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -284,6 +704,7 @@
 		};
 		13ADEA44285F469A00C6AA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F1F554652DBF159DF95C844 /* Pods-Slovo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,12 +712,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9H42AN9X2T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Slovo/Info.plist;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Слово";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -306,12 +729,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		13ADEA45285F469A00C6AA23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A30BB63DEDD25BC919A33ADB /* Pods-Slovo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -319,12 +743,14 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9H42AN9X2T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Slovo/Info.plist;
+				INFOPLIST_FILE = Config/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Слово";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,13 +760,22 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		137FBFFD286A019C0004FDDE /* Build configuration list for PBXNativeTarget "UnitTestsSlovo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				137FBFFE286A019C0004FDDE /* Debug */,
+				137FBFFF286A019C0004FDDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		13ADEA2A285F469900C6AA23 /* Build configuration list for PBXProject "Slovo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
