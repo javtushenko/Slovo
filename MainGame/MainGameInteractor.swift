@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 import UIKit
 
 final class MainGameInteractor {
@@ -42,23 +43,33 @@ extension MainGameInteractor: MainGameInteractorProtocol {
 
     /// Спарсить содержимое документа в массив
     func getWordsData() {
-        presenter?.onLoadWordData()
         words = wordsLoadService.loadWords()
     }
 
     /// Закончился парсинг документа в массив
     /// Спарсить содержимое документа в массив
     func onDidLoadWordsData() {
-        presenter?.onDidLoadWordsData()
     }
 
     /// получить рандомное слово для загадки
     func getRandomWord() -> String {
+        // если слово есть в хранилище, тогда вернем его
+        if let word = Defaults[key: DefaultsKeys.currentWord] {
+            if !word.isEmpty {
+                print("✅ Загадано слово из хранилища - \(word)")
+                return word
+            }
+        }
+        
+        // если нет в хранилище, создадим новое
         let words = wordsLoadService.loadSecretWords()
         guard let word = words.randomElement() else {
+            print("❌MainGameInteractor: не взяли рандомное слово, используется запасное")
+            Defaults[key: DefaultsKeys.currentWord] = "слово"
             return "слово"
         }
-        print("✅ Загадано слово - \(word)")
+        print("✅ Загадано слово рандомное - \(word)")
+        Defaults[key: DefaultsKeys.currentWord] = word
         return word
     }
 

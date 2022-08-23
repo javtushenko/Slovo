@@ -13,10 +13,8 @@ protocol MainGameViewProtocol: AnyObject {
     var keyboardVC: KeyboardView { get }
     /// Коллекция с ячейками для ввода
     var boardVC: BoardView { get }
-    /// запустить прелоудер
-    func startPreloader()
-    /// остановить прелоудер
-    func stopPreloader()
+    /// показать вью с информацией о бонусе
+    func showInfoView(viewModel: InfoContentViewModel) 
     /// обновить данные на игровом поле
     func updateGuesses()
     /// обновить данные клавиатуры
@@ -27,14 +25,15 @@ protocol MainGameViewProtocol: AnyObject {
 protocol MainGameViewToPresenterProtocol: AnyObject {
     /// Вью загружено
     func onViewDidLoad()
+    /// Нажат бонус ЛУПА
+    func onTapBonusSearch()
+    /// Нажат бонус БОМБА
+    func onTapBonusBomb()
+    /// Нажат бонус КНИГА
+    func onTapBonusBook()
 }
 
-protocol MainGameInteractorToPresenterProtocol: AnyObject {
-    /// Когда началась загрузка слов из файла в массив
-    func onLoadWordData()
-    /// Когда закончилась загрузка слов из файла в массив
-    func onDidLoadWordsData()
-}
+protocol MainGameInteractorToPresenterProtocol: AnyObject {}
 
 // MARK: Interactor -
 protocol MainGameInteractorProtocol: AnyObject {
@@ -53,5 +52,5 @@ protocol MainGameInteractorProtocol: AnyObject {
 // MARK: Router -
 protocol MainGameRouterProtocol: AnyObject {
     /// Открыть попап остановки игры
-    func openStopPopup(typePopup: StopType, word: String)
+    func openStopPopup(typePopup: StopType, word: String, delegate: StopPopupViewDelegate)
 }

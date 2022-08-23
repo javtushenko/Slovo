@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIColor {
+public extension UIColor {
 
     /// фон приложения
     static let slovoDarkBackground: UIColor = .init(hex: "191725")
@@ -24,6 +24,9 @@ extension UIColor {
 
     /// белый
     static let slovoWhite: UIColor = .init(hex: "FFFFFF")
+    
+    /// темно-серый
+    static let slovoDark: UIColor = .init(hex: "928F8F")
 
     /// преобразуем код цвета в цвет
     convenience init(hex: String, alpha: CGFloat = 1.0) {

@@ -15,6 +15,12 @@ public class BonusView: UIView {
         let view = UIView.newAutoLayout()
         return view
     }()
+    
+    // основная вьюха
+    private let label: UILabel = {
+        let view = UILabel.newAutoLayout()
+        return view
+    }()
 
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
@@ -32,12 +38,14 @@ public class BonusView: UIView {
     /// устанавливаем вьюху
     public func setup(viewModel: BonusViewModel) {
         self.backgroundColor = viewModel.backgroundColor
+        label.attributedText = viewModel.titleAttributedText
     }
 
     // Создание иерархии View
     func createViewHierarchyIfNeeded() {
         guard !isViewHieararchyCreated else { return }
         addSubview(mainView)
+        mainView.addSubview(label)
     }
 
     // Установка Constraints
@@ -45,5 +53,7 @@ public class BonusView: UIView {
         guard !isConstraintsInstalled else { return }
         mainView.autoSetDimensions(to: CGSize(width: 114, height: 60))
         mainView.autoPinEdgesToSuperviewEdges()
+        label.autoAlignAxis(toSuperviewMarginAxis: .vertical)
+        label.autoPinEdge(toSuperviewMargin: .bottom, withInset: 0)
     }
 }

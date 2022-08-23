@@ -1,20 +1,24 @@
 PODS:
   - Atributika (4.10.1)
   - PureLayout (3.1.9)
+  - SwiftyUserDefaults (5.3.0)
 
 DEPENDENCIES:
   - Atributika
   - PureLayout
+  - SwiftyUserDefaults (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Atributika
     - PureLayout
+    - SwiftyUserDefaults
 
 SPEC CHECKSUMS:
   Atributika: 47e778507cfb3cd2c996278b0285221a62e97d71
   PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
+  SwiftyUserDefaults: 63f80248cf5bfb3458825d9a78f2eb7e1293a040
 
-PODFILE CHECKSUM: 72cfd9586cc60373cd38f09e94027f6c634fdca0
+PODFILE CHECKSUM: f964f56fdc18acff35268cd15c2cc39ddada6b77
 
 COCOAPODS: 1.11.3

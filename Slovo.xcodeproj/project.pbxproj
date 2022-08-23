@@ -42,12 +42,19 @@
 		13ADEA49285F478F00C6AA23 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA48285F478F00C6AA23 /* KeyboardView.swift */; };
 		13ADEA4B285F47CA00C6AA23 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA4A285F47CA00C6AA23 /* BoardView.swift */; };
 		13ADEA4D285F502900C6AA23 /* KeyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA4C285F502900C6AA23 /* KeyCell.swift */; };
+		13BA4E1C28B374CB0089229D /* MainGameViewController + Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA4E1B28B374CB0089229D /* MainGameViewController + Bonus.swift */; };
+		13BA4E2028B37A970089229D /* MainGamePresenter + Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA4E1F28B37A970089229D /* MainGamePresenter + Bonus.swift */; };
+		13BA4E2728B38E110089229D /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA4E2628B38E110089229D /* DefaultsKeys.swift */; };
 		13D718DA28638E88009ACC03 /* MainGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D428638E88009ACC03 /* MainGamePresenter.swift */; };
 		13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D528638E88009ACC03 /* MainGameRouter.swift */; };
 		13D718DC28638E88009ACC03 /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D628638E88009ACC03 /* MainGameViewController.swift */; };
 		13D718DD28638E88009ACC03 /* MainGameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D728638E88009ACC03 /* MainGameProtocols.swift */; };
 		13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D828638E88009ACC03 /* MainGameInteractor.swift */; };
 		13D718DF28638E88009ACC03 /* MainGameModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */; };
+		13E55F3328AE9DE400E510DE /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3228AE9DE400E510DE /* InfoViewModel.swift */; };
+		13E55F3528AE9E0F00E510DE /* InfoContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3428AE9E0F00E510DE /* InfoContentViewModel.swift */; };
+		13E55F3928AE9F3500E510DE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3828AE9F3500E510DE /* InfoView.swift */; };
+		13E55F3B28AE9F5B00E510DE /* InfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3A28AE9F5B00E510DE /* InfoContentView.swift */; };
 		46FA1979FCA04A69D69FC8E2 /* Pods_Slovo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12DFD01E5AD33F75E3B6212 /* Pods_Slovo.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,12 +113,19 @@
 		13ADEA48285F478F00C6AA23 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		13ADEA4A285F47CA00C6AA23 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		13ADEA4C285F502900C6AA23 /* KeyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCell.swift; sourceTree = "<group>"; };
+		13BA4E1B28B374CB0089229D /* MainGameViewController + Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainGameViewController + Bonus.swift"; sourceTree = "<group>"; };
+		13BA4E1F28B37A970089229D /* MainGamePresenter + Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainGamePresenter + Bonus.swift"; sourceTree = "<group>"; };
+		13BA4E2628B38E110089229D /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
 		13D718D428638E88009ACC03 /* MainGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGamePresenter.swift; sourceTree = "<group>"; };
 		13D718D528638E88009ACC03 /* MainGameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameRouter.swift; sourceTree = "<group>"; };
 		13D718D628638E88009ACC03 /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
 		13D718D728638E88009ACC03 /* MainGameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameProtocols.swift; sourceTree = "<group>"; };
 		13D718D828638E88009ACC03 /* MainGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameInteractor.swift; sourceTree = "<group>"; };
 		13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameModuleConfigurator.swift; sourceTree = "<group>"; };
+		13E55F3228AE9DE400E510DE /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
+		13E55F3428AE9E0F00E510DE /* InfoContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContentViewModel.swift; sourceTree = "<group>"; };
+		13E55F3828AE9F3500E510DE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		13E55F3A28AE9F5B00E510DE /* InfoContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContentView.swift; sourceTree = "<group>"; };
 		4F1F554652DBF159DF95C844 /* Pods-Slovo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slovo.debug.xcconfig"; path = "Target Support Files/Pods-Slovo/Pods-Slovo.debug.xcconfig"; sourceTree = "<group>"; };
 		A30BB63DEDD25BC919A33ADB /* Pods-Slovo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slovo.release.xcconfig"; path = "Target Support Files/Pods-Slovo/Pods-Slovo.release.xcconfig"; sourceTree = "<group>"; };
 		D12DFD01E5AD33F75E3B6212 /* Pods_Slovo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slovo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +183,7 @@
 			children = (
 				1333E83328A64D83003FE3E5 /* DIContainer.swift */,
 				1386CCBF28A662E300251C9C /* Display.swift */,
+				13BA4E2628B38E110089229D /* DefaultsKeys.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -234,7 +249,6 @@
 			children = (
 				1386CCDD28A7E88000251C9C /* BonusView.swift */,
 				1386CCE028A7E91F00251C9C /* BonusViewModel.swift */,
-				136AC17528AACD5600972C60 /* ProfileView.swift */,
 			);
 			path = BonusView;
 			sourceTree = "<group>";
@@ -263,17 +277,43 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13D718E128638F18009ACC03 /* MainGame */ = {
+		13BA4E1A28B374B80089229D /* View */ = {
 			isa = PBXGroup;
 			children = (
 				13D718D628638E88009ACC03 /* MainGameViewController.swift */,
+				13BA4E1B28B374CB0089229D /* MainGameViewController + Bonus.swift */,
+				13BA4E1D28B375DD0089229D /* Subview */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		13BA4E1D28B375DD0089229D /* Subview */ = {
+			isa = PBXGroup;
+			children = (
+				13ADEA48285F478F00C6AA23 /* KeyboardView.swift */,
+				13ADEA4A285F47CA00C6AA23 /* BoardView.swift */,
+			);
+			path = Subview;
+			sourceTree = "<group>";
+		};
+		13BA4E1E28B37A880089229D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
 				13D718D428638E88009ACC03 /* MainGamePresenter.swift */,
+				13BA4E1F28B37A970089229D /* MainGamePresenter + Bonus.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		13D718E128638F18009ACC03 /* MainGame */ = {
+			isa = PBXGroup;
+			children = (
+				13BA4E1A28B374B80089229D /* View */,
+				13BA4E1E28B37A880089229D /* Presenter */,
 				13D718D528638E88009ACC03 /* MainGameRouter.swift */,
 				13D718D728638E88009ACC03 /* MainGameProtocols.swift */,
 				13D718D828638E88009ACC03 /* MainGameInteractor.swift */,
 				13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */,
-				13D718E628639041009ACC03 /* KeyboardView */,
-				13D718E82863905D009ACC03 /* BoardView */,
 			);
 			name = MainGame;
 			sourceTree = "<group>";
@@ -292,6 +332,8 @@
 		13D718E528638F60009ACC03 /* UILibrary */ = {
 			isa = PBXGroup;
 			children = (
+				13E55F2F28AE9DA400E510DE /* InfoView */,
+				13E55F2928AE85E800E510DE /* ProfileView */,
 				1386CCDC28A7E85E00251C9C /* BonusView */,
 				1333E84028A65524003FE3E5 /* PopupViewController */,
 				137B249B287195D6003618B2 /* Entity */,
@@ -302,14 +344,6 @@
 			path = UILibrary;
 			sourceTree = "<group>";
 		};
-		13D718E628639041009ACC03 /* KeyboardView */ = {
-			isa = PBXGroup;
-			children = (
-				13ADEA48285F478F00C6AA23 /* KeyboardView.swift */,
-			);
-			path = KeyboardView;
-			sourceTree = "<group>";
-		};
 		13D718E728639050009ACC03 /* KeyCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -318,12 +352,23 @@
 			path = KeyCell;
 			sourceTree = "<group>";
 		};
-		13D718E82863905D009ACC03 /* BoardView */ = {
+		13E55F2928AE85E800E510DE /* ProfileView */ = {
 			isa = PBXGroup;
 			children = (
-				13ADEA4A285F47CA00C6AA23 /* BoardView.swift */,
+				136AC17528AACD5600972C60 /* ProfileView.swift */,
 			);
-			path = BoardView;
+			path = ProfileView;
+			sourceTree = "<group>";
+		};
+		13E55F2F28AE9DA400E510DE /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				13E55F3828AE9F3500E510DE /* InfoView.swift */,
+				13E55F3228AE9DE400E510DE /* InfoViewModel.swift */,
+				13E55F3A28AE9F5B00E510DE /* InfoContentView.swift */,
+				13E55F3428AE9E0F00E510DE /* InfoContentViewModel.swift */,
+			);
+			path = InfoView;
 			sourceTree = "<group>";
 		};
 		C3BD2E3E18CB94042D153AC0 /* Frameworks */ = {
@@ -503,10 +548,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				13D718DA28638E88009ACC03 /* MainGamePresenter.swift in Sources */,
+				13BA4E1C28B374CB0089229D /* MainGameViewController + Bonus.swift in Sources */,
 				1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */,
 				1386CCCF28A77BBB00251C9C /* StopPopupProtocols.swift in Sources */,
+				13BA4E2728B38E110089229D /* DefaultsKeys.swift in Sources */,
 				13ADEA49285F478F00C6AA23 /* KeyboardView.swift in Sources */,
+				13BA4E2028B37A970089229D /* MainGamePresenter + Bonus.swift in Sources */,
 				13D718DF28638E88009ACC03 /* MainGameModuleConfigurator.swift in Sources */,
+				13E55F3928AE9F3500E510DE /* InfoView.swift in Sources */,
 				1333E83128A6468B003FE3E5 /* KeyboardManager.swift in Sources */,
 				137B24A428719E00003618B2 /* LetterStorage.swift in Sources */,
 				13D718DC28638E88009ACC03 /* MainGameViewController.swift in Sources */,
@@ -515,15 +564,18 @@
 				1386CCCE28A77BBB00251C9C /* StopPopupViewController.swift in Sources */,
 				13ADEA4B285F47CA00C6AA23 /* BoardView.swift in Sources */,
 				1386CCDE28A7E88000251C9C /* BonusView.swift in Sources */,
+				13E55F3B28AE9F5B00E510DE /* InfoContentView.swift in Sources */,
 				13D718DD28638E88009ACC03 /* MainGameProtocols.swift in Sources */,
 				1386CCCD28A77BBB00251C9C /* StopPopupRouter.swift in Sources */,
 				13ADEA33285F469900C6AA23 /* AppDelegate.swift in Sources */,
 				1386CCBD28A662B000251C9C /* UIView + Helpers.swift in Sources */,
 				13ADEA35285F469900C6AA23 /* SceneDelegate.swift in Sources */,
+				13E55F3328AE9DE400E510DE /* InfoViewModel.swift in Sources */,
 				1306312B286B480E00CD2607 /* UIColor + Extension.swift in Sources */,
 				137B249D28719628003618B2 /* Key.swift in Sources */,
 				1386CCC028A662E300251C9C /* Display.swift in Sources */,
 				13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */,
+				13E55F3528AE9E0F00E510DE /* InfoContentViewModel.swift in Sources */,
 				1386CCD528A7925500251C9C /* UIFont + Extension.swift in Sources */,
 				1386CCD328A77C2300251C9C /* StopPopupViewModel.swift in Sources */,
 				136AC17628AACD5600972C60 /* ProfileView.swift in Sources */,

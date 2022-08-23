@@ -17,6 +17,9 @@ public protocol KeyboardManagerProtocol {
 class KeyboardManager: KeyboardManagerProtocol {
     static let shared = KeyboardManager()
     private init() {}
+    
+    /// Бонус бомбы, серые кнопки
+    var bombLetters: [Character] = []
 
     /// получить цвет кнопки
     public func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor {
@@ -38,6 +41,19 @@ class KeyboardManager: KeyboardManagerProtocol {
                 return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
             }).count != 0 {
                 currentColor = .slovoOrange
+            }
+            // вернет темный если есть совпадение
+            if row.filter({ filtredKey in
+                let currentKey = Key(character: key, backgroundColor: .slovoGray)
+                return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
+            }).count != 0 {
+                currentColor = .slovoDark
+            }
+            // вернет темный фон если буква есть в массиве серых букв (бонус бомба)
+            if bombLetters.filter({ filterdLetter in
+                filterdLetter == key
+            }).count != 0 {
+                currentColor = .slovoDark
             }
         }
         if key == "+" {

@@ -13,9 +13,17 @@ public enum StopType {
     case wrong
 }
 
+// MARK: View Delegate -
+protocol StopPopupViewDelegate: AnyObject {
+    /// Popup закрылся
+    func popupHidden(_ popupController: PopupViewController, popupType: StopType)
+}
+
 // MARK: View -
 protocol StopPopupViewProtocol: AnyObject {
-    // установка вью
+    /// делегат
+    var delegate: StopPopupViewDelegate? { get set }
+    /// установка вью
     func setup(viewModel: StopPopupViewModel)
 }
 

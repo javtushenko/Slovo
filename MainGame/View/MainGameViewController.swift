@@ -21,19 +21,19 @@ final class MainGameViewController: UIViewController {
     }()
 
     /// первая ячейка с бонусом
-    let firstBonus: BonusView = {
+    let bonusSearchView: BonusView = {
         let view = BonusView.newAutoLayout()
         return view
     }()
 
     /// первая ячейка с бонусом
-    let secondBonus: BonusView = {
+    let bonusBombView: BonusView = {
         let view = BonusView.newAutoLayout()
         return view
     }()
 
     /// первая ячейка с бонусом
-    let thirdBonus: BonusView = {
+    let bonusBookView: BonusView = {
         let view = BonusView.newAutoLayout()
         return view
     }()
@@ -49,6 +49,13 @@ final class MainGameViewController: UIViewController {
         let view = ProfileView.newAutoLayout()
         return view
     }()
+    
+    /// Информационное вью о бонусе с кнопкой применения
+    let infoView: InfoView = {
+        let view = InfoView.newAutoLayout()
+        view.isHidden = true
+        return view
+    }()
 
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
@@ -57,42 +64,24 @@ final class MainGameViewController: UIViewController {
         super.viewDidLoad()
         createViewHierarchyIfNeeded()
         setupConstrainstsIfNeeded()
-        setupFirstBonus()
-        setupSecondBonus()
-        setupThirdBonus()
+        setupBonusSearch()
+        setupBonusBomb()
+        setupBonusBook()
         setupValetView()
         setupProfileView()
         presenter?.onViewDidLoad()
         view.backgroundColor = .slovoDarkBackground
     }
 
-    // настро первую вьюху с бонусом
-    func setupFirstBonus() {
-        firstBonus.setup(viewModel: .init(backgroundColor: .slovoGray))
-        firstBonus.setCorners(radius: 30)
-    }
-
-    // настро вторую вьюху с бонусом
-    func setupSecondBonus() {
-        secondBonus.setup(viewModel: .init(backgroundColor: .slovoOrange))
-        secondBonus.setCorners(radius: 30)
-    }
-
-    // настро третью вьюху с бонусом
-    func setupThirdBonus() {
-        thirdBonus.setup(viewModel: .init(backgroundColor: .slovoGreen))
-        thirdBonus.setCorners(radius: 30)
-    }
-
-    // настро третью вьюху с бонусом
+    // настроить вьюху с кошельком
     func setupValetView() {
-        valletView.setup(viewModel: .init(backgroundColor: .slovoGreen))
+        valletView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: "648"))
         valletView.setCorners(radius: 30)
     }
 
-    // настро профиль вьюху с бонусом
+    // настроить профиль вьюху
     func setupProfileView() {
-        profileView.setup(viewModel: .init(backgroundColor: .slovoGreen))
+        profileView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: ""))
         profileView.setCorners(radius: 30)
         profileView.fireView.setCorners(radius: 30)
     }
@@ -114,11 +103,13 @@ extension MainGameViewController {
         view.addSubview(boardVC.view)
 
         view.addSubview(valletView)
-        view.addSubview(secondBonus)
-        view.addSubview(firstBonus)
-        view.addSubview(thirdBonus)
+        view.addSubview(bonusBombView)
+        view.addSubview(bonusSearchView)
+        view.addSubview(bonusBookView)
         view.addSubview(profileView)
-
+        
+        view.addSubview(infoView)
+        
         isViewHieararchyCreated = true
     }
 
@@ -136,34 +127,32 @@ extension MainGameViewController {
         boardVC.view.autoSetDimension(.height, toSize: 565)
         boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.collectionView, withOffset: -16)
 
-        secondBonus.autoAlignAxis(toSuperviewAxis: .vertical)
-        secondBonus.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
+        bonusBombView.autoAlignAxis(toSuperviewAxis: .vertical)
+        bonusBombView.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
 
-        firstBonus.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
-        firstBonus.autoPinEdge(.trailing, to: .leading, of: secondBonus, withOffset: -18)
+        bonusSearchView.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
+        bonusSearchView.autoPinEdge(.trailing, to: .leading, of: bonusBombView, withOffset: -18)
 
-        thirdBonus.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
-        thirdBonus.autoPinEdge(.leading, to: .trailing, of: secondBonus, withOffset: 18)
+        bonusBookView.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
+        bonusBookView.autoPinEdge(.leading, to: .trailing, of: bonusBombView, withOffset: 18)
 
-        valletView.autoPinEdge(.trailing, to: .leading, of: secondBonus, withOffset: -18)
-        valletView.autoPinEdge(.bottom, to: .top, of: firstBonus, withOffset: -18)
+        valletView.autoPinEdge(.trailing, to: .leading, of: bonusBombView, withOffset: -18)
+        valletView.autoPinEdge(.bottom, to: .top, of: bonusSearchView, withOffset: -18)
 
-        profileView.autoPinEdge(.trailing, to: .trailing, of: thirdBonus)
-        profileView.autoPinEdge(.bottom, to: .top, of: thirdBonus, withOffset: -18)
+        profileView.autoPinEdge(.trailing, to: .trailing, of: bonusBookView)
+        profileView.autoPinEdge(.bottom, to: .top, of: bonusBookView, withOffset: -18)
+        
+        infoView.autoPinEdgesToSuperviewEdges()
 
         isConstraintsInstalled = true
     }
 }
 
 extension MainGameViewController: MainGameViewProtocol {
-    /// запустить прелоудер
-    func startPreloader() {
-
-    }
-
-    /// остановить прелоудер
-    func stopPreloader() {
-
+    /// показать вью с информацией о бонусе
+    func showInfoView(viewModel: InfoContentViewModel) {
+        setupInfoView(viewModel: viewModel)
+        infoView.isHidden = false
     }
 
     /// обновить данные на игровом поле

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwiftyUserDefaults
 
-final class MainGamePresenter {
+final class MainGamePresenter: MainGameViewToPresenterProtocol {
     weak var view: MainGameViewProtocol?
     var interactor: MainGameInteractorProtocol?
     var router: MainGameRouterProtocol?
@@ -37,6 +38,45 @@ final class MainGamePresenter {
         self.view = view
         self.answer = interactor?.currentWord ?? "слово"
     }
+    
+    /// Вью загружено
+    func onViewDidLoad() {
+        interactor?.start()
+        answer = interactor?.currentWord ?? "слово"
+        view?.keyboardVC.delegate = self
+        view?.keyboardVC.datasource = self
+        view?.boardVC.datasource = self
+        handleOpenAppWithData()
+    }
+    
+    // при открытии приложения с данными
+    func handleOpenAppWithData() {
+        for row in 0..<4 {
+            if isCanGoNextSectionGet(gamingCell: 4, gamingRow: row, allLetters: letterStorage.getLetters()) {
+                handlePressEnter(position: 4, section: row, allLetters: letterStorage.getLetters())
+            }
+        }
+    }
+    
+    // можно ли переходить к следующей секции
+    private func isCanGoNextSectionGet(gamingCell: Int, gamingRow: Int, allLetters: [[Key?]]) -> Bool {
+        guard let words = interactor?.getRandomWords() else {
+            print("❌ Массив слов не загрузился в фильтр ввода")
+            return false
+        }
+        guard gamingRow >= 0 else { return false }
+        var lettersInSection = ""
+        for index in 0..<5 {
+            guard let letter = allLetters[gamingRow][index]?.character else { return false }
+            lettersInSection.append(letter)
+        }
+        guard words.contains(lettersInSection) else {
+            handleWrongWord(word: lettersInSection)
+            return false }
+        print("✅ Массив слов загрузился в фильтр ввода")
+        isCanGoNext[gamingRow+1] = true
+        return true
+    }
 
     // обработка успешного перехода на следующую строку
     private func handleSuccesTransition(currentRow: Int) {
@@ -58,61 +98,26 @@ final class MainGamePresenter {
 
     // обработка поражения
     private func handleDefeat() {
-        router?.openStopPopup(typePopup: .defeat, word: "")
+        router?.openStopPopup(typePopup: .defeat, word: "", delegate: self)
     }
 
     // обработка победы
     private func handleWin() {
-        router?.openStopPopup(typePopup: .win, word: "")
+        router?.openStopPopup(typePopup: .win, word: "", delegate: self)
     }
-}
-
-extension MainGamePresenter: MainGameViewToPresenterProtocol {
-    /// Вью загружено
-    func onViewDidLoad() {
-        interactor?.start()
-        answer = interactor?.currentWord ?? "слово"
-        view?.keyboardVC.delegate = self
-        view?.keyboardVC.datasource = self
-        view?.boardVC.datasource = self
-    }
-
-    // можно ли переходить к следующей секции
-    private func isCanGoNextSectionGet(position: Int, section: Int, allLetters: [[Key?]]) -> Bool {
-        guard let words = interactor?.getRandomWords() else {
-            print("❌ Массив слов не загрузился в фильтр ввода")
-            return false
-        }
-        guard section >= 0 else { return false }
-        var lettersInSection = ""
-        for index in 0..<5 {
-            guard let letter = allLetters[section][index]?.character else { return false }
-            lettersInSection.append(letter)
-        }
-        guard words.contains(lettersInSection) else {
-            handleWrongWord(word: lettersInSection)
-            return false }
-        print("✅ Массив слов загрузился в фильтр ввода")
-        isCanGoNext[section+1] = true
-        return true
-    }
-
+    
     // обработка неверного слова
     private func handleWrongWord(word: String) {
-        router?.openStopPopup(typePopup: .wrong, word: word)
+        router?.openStopPopup(typePopup: .wrong, word: word, delegate: self)
     }
 }
 
 extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
-    /// Когда началась загрузка слов из файла в массив
-    func onLoadWordData() {
-        view?.startPreloader()
-    }
-
-    /// Когда закончилась загрузка слов из файла в массив
-    func onDidLoadWordsData() {
-        view?.stopPreloader()
-    }
+    /*
+     Тут нужен будет рефакторинг
+     Протокол не должен быть пустым
+     Нужно вынести некоторые методы в интерактор
+     */
 }
 
 extension MainGamePresenter: KeyboardViewControllerDelegate {
@@ -126,30 +131,18 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
             // перебираем ячекйки игрового поля
             for gamingCell in 0..<5 {
                 if guesses[gamingRow][gamingCell] == nil || guesses[gamingRow][gamingCell]?.character == " " {
+                    // если нажали backspace
                     if letter == "-" {
-                        if gamingRow-1 != -1,
-                           isCanBackspaces[gamingRow-1] ?? false,
-                           gamingCell-1 == -1 {
-                            letterStorage.removeLetter(section: gamingRow-1, row: 4)
-                        }
-                        letterStorage.removeLetter(section: gamingRow, row: gamingCell-1)
-                        view?.updateGuesses()
+                        handlePressBackspace(gamingRow: gamingRow, gamingCell: gamingCell)
                         return
                     }
+                    // если нажали enter
                     if letter == "+" {
-                        guard isCanGoNextSectionGet(position: 4, section: gamingRow-1, allLetters: guesses) else { return }
-                        DispatchQueue.main.async { [weak self] in
-                            self?.view?.boardVC.isCanChangeColor = true
-                            self?.isCanBackspaces[gamingRow-1] = false
-                            self?.view?.boardVC.currentSection = gamingRow
-                            self?.view?.updateGuesses()
-                            self?.view?.updateKeyboard()
-                            self?.handleSuccesTransition(currentRow: gamingRow)
-                        }
+                        handlePressEnter(position: 4, section: gamingRow - 1, allLetters: guesses)
                         return
                     }
                     view?.boardVC.isCanChangeColor = false
-                    letterStorage.saveLetter(section: gamingRow, row: gamingCell, character: letter)
+                    letterStorage.saveLetter(gamingRow: gamingRow, positionLetter: gamingCell, character: letter)
                     stop = true
                     break
                 }
@@ -160,13 +153,38 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
         }
         view?.updateGuesses()
     }
+    
+    // обработка нажатого enter
+    func handlePressEnter(position: Int, section: Int, allLetters: [[Key?]]) {
+        guard isCanGoNextSectionGet(gamingCell: position, gamingRow: section, allLetters: allLetters) else { return }
+        DispatchQueue.main.async { [weak self] in
+            self?.view?.boardVC.isCanChangeColor = true
+            self?.isCanBackspaces[section] = false
+            self?.view?.boardVC.currentSection = section + 1
+            self?.view?.updateGuesses()
+            self?.view?.updateKeyboard()
+            self?.handleSuccesTransition(currentRow: section + 1)
+        }
+    }
+    
+    // обработка нажатого backspace
+    func handlePressBackspace(gamingRow: Int, gamingCell: Int) {
+        if gamingRow-1 != -1,
+           isCanBackspaces[gamingRow-1] ?? false,
+           gamingCell-1 == -1 {
+            letterStorage.removeLetter(gamingRow: gamingRow-1, positionLetter: 4)
+        }
+        letterStorage.removeLetter(gamingRow: gamingRow, positionLetter: gamingCell-1)
+        view?.updateGuesses()
+    }
 }
 
 extension MainGamePresenter: BoardViewControllerDatasource {
 
     /// получить текущий массив введенных букв
     func getGuesses() -> [[Key?]] {
-        letterStorage.getLetters()
+        let gamingLetters = letterStorage.getLetters()
+        return gamingLetters
     }
 
     /// цвет ячейки с буквами
@@ -208,5 +226,26 @@ extension MainGamePresenter: KeyboardViewDatasource {
             key: key,
             gameLetters: letterStorage.getLetters()
         )
+    }
+}
+
+extension MainGamePresenter: StopPopupViewDelegate {
+    /// Popup закрылся
+    func popupHidden(_ popupController: PopupViewController, popupType: StopType) {
+        switch popupType {
+        case .win:
+            // закрылся победный попап
+            return
+        case .defeat:
+            letterStorage.clearGame()
+            view?.updateGuesses()
+            view?.updateKeyboard()
+            Defaults[key: DefaultsKeys.currentWord] = nil
+            answer = interactor?.currentWord ?? "слово"
+            return
+        case .wrong:
+            // закрылся попап ошибки слова
+            return
+        }
     }
 }

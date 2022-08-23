@@ -9,7 +9,13 @@ import UIKit
 
 final class StopPopupViewController: UIViewController {
 	var presenter: StopPopupViewToPresenterProtocol?
+    // попап
     weak var popup: PopupViewController?
+    /// делегат
+    var delegate: StopPopupViewDelegate?
+    
+    // тип попапа
+    private var popupType: StopType?
 
     // Высота попапа
     private var popupHeight: CGFloat = 215
@@ -49,6 +55,7 @@ extension StopPopupViewController: StopPopupViewProtocol {
     // установка вью
     func setup(viewModel: StopPopupViewModel) {
         popupHeight = viewModel.popupHeight
+        popupType = viewModel.popupType
         titleLable.attributedText = viewModel.titleAttributedText
         subTitleLable.attributedText = viewModel.subTitleAttributedText
         descriptionLabel.attributedText = viewModel.descriptionAttributedText
@@ -58,7 +65,10 @@ extension StopPopupViewController: StopPopupViewProtocol {
 extension StopPopupViewController {
     // Создание иерархии View
     func createViewHierarchyIfNeeded() {
-        guard !isViewHieararchyCreated else { return }
+        guard !isViewHieararchyCreated else {
+            print("❌ StopPopupViewController: иерархия вью уже создана")
+            return
+        }
         isViewHieararchyCreated = true
         view.addSubview(titleLable)
         view.addSubview(subTitleLable)
@@ -67,7 +77,10 @@ extension StopPopupViewController {
 
     // Установка Constraints
     func setupConstrainstsIfNeeded() {
-        guard !isConstraintsInstalled else { return }
+        guard !isConstraintsInstalled else {
+            print("❌ StopPopupViewController: констрейнты уже установлены")
+            return
+        }
         isConstraintsInstalled = true
         titleLable.autoPinEdge(toSuperviewEdge: .top, withInset: 20)
         titleLable.autoPinEdge(toSuperviewEdge: .leading, withInset: 16)
@@ -84,7 +97,17 @@ extension StopPopupViewController {
 }
 
 extension StopPopupViewController: PopupViewControllerDelegate {
+    /// Высота попапа
     func getContentHeightForPopupController(_ popupController: PopupViewController) -> CGFloat {
         return popupHeight
+    }
+    
+    /// Popup закрылся
+    func popupHidden(_ popupController: PopupViewController) {
+        guard let popupType = popupType else {
+            print("❌StopPopupViewController: нет popupType, метод делегата не сработал")
+            return
+        }
+        delegate?.popupHidden(popupController, popupType: popupType)
     }
 }

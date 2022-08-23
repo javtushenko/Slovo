@@ -7,5 +7,6 @@ target 'Slovo' do
   use_frameworks!
   pod 'PureLayout'
   pod 'Atributika'
+  pod 'SwiftyUserDefaults', '~> 5.0'
 
 end
