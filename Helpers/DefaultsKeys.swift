@@ -23,8 +23,28 @@ extension DefaultsKeys {
     static let gamingRow6 = DefaultsKey<[String]>("gaming_row_6", defaultValue: [])
 }
 
+extension DefaultsKeys {
+    /// массив с буквами на игровой строке 1
+    static let haveSuccessRow1 = DefaultsKey<[String]>("have_success_row_1", defaultValue: [])
+    /// массив с буквами на игровой строке 2
+    static let haveSuccessRow2 = DefaultsKey<[String]>("have_success_row_2", defaultValue: [])
+    /// массив с буквами на игровой строке 3
+    static let haveSuccessRow3 = DefaultsKey<[String]>("have_success_row_3", defaultValue: [])
+    /// массив с буквами на игровой строке 4
+    static let haveSuccessRow4 = DefaultsKey<[String]>("have_success_row_4", defaultValue: [])
+    /// массив с буквами на игровой строке 5
+    static let haveSuccessRow5 = DefaultsKey<[String]>("have_success_row_5", defaultValue: [])
+    /// массив с буквами на игровой строке 6
+    static let haveSuccessRow6 = DefaultsKey<[String]>("have_success_row_6", defaultValue: [])
+}
+
 
 extension DefaultsKeys {
     /// Загаданное слово
     static let currentWord = DefaultsKey<String?>("current_word")
+}
+
+extension DefaultsKeys {
+    /// Баланс кошелька
+    static let vallet = DefaultsKey<Int>("vallet", defaultValue: 0)
 }

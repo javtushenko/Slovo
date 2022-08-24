@@ -55,7 +55,7 @@ public final class Display {
         } else if isPhone && maxLength == 736 {
             return .iphone6plus
         } else if isPhone && maxLength == 812 {
-            return .iphoneX
+            return .iphone12mini
         } else if isPhone && maxLength == 896 {
             return .iphoneXR
         } else if isPhone && maxLength == 844 {

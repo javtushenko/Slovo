@@ -51,9 +51,13 @@ public class BonusView: UIView {
     // Установка Constraints
     func setupConstrainstsIfNeeded() {
         guard !isConstraintsInstalled else { return }
-        mainView.autoSetDimensions(to: CGSize(width: 114, height: 60))
         mainView.autoPinEdgesToSuperviewEdges()
         label.autoAlignAxis(toSuperviewMarginAxis: .vertical)
-        label.autoPinEdge(toSuperviewMargin: .bottom, withInset: 0)
+        
+        if Display.isFormfactorX {
+            label.autoPinEdge(toSuperviewMargin: .bottom, withInset: 0)
+        } else {
+            label.autoAlignAxis(toSuperviewMarginAxis: .horizontal)
+        }
     }
 }

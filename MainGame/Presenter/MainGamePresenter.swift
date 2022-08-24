@@ -25,6 +25,15 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
                                        3: true,
                                        4: true,
                                        5: true]
+    
+    // можно ли удалить символ у секции
+    var isDidSuccessNext: [Int: Bool] = [0: false,
+                                         1: false,
+                                         2: false,
+                                         3: false,
+                                         4: false,
+                                         5: false]
+
 
     // можно ли перейти к следующей строке
     var isCanGoNext: [Int: Bool] = [0: true,
@@ -93,6 +102,8 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             } else if currentRow == 6 {
                 strongSelf.handleDefeat()
             }
+            guard currentRow < 6 else { return }
+            strongSelf.isDidSuccessNext[currentRow] = true
         }
     }
 

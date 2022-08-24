@@ -47,6 +47,7 @@ final class MainGameViewController: UIViewController {
     /// первая ячейка с бонусом
     let profileView: ProfileView = {
         let view = ProfileView.newAutoLayout()
+        view.isHidden = true
         return view
     }()
     
@@ -56,6 +57,136 @@ final class MainGameViewController: UIViewController {
         view.isHidden = true
         return view
     }()
+    
+    /// верхний отступ от границы экрана
+    var topInset: CGFloat {
+        switch Display.typeIsLike {
+        case .unknown:
+            return 60
+        case .iphone4:
+            return 60
+        case .iphone5:
+            return 20
+        case .iphone6:
+            return 25
+        case .iphone6plus:
+            return 25
+        case .iphoneX:
+            return 60
+        case .iphoneXR:
+            return 60
+        case .iphone12:
+            return 50
+        case .iphone12mini:
+            return 50
+        case .iphone12proMax:
+            return 60
+        }
+    }
+    
+    // нижний отступ от границы экрана
+    var bottomInset: CGFloat {
+        switch Display.typeIsLike {
+        case .unknown:
+            return 50
+        case .iphone4:
+            return 50
+        case .iphone5:
+            return 5
+        case .iphone6:
+            return 5
+        case .iphone6plus:
+            return 5
+        case .iphoneX:
+            return 50
+        case .iphoneXR:
+            return 50
+        case .iphone12:
+            return 40
+        case .iphone12mini:
+            return 35
+        case .iphone12proMax:
+            return 50
+        }
+    }
+    
+    /// вертикальный отступ элементов друг от друга
+    var itemVerticalInset: CGFloat {
+        switch Display.typeIsLike {
+        case .unknown:
+            return 15
+        case .iphone4:
+            return 15
+        case .iphone5:
+            return 5
+        case .iphone6:
+            return 10
+        case .iphone6plus:
+            return 15
+        case .iphoneX:
+            return 15
+        case .iphoneXR:
+            return 15
+        case .iphone12:
+            return 15
+        case .iphone12mini:
+            return 12
+        case .iphone12proMax:
+            return 15
+        }
+    }
+    
+    // горизонтальный отступ элементов друг от друга
+    var itemHorizontalInset: CGFloat {
+        switch Display.typeIsLike {
+        case .unknown:
+            return 16
+        case .iphone4:
+            return 16
+        case .iphone5:
+            return 16
+        case .iphone6:
+            return 27
+        case .iphone6plus:
+            return 16
+        case .iphoneX:
+            return 16
+        case .iphoneXR:
+            return 16
+        case .iphone12:
+            return 16
+        case .iphone12mini:
+            return 16
+        case .iphone12proMax:
+            return 16
+        }
+    }
+    
+    // размер элементов
+    var itemSize: CGSize {
+        switch Display.typeIsLike {
+        case .unknown:
+            return CGSize(width: 110, height: 60)
+        case .iphone4:
+            return CGSize(width: 60, height: 30)
+        case .iphone5:
+            return CGSize(width: 60, height: 30)
+        case .iphone6:
+            return CGSize(width: 60, height: 40)
+        case .iphone6plus:
+            return CGSize(width: 82.5, height: 40)
+        case .iphoneX:
+            return CGSize(width: 114, height: 60)
+        case .iphoneXR:
+            return CGSize(width: 114, height: 60)
+        case .iphone12:
+            return CGSize(width: 114, height: 60)
+        case .iphone12mini:
+            return CGSize(width: 110, height: 60)
+        case .iphone12proMax:
+            return CGSize(width: 114, height: 60)
+        }
+    }
 
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
@@ -76,14 +207,14 @@ final class MainGameViewController: UIViewController {
     // настроить вьюху с кошельком
     func setupValetView() {
         valletView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: "648"))
-        valletView.setCorners(radius: 30)
+        valletView.setCorners(radius: itemSize.height/2)
     }
 
     // настроить профиль вьюху
     func setupProfileView() {
         profileView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: ""))
-        profileView.setCorners(radius: 30)
-        profileView.fireView.setCorners(radius: 30)
+        profileView.setCorners(radius: itemSize.height/2)
+        profileView.fireView.setCorners(radius: itemSize.height/2)
     }
 }
 
@@ -116,31 +247,54 @@ extension MainGameViewController {
     // Установка Constraints
     func setupConstrainstsIfNeeded() {
         guard !isConstraintsInstalled else { return }
-
-        keyboardVC.view.autoSetDimension(.height, toSize: 250)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: 0)
-
+        
+        // задаем размеры
+        valletView.autoSetDimensions(to: itemSize)
+        bonusBombView.autoSetDimensions(to: itemSize)
+        bonusSearchView.autoSetDimensions(to: itemSize)
+        bonusBookView.autoSetDimensions(to: itemSize)
+        
+        // кошелек
+        valletView.autoPinEdge(toSuperviewEdge: .left, withInset: itemHorizontalInset)
+        valletView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+        
+        // игровое поле
         boardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
         boardVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        boardVC.view.autoSetDimension(.height, toSize: 565)
-        boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.collectionView, withOffset: -16)
-
-        bonusBombView.autoAlignAxis(toSuperviewAxis: .vertical)
-        bonusBombView.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
-
-        bonusSearchView.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
-        bonusSearchView.autoPinEdge(.trailing, to: .leading, of: bonusBombView, withOffset: -18)
-
-        bonusBookView.autoPinEdge(.bottom, to: .top, of: boardVC.view, withOffset: 80)
-        bonusBookView.autoPinEdge(.leading, to: .trailing, of: bonusBombView, withOffset: 18)
-
-        valletView.autoPinEdge(.trailing, to: .leading, of: bonusBombView, withOffset: -18)
-        valletView.autoPinEdge(.bottom, to: .top, of: bonusSearchView, withOffset: -18)
-
-        profileView.autoPinEdge(.trailing, to: .trailing, of: bonusBookView)
-        profileView.autoPinEdge(.bottom, to: .top, of: bonusBookView, withOffset: -18)
+        boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: itemVerticalInset)
+        boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: itemVerticalInset)
+        // клавиатура
+        
+        keyboardVC.view.autoSetDimension(.height, toSize: 160)
+        keyboardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
+        keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
+        keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: bottomInset)
+        
+        // бонусы в зависимости от размера экрана
+        if Display.isFormfactorX {
+            // профиль
+            profileView.autoPinEdge(.trailing, to: .trailing, of: bonusBookView)
+            profileView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+            // бомба бонус
+            bonusBombView.autoAlignAxis(toSuperviewAxis: .vertical)
+            bonusBombView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)
+            // лупа бонус
+            bonusSearchView.autoPinEdge(toSuperviewEdge: .left, withInset: itemHorizontalInset)
+            bonusSearchView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)
+            // книга бонус
+            bonusBookView.autoPinEdge(toSuperviewEdge: .right, withInset: itemHorizontalInset)
+            bonusBookView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)
+        } else {
+            // лупа бонус
+            bonusSearchView.autoPinEdge(.left, to: .right, of: valletView, withOffset: itemHorizontalInset)
+            bonusSearchView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+            // бомба бонус
+            bonusBombView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+            bonusBombView.autoPinEdge(.left, to: .right, of: bonusSearchView, withOffset: itemHorizontalInset)
+            // книга бонус
+            bonusBookView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+            bonusBookView.autoPinEdge(.left, to: .right, of: bonusBombView, withOffset: itemHorizontalInset)
+        }
         
         infoView.autoPinEdgesToSuperviewEdges()
 

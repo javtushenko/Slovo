@@ -35,6 +35,37 @@ class KeyboardView: UIViewController {
             collectionView.register(KeyCell.self, forCellWithReuseIdentifier: KeyCell.identifier)
             return collectionView
     }()
+    
+    // ширина ячейки клавиатуры в зависимости от устройства
+    var widthKey: CGFloat {
+        switch Display.typeIsLike {
+        case .unknown:
+            return 34
+        case .iphone4:
+            return 34
+        case .iphone5:
+            return 27
+        case .iphone6:
+            return 31
+        case .iphone6plus:
+            return 34
+        case .iphoneX:
+            return 34
+        case .iphoneXR:
+            return 34
+        case .iphone12:
+            return 34
+        case .iphone12mini:
+            return 32
+        case .iphone12proMax:
+            return 35
+        }
+    }
+    
+    // высота ячейки клавиатуры в зависимости от устройства
+    var heightKey: CGFloat {
+        50
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +76,7 @@ class KeyboardView: UIViewController {
     private func setupCollectionView() {
         view.addSubview(collectionView)
 
-        collectionView.autoPinEdge(toSuperviewEdge: .trailing)
-        collectionView.autoPinEdge(toSuperviewEdge: .leading)
-        collectionView.autoPinEdge(toSuperviewEdge: .bottom)
-        collectionView.autoPinEdge(toSuperviewEdge: .top, withInset: 50)
+        collectionView.autoPinEdgesToSuperviewEdges()
         collectionView.dataSource = self
         collectionView.delegate = self
     }
@@ -92,8 +120,7 @@ extension KeyboardView: UICollectionViewDelegate {
 
 extension KeyboardView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
-        return CGSize(width: 34, height: 50)
+        return CGSize(width: widthKey, height: heightKey)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

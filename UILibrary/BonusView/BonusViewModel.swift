@@ -20,12 +20,12 @@ public class BonusViewModel {
     
     var titleAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
-            size: 35,
+            size: Display.isFormfactorX ? 35 : 15,
             fontType: .bold,
             color: .white,
             alignment: .center,
             letterSpacing: -0.05,
-            lineHeight: 38
+            lineHeight: Display.isFormfactorX ? 38 : 17
         )
         return title.styleAll(generalStyle).attributedString
     }

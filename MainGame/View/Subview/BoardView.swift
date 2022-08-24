@@ -34,12 +34,11 @@ class BoardView: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 98),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        
+        collectionView.autoPinEdge(toSuperviewEdge: .top)
+        collectionView.autoPinEdge(toSuperviewEdge: .bottom)
+        collectionView.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
+        collectionView.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
     }
 
     public func reloadData() {
