@@ -13,35 +13,10 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
     var interactor: MainGameInteractorProtocol?
     var router: MainGameRouterProtocol?
 
-    var letterStorage = LetterStorage()
+    var gameBoardStorage = GameBoardStorage()
 
     // загаданное слово
     var answer: String
-
-    // можно ли удалить символ у секции
-    var isCanBackspaces: [Int: Bool] = [0: true,
-                                       1: true,
-                                       2: true,
-                                       3: true,
-                                       4: true,
-                                       5: true]
-    
-    // можно ли удалить символ у секции
-    var isDidSuccessNext: [Int: Bool] = [0: false,
-                                         1: false,
-                                         2: false,
-                                         3: false,
-                                         4: false,
-                                         5: false]
-
-
-    // можно ли перейти к следующей строке
-    var isCanGoNext: [Int: Bool] = [0: true,
-                                   1: false,
-                                   2: false,
-                                   3: false,
-                                   4: false,
-                                   5: false]
 
     init(view: MainGameViewProtocol) {
         self.view = view
@@ -51,6 +26,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
     /// Вью загружено
     func onViewDidLoad() {
         interactor?.start()
+        gameBoardStorage.start()
         answer = interactor?.currentWord ?? "слово"
         view?.keyboardVC.delegate = self
         view?.keyboardVC.datasource = self
@@ -60,9 +36,9 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
     
     // при открытии приложения с данными
     func handleOpenAppWithData() {
-        for row in 0..<4 {
-            if isCanGoNextSectionGet(gamingCell: 4, gamingRow: row, allLetters: letterStorage.getLetters()) {
-                handlePressEnter(position: 4, section: row, allLetters: letterStorage.getLetters())
+        for row in 0...5 {
+            if gameBoardStorage.isSuccessWithRow(gamingRow: row + 1) {
+                handlePressEnter(gamingCell: 4, gamingRow: row, allLetters: gameBoardStorage.getLetters())
             }
         }
     }
@@ -83,7 +59,9 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             handleWrongWord(word: lettersInSection)
             return false }
         print("✅ Массив слов загрузился в фильтр ввода")
-        isCanGoNext[gamingRow+1] = true
+        gameBoardStorage.saveIsCanGoNext(gamingRow: gamingRow + 2)
+        gameBoardStorage.saveSuccessGoNet(gamingRow: gamingRow + 1)
+        handleSuccesTransition(currentRow: gamingRow + 1)
         return true
     }
 
@@ -92,7 +70,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         // если все ячейки зеленые, показываем попап победы
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in
             guard let strongSelf = self else { return }
-            let gamingLetters = strongSelf.letterStorage.getLetters()
+            let gamingLetters = strongSelf.gameBoardStorage.getLetters()
             let lettersRow = gamingLetters[currentRow-1]
             let filtredRow = lettersRow.filter({ letter in
                 letter?.backgroundColor == .slovoGreen
@@ -102,8 +80,6 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             } else if currentRow == 6 {
                 strongSelf.handleDefeat()
             }
-            guard currentRow < 6 else { return }
-            strongSelf.isDidSuccessNext[currentRow] = true
         }
     }
 
@@ -134,12 +110,14 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
 extension MainGamePresenter: KeyboardViewControllerDelegate {
     /// Какую кнопку нажали на клавиаутере
     func keyboardViewController(_ vc: KeyboardView, didTapKey letter: Character) {
-        let guesses = letterStorage.getLetters()
+        let guesses = gameBoardStorage.getLetters()
         var stop = false
         // перебираем строки игрового поля
         for gamingRow in 0...6 {
-            guard (isCanGoNext[gamingRow] ?? false) || (letter == "-") || (letter == "+") else { return }
-            // перебираем ячекйки игрового поля
+            guard gameBoardStorage.IsCanGoNextWithRow(gamingRow: gamingRow + 1)
+                    || (letter == "-")
+                    || (letter == "+") else { return }
+            // перебираем ячейки игрового поля
             for gamingCell in 0..<5 {
                 if guesses[gamingRow][gamingCell] == nil || guesses[gamingRow][gamingCell]?.character == " " {
                     // если нажали backspace
@@ -149,11 +127,11 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
                     }
                     // если нажали enter
                     if letter == "+" {
-                        handlePressEnter(position: 4, section: gamingRow - 1, allLetters: guesses)
+                        handlePressEnter(gamingCell: 4, gamingRow: gamingRow - 1, allLetters: guesses)
                         return
                     }
                     view?.boardVC.isCanChangeColor = false
-                    letterStorage.saveLetter(gamingRow: gamingRow, positionLetter: gamingCell, character: letter)
+                    gameBoardStorage.saveLetter(gamingRow: gamingRow, positionLetter: gamingCell, character: letter)
                     stop = true
                     break
                 }
@@ -166,27 +144,28 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
     }
     
     // обработка нажатого enter
-    func handlePressEnter(position: Int, section: Int, allLetters: [[Key?]]) {
-        guard isCanGoNextSectionGet(gamingCell: position, gamingRow: section, allLetters: allLetters) else { return }
+    func handlePressEnter(gamingCell: Int, gamingRow: Int, allLetters: [[Key?]]) {
+        guard isCanGoNextSectionGet(gamingCell: gamingCell, gamingRow: gamingRow, allLetters: allLetters) else { return }
         DispatchQueue.main.async { [weak self] in
             self?.view?.boardVC.isCanChangeColor = true
-            self?.isCanBackspaces[section] = false
-            self?.view?.boardVC.currentSection = section + 1
+            self?.gameBoardStorage.saveIsCanDelete(gamingRow: gamingRow + 1)
+            self?.view?.boardVC.currentSection = gamingRow + 1
             self?.view?.updateGuesses()
             self?.view?.updateKeyboard()
-            self?.handleSuccesTransition(currentRow: section + 1)
         }
     }
     
     // обработка нажатого backspace
     func handlePressBackspace(gamingRow: Int, gamingCell: Int) {
         if gamingRow-1 != -1,
-           isCanBackspaces[gamingRow-1] ?? false,
+           self.gameBoardStorage.IsCanDeleteWithRow(gamingRow: gamingRow),
            gamingCell-1 == -1 {
-            letterStorage.removeLetter(gamingRow: gamingRow-1, positionLetter: 4)
+            self.gameBoardStorage.removeLetter(gamingRow: gamingRow-1, positionLetter: 4)
+            self.view?.updateGuesses()
+            return
         }
-        letterStorage.removeLetter(gamingRow: gamingRow, positionLetter: gamingCell-1)
-        view?.updateGuesses()
+        self.gameBoardStorage.removeLetter(gamingRow: gamingRow, positionLetter: gamingCell-1)
+        self.view?.updateGuesses()
     }
 }
 
@@ -194,14 +173,14 @@ extension MainGamePresenter: BoardViewControllerDatasource {
 
     /// получить текущий массив введенных букв
     func getGuesses() -> [[Key?]] {
-        let gamingLetters = letterStorage.getLetters()
+        let gamingLetters = gameBoardStorage.getLetters()
         return gamingLetters
     }
 
     /// цвет ячейки с буквами
     func boxColor(at indexPath: IndexPath) {
         let rowIndex = indexPath.section
-        let guesses = letterStorage.getLetters()
+        let guesses = gameBoardStorage.getLetters()
 
         let count = guesses[rowIndex].compactMap({ $0 }).count
         guard count == 5 else {
@@ -214,18 +193,18 @@ extension MainGamePresenter: BoardViewControllerDatasource {
         guard let letter = guesses[indexPath.section][indexPath.row]?.character,
               indexedAnswer.contains(letter)
         else {
-            letterStorage.chageColor(at: indexPath, color: .slovoGray)
+            gameBoardStorage.chageColor(at: indexPath, color: .slovoGray)
             return
         }
 
         // если там где надо тогда ЗЕЛЕНЫЙ
         if indexedAnswer[indexPath.row] == letter {
-            letterStorage.chageColor(at: indexPath, color: .slovoGreen)
+            gameBoardStorage.chageColor(at: indexPath, color: .slovoGreen)
             return
         }
 
         // если просто есть в слове, ОРАНЖЕВЫЙ
-        letterStorage.chageColor(at: indexPath, color: .slovoOrange)
+        gameBoardStorage.chageColor(at: indexPath, color: .slovoOrange)
     }
 }
 
@@ -235,7 +214,7 @@ extension MainGamePresenter: KeyboardViewDatasource {
         guard let interactor = interactor else { return .slovoGray }
         return interactor.getKeyColor(
             key: key,
-            gameLetters: letterStorage.getLetters()
+            gameLetters: gameBoardStorage.getLetters()
         )
     }
 }
@@ -246,17 +225,23 @@ extension MainGamePresenter: StopPopupViewDelegate {
         switch popupType {
         case .win:
             // закрылся победный попап
+            onNewGame()
             return
         case .defeat:
-            letterStorage.clearGame()
-            view?.updateGuesses()
-            view?.updateKeyboard()
-            Defaults[key: DefaultsKeys.currentWord] = nil
-            answer = interactor?.currentWord ?? "слово"
+            onNewGame()
             return
         case .wrong:
             // закрылся попап ошибки слова
             return
         }
+    }
+    
+    /// начать новую игру
+    func onNewGame() {
+        gameBoardStorage.clearGame()
+        view?.updateGuesses()
+        view?.updateKeyboard()
+        Defaults[key: DefaultsKeys.currentWord] = nil
+        answer = interactor?.currentWord ?? "слово"
     }
 }

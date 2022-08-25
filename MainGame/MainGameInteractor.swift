@@ -16,6 +16,10 @@ final class MainGameInteractor {
     var wordsLoadService: WordsLoadServiceProtocol
     // менеджер кастомной клавиатуры
     var keyboardManager: KeyboardManagerProtocol
+    // менеджер игровой доски
+    var gameBoardStorage: GameBoardStorage {
+        GameBoardStorage.init()
+    }
 
     /// Все слова спарсеные из документа
     var words: [String]?
@@ -27,7 +31,8 @@ final class MainGameInteractor {
 
     init(presenter: MainGameInteractorToPresenterProtocol,
          wordsLoadService: WordsLoadServiceProtocol,
-         keyboardManager: KeyboardManagerProtocol) {
+         keyboardManager: KeyboardManagerProtocol
+    ) {
         self.presenter = presenter
         self.wordsLoadService = wordsLoadService
         self.keyboardManager = keyboardManager
@@ -80,6 +85,6 @@ extension MainGameInteractor: MainGameInteractorProtocol {
 
     /// Получить цвет для ячейки клавиатуры
     func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor {
-        keyboardManager.getKeyColor(key: key, gameLetters: gameLetters)
+        keyboardManager.getKeyColor(key: key, gameLetters: gameLetters, successRow: gameBoardStorage.getCurrentSuccessRow())
     }
 }

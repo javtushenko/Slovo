@@ -65,8 +65,10 @@ extension BoardView: UICollectionViewDelegateFlowLayout,
 
         // меняем цвет только если можно
         if isCanChangeColor {
-            datasource?.boxColor(at: indexPath)
-            if indexPath.section > currentSection {
+            // если текущая строка больше фактической то нельзя красить
+            if indexPath.section < currentSection {
+                datasource?.boxColor(at: indexPath)
+            } else {
                 isCanChangeColor = false
             }
         }

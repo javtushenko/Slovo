@@ -311,11 +311,15 @@ extension MainGameViewController: MainGameViewProtocol {
 
     /// обновить данные на игровом поле
     func updateGuesses() {
-        boardVC.reloadData()
+        DispatchQueue.main.async {
+            self.boardVC.reloadData()
+        }
     }
-
+    
     /// обновить данные клавиатуры
     func updateKeyboard() {
-        keyboardVC.reloadData()
+        DispatchQueue.main.async {
+            self.keyboardVC.reloadData()
+        }
     }
 }

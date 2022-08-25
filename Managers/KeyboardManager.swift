@@ -11,7 +11,7 @@ import UIKit
 
 public protocol KeyboardManagerProtocol {
     /// получить цвет кнопки
-    func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor
+    func getKeyColor(key: Character, gameLetters: [[Key?]], successRow: Int) -> UIColor
 }
 
 class KeyboardManager: KeyboardManagerProtocol {
@@ -22,11 +22,12 @@ class KeyboardManager: KeyboardManagerProtocol {
     var bombLetters: [Character] = []
 
     /// получить цвет кнопки
-    public func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor {
+    public func getKeyColor(key: Character, gameLetters: [[Key?]], successRow: Int) -> UIColor {
         // если совпадений не будет, вернем серый
         var currentColor: UIColor = .slovoGray
         // перебираем все строки игрового поля
-        for row in gameLetters {
+        for index in 0..<successRow {
+            let row = gameLetters[index]
             // вернет зеленый если есть совпадение
             if row.filter({ filtredKey in
                 let currentKey = Key(character: key, backgroundColor: .slovoGreen)
@@ -46,12 +47,6 @@ class KeyboardManager: KeyboardManagerProtocol {
             if row.filter({ filtredKey in
                 let currentKey = Key(character: key, backgroundColor: .slovoGray)
                 return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
-            }).count != 0 {
-                currentColor = .slovoDark
-            }
-            // вернет темный фон если буква есть в массиве серых букв (бонус бомба)
-            if bombLetters.filter({ filterdLetter in
-                filterdLetter == key
             }).count != 0 {
                 currentColor = .slovoDark
             }

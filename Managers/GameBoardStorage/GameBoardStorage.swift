@@ -9,58 +9,79 @@ import Foundation
 import SwiftyUserDefaults
 import UIKit
 
-struct LetterStorage {
+struct GameBoardStorage {
     // двумерный массив с введенными строками
     private var letters: [[Key?]] = Array(
         repeating: Array(repeating: nil, count: 5),
         count: 7
     )
+    
+    public mutating func start() {
+        if getLetters()[0][0]?.character == nil {
+            fillLettersArray()
+        }
+    }
 
     /// получить массив букв
-    public mutating func getLetters() -> [[Key?]] {
-        // если в переменной есть данные, все окей, вернем её
-        if letters[0][0]?.character == nil {
-            // далее проходим по каждой игровой строке из хранилища
-            // заполняем переменную пока не наткнемся на пустой символ
-            for (index, letter) in getGamingRow1().enumerated() {
-                guard let stringLetter = letter,
-                index < 5
-                else { break }
-                self.saveLetter(gamingRow: 0, positionLetter: index, character: Character(stringLetter))
-            }
-            for (index, letter) in getGamingRow2().enumerated() {
-                guard let stringLetter = letter,
-                index < 5
-                else { break }
-                self.saveLetter(gamingRow: 1, positionLetter: index, character: Character(stringLetter))
-            }
-            for (index, letter) in getGamingRow3().enumerated() {
-                guard let stringLetter = letter,
-                index < 5
-                else { break }
-                self.saveLetter(gamingRow: 2, positionLetter: index, character: Character(stringLetter))
-            }
-            for (index, letter) in getGamingRow4().enumerated() {
-                guard let stringLetter = letter,
-                index < 5
-                else { break }
-                self.saveLetter(gamingRow: 3, positionLetter: index, character: Character(stringLetter))
-            }
-            for (index, letter) in getGamingRow5().enumerated() {
-                guard let stringLetter = letter,
-                index < 5
-                else { break }
-                self.saveLetter(gamingRow: 4, positionLetter: index, character: Character(stringLetter))
-            }
-            for (index, letter) in getGamingRow6().enumerated() {
-                guard let stringLetter = letter,
-                index < 5
-                else { break }
-                self.saveLetter(gamingRow: 5, positionLetter: index, character: Character(stringLetter))
-            }
-            return letters
-        } else {
-            return letters
+    public func getLetters() -> [[Key?]] {
+       letters
+    }
+    
+    /// наполнить массив из хранилища
+    private mutating func fillLettersArray() {
+        for (index, letter) in getGamingRow1().enumerated() {
+            guard let stringLetter = letter,
+                  stringLetter != " ",
+                  index < 5
+            else { break }
+            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            letters[0].remove(at: index)
+            letters[0].insert(key, at: index)
+        }
+        for (index, letter) in getGamingRow2().enumerated() {
+            guard let stringLetter = letter,
+                  stringLetter != " ",
+                  index < 5
+            else { break }
+            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            letters[1].remove(at: index)
+            letters[1].insert(key, at: index)
+        }
+        for (index, letter) in getGamingRow3().enumerated() {
+            guard let stringLetter = letter,
+                  stringLetter != " ",
+                  index < 5
+            else { break }
+            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            letters[2].remove(at: index)
+            letters[2].insert(key, at: index)
+        }
+        for (index, letter) in getGamingRow4().enumerated() {
+            guard let stringLetter = letter,
+                  stringLetter != " ",
+                  index < 5
+            else { break }
+            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            letters[3].remove(at: index)
+            letters[3].insert(key, at: index)
+        }
+        for (index, letter) in getGamingRow5().enumerated() {
+            guard let stringLetter = letter,
+                  stringLetter != " ",
+                  index < 5
+            else { break }
+            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            letters[4].remove(at: index)
+            letters[4].insert(key, at: index)
+        }
+        for (index, letter) in getGamingRow6().enumerated() {
+            guard let stringLetter = letter,
+                  stringLetter != " ",
+                  index < 5
+            else { break }
+            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            letters[5].remove(at: index)
+            letters[5].insert(key, at: index)
         }
     }
 
@@ -93,10 +114,13 @@ struct LetterStorage {
         saveLetterDefaults(gamingRow: gamingRow, positionLetter: positionLetter, character: character)
     }
     
-    /// Почистить все буквы в массивах
+    /// Почистить все хранилище
     public mutating func clearGame() {
         clearGamingRowsDefault()
         clearGamingRows()
+        clearGamingRowSuccessDefault()
+        clearIsCanGoNextDefault()
+        clearIsCanDeleteDefault()
     }
     
     // записать букву в хранилище
