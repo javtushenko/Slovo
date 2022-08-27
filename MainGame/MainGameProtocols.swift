@@ -19,6 +19,8 @@ protocol MainGameViewProtocol: AnyObject {
     func updateGuesses()
     /// обновить данные клавиатуры
     func updateKeyboard()
+    /// настроить вьюху с кошельком
+    func setupValetView(viewModel: BonusViewModel)
 }
 
 // MARK: Presenter -
@@ -33,12 +35,15 @@ protocol MainGameViewToPresenterProtocol: AnyObject {
     func onTapBonusBook()
 }
 
-protocol MainGameInteractorToPresenterProtocol: AnyObject {}
+protocol MainGameInteractorToPresenterProtocol: AnyObject {
+}
 
 // MARK: Interactor -
 protocol MainGameInteractorProtocol: AnyObject {
     /// Тукущее загаданное слово
     var currentWord: String { get }
+    /// текущее количество бонусов
+    var valletCount: Int { get }
     /// Все слова спарсеные из документа
     var words: [String]? { get set }
     /// запуск
@@ -47,6 +52,8 @@ protocol MainGameInteractorProtocol: AnyObject {
     func getRandomWords() -> [String]
     /// Получить цвет для ячейки клавиатуры
     func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor
+    /// Добавить бонусы после победы с попытки
+    func addWinBonus(row: Int)
 }
 
 // MARK: Router -

@@ -16,9 +16,16 @@ final class MainGameInteractor {
     var wordsLoadService: WordsLoadServiceProtocol
     // менеджер кастомной клавиатуры
     var keyboardManager: KeyboardManagerProtocol
+    // сторож кошелька бонусов
+    var valletStorage: ValletStorageProtocol
     // менеджер игровой доски
     var gameBoardStorage: GameBoardStorage {
         GameBoardStorage.init()
+    }
+    
+    /// текущее количество бонусов
+    var valletCount: Int {
+        valletStorage.currentCount
     }
 
     /// Все слова спарсеные из документа
@@ -31,16 +38,17 @@ final class MainGameInteractor {
 
     init(presenter: MainGameInteractorToPresenterProtocol,
          wordsLoadService: WordsLoadServiceProtocol,
-         keyboardManager: KeyboardManagerProtocol
+         keyboardManager: KeyboardManagerProtocol,
+         valletStorage: ValletStorageProtocol
     ) {
         self.presenter = presenter
         self.wordsLoadService = wordsLoadService
         self.keyboardManager = keyboardManager
+        self.valletStorage = valletStorage
     }
 }
 
 extension MainGameInteractor: MainGameInteractorProtocol {
-
     /// Запуск
     func start() {
         getWordsData()
@@ -86,5 +94,11 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     /// Получить цвет для ячейки клавиатуры
     func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor {
         keyboardManager.getKeyColor(key: key, gameLetters: gameLetters, successRow: gameBoardStorage.getCurrentSuccessRow())
+    }
+    
+    /// Добавить бонусы после победы с попытки
+    func addWinBonus(row: Int) {
+        let result = 100 - (row * 10)
+        valletStorage.addCountVallet(count: result)
     }
 }

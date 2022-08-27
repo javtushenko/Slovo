@@ -17,6 +17,9 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
 
     // загаданное слово
     var answer: String
+    
+    // повторное открытие
+    var isReOpenApp: Bool = false
 
     init(view: MainGameViewProtocol) {
         self.view = view
@@ -28,18 +31,28 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         interactor?.start()
         gameBoardStorage.start()
         answer = interactor?.currentWord ?? "слово"
+        view?.setupValetView(viewModel: getModelVallet())
         view?.keyboardVC.delegate = self
         view?.keyboardVC.datasource = self
         view?.boardVC.datasource = self
         handleOpenAppWithData()
     }
     
+    // получить модель кошелька
+    func getModelVallet() -> BonusViewModel {
+        .init(backgroundColor: .slovoGreen, title: String(interactor?.valletCount ?? 0))
+    }
+    
     // при открытии приложения с данными
     func handleOpenAppWithData() {
         for row in 0...5 {
             if gameBoardStorage.isSuccessWithRow(gamingRow: row + 1) {
+                isReOpenApp = true
                 handlePressEnter(gamingCell: 4, gamingRow: row, allLetters: gameBoardStorage.getLetters())
             }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.isReOpenApp = false
         }
     }
     
@@ -76,7 +89,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
                 letter?.backgroundColor == .slovoGreen
             })
             if filtredRow.count == 5 {
-                strongSelf.handleWin()
+                strongSelf.handleWin(currentRow: currentRow)
             } else if currentRow == 6 {
                 strongSelf.handleDefeat()
             }
@@ -89,8 +102,13 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
     }
 
     // обработка победы
-    private func handleWin() {
+    private func handleWin(currentRow: Int) {
         router?.openStopPopup(typePopup: .win, word: "", delegate: self)
+        guard !isReOpenApp else {
+            print("⚪️ Переоткрытие приложения, бонусы не добавим")
+            return }
+        interactor?.addWinBonus(row: currentRow - 1)
+        view?.setupValetView(viewModel: getModelVallet())
     }
     
     // обработка неверного слова

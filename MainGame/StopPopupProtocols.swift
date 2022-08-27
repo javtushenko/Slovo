@@ -38,6 +38,8 @@ protocol StopPopupInteractorToPresenterProtocol: AnyObject {
 
 // MARK: Interactor -
 protocol StopPopupInteractorProtocol: AnyObject {
+    /// текущее количество бонусов
+    var valletCount: Int { get }
     /// запуск
     func start()
 }

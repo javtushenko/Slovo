@@ -17,7 +17,8 @@ final class StopPopupModuleConfigurator {
             word: word
         )
         let interactor = StopPopupInteractor(
-            presenter: presenter
+            presenter: presenter,
+            valetStorage: DIContainer.shared.valletStorage
         )
         let router = StopPopupRouter(
             baseViewController: view

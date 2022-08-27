@@ -12,6 +12,8 @@
 		1306312E286B4FD000CD2607 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306312D286B4FD000CD2607 /* BoardCell.swift */; };
 		1306312F286B4FD000CD2607 /* BoardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1306312D286B4FD000CD2607 /* BoardCell.swift */; };
 		13099B58286A13A800C8E2C5 /* WordsLoadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13099B57286A13A800C8E2C5 /* WordsLoadService.swift */; };
+		131E1D1928B974B100B2329A /* GameBoardStorage + LettersDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131E1D1828B974B100B2329A /* GameBoardStorage + LettersDefaults.swift */; };
+		131E1D1B28B976D600B2329A /* ValletStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131E1D1A28B976D600B2329A /* ValletStorage.swift */; };
 		1333E83128A6468B003FE3E5 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E83028A6468B003FE3E5 /* KeyboardManager.swift */; };
 		1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E83328A64D83003FE3E5 /* DIContainer.swift */; };
 		1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E84128A65538003FE3E5 /* PopupViewController.swift */; };
@@ -88,6 +90,8 @@
 		1306312A286B480E00CD2607 /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
 		1306312D286B4FD000CD2607 /* BoardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCell.swift; sourceTree = "<group>"; };
 		13099B57286A13A800C8E2C5 /* WordsLoadService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsLoadService.swift; sourceTree = "<group>"; };
+		131E1D1828B974B100B2329A /* GameBoardStorage + LettersDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + LettersDefaults.swift"; sourceTree = "<group>"; };
+		131E1D1A28B976D600B2329A /* ValletStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValletStorage.swift; sourceTree = "<group>"; };
 		1333E83028A6468B003FE3E5 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		1333E83328A64D83003FE3E5 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		1333E84128A65538003FE3E5 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
@@ -177,9 +181,10 @@
 		13099B56286A137800C8E2C5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				1357F42B28B7EF78002F194D /* GameBoardStorage */,
-				13099B57286A13A800C8E2C5 /* WordsLoadService.swift */,
+				131E1D1A28B976D600B2329A /* ValletStorage.swift */,
 				1333E83028A6468B003FE3E5 /* KeyboardManager.swift */,
+				13099B57286A13A800C8E2C5 /* WordsLoadService.swift */,
+				1357F42B28B7EF78002F194D /* GameBoardStorage */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				137B24A328719E00003618B2 /* GameBoardStorage.swift */,
+				131E1D1828B974B100B2329A /* GameBoardStorage + LettersDefaults.swift */,
 				1357F42C28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift */,
 				1357F42E28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift */,
 				1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */,
@@ -325,12 +331,12 @@
 		13D718E128638F18009ACC03 /* MainGame */ = {
 			isa = PBXGroup;
 			children = (
-				13BA4E1A28B374B80089229D /* View */,
-				13BA4E1E28B37A880089229D /* Presenter */,
 				13D718D528638E88009ACC03 /* MainGameRouter.swift */,
 				13D718D728638E88009ACC03 /* MainGameProtocols.swift */,
 				13D718D828638E88009ACC03 /* MainGameInteractor.swift */,
 				13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */,
+				13BA4E1E28B37A880089229D /* Presenter */,
+				13BA4E1A28B374B80089229D /* View */,
 			);
 			name = MainGame;
 			sourceTree = "<group>";
@@ -586,6 +592,7 @@
 				1357F42F28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift in Sources */,
 				13D718DD28638E88009ACC03 /* MainGameProtocols.swift in Sources */,
 				1386CCCD28A77BBB00251C9C /* StopPopupRouter.swift in Sources */,
+				131E1D1B28B976D600B2329A /* ValletStorage.swift in Sources */,
 				13ADEA33285F469900C6AA23 /* AppDelegate.swift in Sources */,
 				1386CCBD28A662B000251C9C /* UIView + Helpers.swift in Sources */,
 				13ADEA35285F469900C6AA23 /* SceneDelegate.swift in Sources */,
@@ -605,6 +612,7 @@
 				1386CCCC28A77BBB00251C9C /* StopPopupPresenter.swift in Sources */,
 				1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */,
 				13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */,
+				131E1D1928B974B100B2329A /* GameBoardStorage + LettersDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

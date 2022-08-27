@@ -15,6 +15,11 @@ final public class DIContainer {
     var keyboardManager: KeyboardManagerProtocol {
         KeyboardManager.shared
     }
+    
+    /// менеджер кошелька бонусов
+    var valletStorage: ValletStorageProtocol {
+        ValletStorage.shared
+    }
 
     /// сервис загрузки допустимых слов
     var wordsLoadService: WordsLoadServiceProtocol {

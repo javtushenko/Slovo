@@ -198,15 +198,14 @@ final class MainGameViewController: UIViewController {
         setupBonusSearch()
         setupBonusBomb()
         setupBonusBook()
-        setupValetView()
         setupProfileView()
         presenter?.onViewDidLoad()
         view.backgroundColor = .slovoDarkBackground
     }
 
-    // настроить вьюху с кошельком
-    func setupValetView() {
-        valletView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: "648"))
+    /// настроить вьюху с кошельком
+    func setupValetView(viewModel: BonusViewModel) {
+        valletView.setup(viewModel: viewModel)
         valletView.setCorners(radius: itemSize.height/2)
     }
 

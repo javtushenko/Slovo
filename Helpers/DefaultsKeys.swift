@@ -68,8 +68,6 @@ extension DefaultsKeys {
     static let isCanDelete6 = DefaultsKey<Bool>("is_can_delete_6", defaultValue: true)
 }
 
-
-
 extension DefaultsKeys {
     /// Загаданное слово
     static let currentWord = DefaultsKey<String?>("current_word")
@@ -77,5 +75,6 @@ extension DefaultsKeys {
 
 extension DefaultsKeys {
     /// Баланс кошелька
-    static let vallet = DefaultsKey<Int>("vallet", defaultValue: 0)
+    static let valletCount = DefaultsKey<Int>("vallet_count", defaultValue: 0)
 }
+
