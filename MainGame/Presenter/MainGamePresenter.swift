@@ -40,7 +40,17 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
     
     // получить модель кошелька
     func getModelVallet() -> BonusViewModel {
-        .init(backgroundColor: .slovoGreen, title: String(interactor?.valletCount ?? 0))
+        var valetString: String {
+            guard let valletCount = interactor?.valletCount else {
+                print("❌MainGamePresenter: Кошелек без значения")
+                return "0"
+            }
+            if valletCount >= 10000 {
+                return "\(valletCount / 1000)К"
+            }
+            return String(valletCount)
+        }
+        return BonusViewModel.init(backgroundColor: .slovoGreen, title: valetString)
     }
     
     // при открытии приложения с данными
