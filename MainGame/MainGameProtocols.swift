@@ -44,16 +44,43 @@ protocol MainGameInteractorProtocol: AnyObject {
     var currentWord: String { get }
     /// текущее количество бонусов
     var valletCount: Int { get }
+    /// текущие буквы на игровой доске
+    var gammingLetters: [[Key?]] { get }
     /// Все слова спарсеные из документа
     var words: [String]? { get set }
+    
     /// запуск
     func start()
+    /// Начать новую игру
+    func reset()
     /// получить рандомное слово для загадки
     func getRandomWords() -> [String]
+    
     /// Получить цвет для ячейки клавиатуры
-    func getKeyColor(key: Character, gameLetters: [[Key?]]) -> UIColor
+    func getKeyColor(key: Character) -> UIColor
     /// Добавить бонусы после победы с попытки
     func addWinBonus(row: Int)
+    /// Была ли победа на данной строке
+    func isSuccessWithRow(gamingRow: Int) -> Bool
+    
+    /// сохранить букву на доску
+    func saveLetter(gamingRow: Int, positionLetter: Int, character: Character)
+    /// удалить букву с доски
+    func removeLetter(gamingRow: Int, positionLetter: Int)
+    /// сохранить возможность записи на строку
+    func saveIsCanGoNext(gamingRow: Int)
+    /// сохранить успешный переход на строке
+    func saveSuccessGoNet(gamingRow: Int)
+    /// есть ли возможность записи на строку
+    func isCanGoNext(gamingRow: Int) -> Bool
+    /// был ли успешный переход на строке
+    func isSuccessGoNet(gamingRow: Int) -> Bool
+    /// сохранить возможность удаления на строке
+    func saveIsCanDelete(gamingRow: Int)
+    /// есть ли возможность записи на строку
+    func IsCanDeleteWithRow(gamingRow: Int) -> Bool
+    /// изменить цвет ячейки
+    func changeColor(at indexPath: IndexPath, color: UIColor)
 }
 
 // MARK: Router -

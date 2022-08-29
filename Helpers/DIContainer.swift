@@ -25,4 +25,9 @@ final public class DIContainer {
     var wordsLoadService: WordsLoadServiceProtocol {
         WordsLoadService.shared
     }
+    
+    /// сервис загрузки допустимых слов
+    var gameBoardStorage: GameBoardStorageProtocol {
+        GameBoardStorage.shared
+    }
 }

@@ -18,7 +18,8 @@ final class MainGameModuleConfigurator {
             presenter: presenter,
             wordsLoadService: DIContainer.shared.wordsLoadService,
             keyboardManager: DIContainer.shared.keyboardManager,
-            valletStorage: DIContainer.shared.valletStorage
+            valletStorage: DIContainer.shared.valletStorage,
+            gameBoardStorage: DIContainer.shared.gameBoardStorage
         )
         let router = MainGameRouter(
             baseViewController: view

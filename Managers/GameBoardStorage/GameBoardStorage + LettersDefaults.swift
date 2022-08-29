@@ -29,7 +29,7 @@ extension GameBoardStorage {
         Defaults[key: DefaultsKeys.gamingRow6].removeAll()
     }
     
-    /// наполнить массив из хранилища
+    // наполнить массив из хранилища
     mutating func fillLettersArray() {
         for (index, letter) in getGamingRow1().enumerated() {
             guard let stringLetter = letter,

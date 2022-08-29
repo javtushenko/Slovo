@@ -9,13 +9,17 @@ import Foundation
 import SwiftyUserDefaults
 import UIKit
 
-struct GameBoardStorage {
+struct GameBoardStorage: GameBoardStorageProtocol {
+    static let shared: GameBoardStorageProtocol = GameBoardStorage()
+    private init() {}
+    
     // двумерный массив с введенными строками
     var letters: [[Key?]] = Array(
         repeating: Array(repeating: nil, count: 5),
         count: 7
     )
     
+    // старт
     public mutating func start() {
         if getLetters()[0][0]?.character == nil {
             fillLettersArray()
