@@ -20,6 +20,7 @@
 		1357F43128B80285002F194D /* GameBoardStorage + isCanDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */; };
 		136AC17628AACD5600972C60 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AC17528AACD5600972C60 /* ProfileView.swift */; };
 		13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */; };
+		13747FCA28BD2C6A005888B7 /* ValletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FBB28BD2C51005888B7 /* ValletTests.swift */; };
 		137B249D28719628003618B2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B249C28719628003618B2 /* Key.swift */; };
 		137B24A428719E00003618B2 /* GameBoardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B24A328719E00003618B2 /* GameBoardStorage.swift */; };
 		1386CCBD28A662B000251C9C /* UIView + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCBC28A662B000251C9C /* UIView + Helpers.swift */; };
@@ -43,6 +44,9 @@
 		13BA4E1C28B374CB0089229D /* MainGameViewController + Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA4E1B28B374CB0089229D /* MainGameViewController + Bonus.swift */; };
 		13BA4E2028B37A970089229D /* MainGamePresenter + Bonus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA4E1F28B37A970089229D /* MainGamePresenter + Bonus.swift */; };
 		13BA4E2728B38E110089229D /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BA4E2628B38E110089229D /* DefaultsKeys.swift */; };
+		13BAF9FC28BD2D7B00819CD6 /* MainGameInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BAF9FB28BD2D7B00819CD6 /* MainGameInteractorMock.swift */; };
+		13BAF9FF28BD303E00819CD6 /* GameBoardStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BAF9FE28BD303E00819CD6 /* GameBoardStorageMock.swift */; };
+		13BAFA0128BD321D00819CD6 /* ValletStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BAFA0028BD321D00819CD6 /* ValletStorageMock.swift */; };
 		13D718DA28638E88009ACC03 /* MainGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D428638E88009ACC03 /* MainGamePresenter.swift */; };
 		13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D528638E88009ACC03 /* MainGameRouter.swift */; };
 		13D718DC28638E88009ACC03 /* MainGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D628638E88009ACC03 /* MainGameViewController.swift */; };
@@ -55,6 +59,16 @@
 		13E55F3B28AE9F5B00E510DE /* InfoContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3A28AE9F5B00E510DE /* InfoContentView.swift */; };
 		46FA1979FCA04A69D69FC8E2 /* Pods_Slovo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D12DFD01E5AD33F75E3B6212 /* Pods_Slovo.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		13747FC528BD2C63005888B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13ADEA27285F469900C6AA23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13ADEA2E285F469900C6AA23;
+			remoteInfo = Slovo;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		13E55F2428AE7E0300E510DE /* Embed Frameworks */ = {
@@ -83,9 +97,10 @@
 		1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + isCanDelete.swift"; sourceTree = "<group>"; };
 		136AC17528AACD5600972C60 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorageProtocol.swift; sourceTree = "<group>"; };
+		13747FBB28BD2C51005888B7 /* ValletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValletTests.swift; sourceTree = "<group>"; };
+		13747FC128BD2C63005888B7 /* SlovoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlovoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		137B249C28719628003618B2 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		137B24A328719E00003618B2 /* GameBoardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorage.swift; sourceTree = "<group>"; };
-		137FBFF9286A019C0004FDDE /* StartAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartAppTests.swift; sourceTree = "<group>"; };
 		1386CCBC28A662B000251C9C /* UIView + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Helpers.swift"; sourceTree = "<group>"; };
 		1386CCBF28A662E300251C9C /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
 		1386CCC628A77BBB00251C9C /* StopPopupPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopPopupPresenter.swift; sourceTree = "<group>"; };
@@ -109,6 +124,9 @@
 		13BA4E1B28B374CB0089229D /* MainGameViewController + Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainGameViewController + Bonus.swift"; sourceTree = "<group>"; };
 		13BA4E1F28B37A970089229D /* MainGamePresenter + Bonus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainGamePresenter + Bonus.swift"; sourceTree = "<group>"; };
 		13BA4E2628B38E110089229D /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
+		13BAF9FB28BD2D7B00819CD6 /* MainGameInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameInteractorMock.swift; sourceTree = "<group>"; };
+		13BAF9FE28BD303E00819CD6 /* GameBoardStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorageMock.swift; sourceTree = "<group>"; };
+		13BAFA0028BD321D00819CD6 /* ValletStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValletStorageMock.swift; sourceTree = "<group>"; };
 		13D718D428638E88009ACC03 /* MainGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGamePresenter.swift; sourceTree = "<group>"; };
 		13D718D528638E88009ACC03 /* MainGameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameRouter.swift; sourceTree = "<group>"; };
 		13D718D628638E88009ACC03 /* MainGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +143,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		13747FBE28BD2C63005888B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13ADEA2C285F469900C6AA23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,7 +254,8 @@
 		137FC000286A01B30004FDDE /* MainGameTests */ = {
 			isa = PBXGroup;
 			children = (
-				137FBFF9286A019C0004FDDE /* StartAppTests.swift */,
+				13BAF9FA28BD2D6200819CD6 /* Mocks */,
+				13BAF9FD28BD2E4E00819CD6 /* New Group */,
 			);
 			path = MainGameTests;
 			sourceTree = "<group>";
@@ -272,6 +298,7 @@
 			isa = PBXGroup;
 			children = (
 				13ADEA2F285F469900C6AA23 /* Slovo.app */,
+				13747FC128BD2C63005888B7 /* SlovoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -302,6 +329,24 @@
 				13BA4E1F28B37A970089229D /* MainGamePresenter + Bonus.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		13BAF9FA28BD2D6200819CD6 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				13BAF9FB28BD2D7B00819CD6 /* MainGameInteractorMock.swift */,
+				13BAF9FE28BD303E00819CD6 /* GameBoardStorageMock.swift */,
+				13BAFA0028BD321D00819CD6 /* ValletStorageMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		13BAF9FD28BD2E4E00819CD6 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				13747FBB28BD2C51005888B7 /* ValletTests.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		13D718E128638F18009ACC03 /* MainGame */ = {
@@ -390,6 +435,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		13747FC028BD2C63005888B7 /* SlovoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13747FC728BD2C63005888B7 /* Build configuration list for PBXNativeTarget "SlovoTests" */;
+			buildPhases = (
+				13747FBD28BD2C63005888B7 /* Sources */,
+				13747FBE28BD2C63005888B7 /* Frameworks */,
+				13747FBF28BD2C63005888B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13747FC628BD2C63005888B7 /* PBXTargetDependency */,
+			);
+			name = SlovoTests;
+			productName = SlovoTests;
+			productReference = 13747FC128BD2C63005888B7 /* SlovoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		13ADEA2E285F469900C6AA23 /* Slovo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13ADEA43285F469A00C6AA23 /* Build configuration list for PBXNativeTarget "Slovo" */;
@@ -417,9 +480,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					13747FC028BD2C63005888B7 = {
+						CreatedOnToolsVersion = 13.4.1;
+						TestTargetID = 13ADEA2E285F469900C6AA23;
+					};
 					13ADEA2E285F469900C6AA23 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -438,11 +505,19 @@
 			projectRoot = "";
 			targets = (
 				13ADEA2E285F469900C6AA23 /* Slovo */,
+				13747FC028BD2C63005888B7 /* SlovoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		13747FBF28BD2C63005888B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13ADEA2D285F469900C6AA23 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,6 +571,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		13747FBD28BD2C63005888B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				13747FCA28BD2C6A005888B7 /* ValletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13ADEA2B285F469900C6AA23 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,6 +588,7 @@
 				1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */,
 				1386CCCF28A77BBB00251C9C /* StopPopupProtocols.swift in Sources */,
 				1357F42D28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift in Sources */,
+				13BAF9FC28BD2D7B00819CD6 /* MainGameInteractorMock.swift in Sources */,
 				13BA4E2728B38E110089229D /* DefaultsKeys.swift in Sources */,
 				1357F43128B80285002F194D /* GameBoardStorage + isCanDelete.swift in Sources */,
 				13ADEA49285F478F00C6AA23 /* KeyboardView.swift in Sources */,
@@ -532,6 +616,7 @@
 				137B249D28719628003618B2 /* Key.swift in Sources */,
 				1386CCC028A662E300251C9C /* Display.swift in Sources */,
 				13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */,
+				13BAF9FF28BD303E00819CD6 /* GameBoardStorageMock.swift in Sources */,
 				13E55F3528AE9E0F00E510DE /* InfoContentViewModel.swift in Sources */,
 				1386CCD528A7925500251C9C /* UIFont + Extension.swift in Sources */,
 				1386CCD328A77C2300251C9C /* StopPopupViewModel.swift in Sources */,
@@ -539,6 +624,7 @@
 				13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */,
 				1386CCD028A77BBB00251C9C /* StopPopupInteractor.swift in Sources */,
 				1386CCD128A77BBB00251C9C /* StopPopupModuleConfigurator.swift in Sources */,
+				13BAFA0128BD321D00819CD6 /* ValletStorageMock.swift in Sources */,
 				1306312E286B4FD000CD2607 /* BoardCell.swift in Sources */,
 				1386CCE128A7E91F00251C9C /* BonusViewModel.swift in Sources */,
 				1386CCCC28A77BBB00251C9C /* StopPopupPresenter.swift in Sources */,
@@ -550,7 +636,53 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		13747FC628BD2C63005888B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13ADEA2E285F469900C6AA23 /* Slovo */;
+			targetProxy = 13747FC528BD2C63005888B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		13747FC828BD2C63005888B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9H42AN9X2T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JNStudio.SlovoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slovo.app/Slovo";
+			};
+			name = Debug;
+		};
+		13747FC928BD2C63005888B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9H42AN9X2T;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JNStudio.SlovoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slovo.app/Slovo";
+			};
+			name = Release;
+		};
 		13ADEA41285F469A00C6AA23 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -732,6 +864,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		13747FC728BD2C63005888B7 /* Build configuration list for PBXNativeTarget "SlovoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13747FC828BD2C63005888B7 /* Debug */,
+				13747FC928BD2C63005888B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		13ADEA2A285F469900C6AA23 /* Build configuration list for PBXProject "Slovo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

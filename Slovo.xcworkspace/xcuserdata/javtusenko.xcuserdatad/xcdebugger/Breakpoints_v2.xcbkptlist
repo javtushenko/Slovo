@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BA573B01-E188-4CAE-8350-EEF6CF46DCC0"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MainGame/Presenter/MainGamePresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "keyboardViewController(_:didTapKey:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "355154C2-657C-4736-8948-CD62C612DA36"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -30,9 +14,9 @@
             filePath = "MainGame/Presenter/MainGamePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "handlePressBackspace(gamingRow:gamingCell:)"
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "handlePressEnter(gamingCell:gamingRow:allLetters:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

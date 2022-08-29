@@ -14,6 +14,9 @@ protocol ValletStorageProtocol {
     
     /// добавить значение в кошелек
     func addCountVallet(count: Int)
+    
+    /// очистить кошелек
+    func resetCountVallet()
 }
 
 class ValletStorage: ValletStorageProtocol {
@@ -34,4 +37,9 @@ class ValletStorage: ValletStorageProtocol {
     func subtractCountVallet(count: Int) {
         Defaults[key: DefaultsKeys.valletCount] -= count
     }
+    
+    /// очистить кошелек
+    func resetCountVallet() {
+    Defaults[key: DefaultsKeys.valletCount] = 0
+}
 }

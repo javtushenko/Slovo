@@ -80,7 +80,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             lettersInSection.append(letter)
         }
         guard words.contains(lettersInSection) else {
-            handleWrongWord(word: lettersInSection)
+            onWrongWord(word: lettersInSection)
             return false }
         print("✅ Массив слов загрузился в фильтр ввода")
         interactor?.saveIsCanGoNext(gamingRow: gamingRow + 2)
@@ -103,20 +103,22 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
                 letter?.backgroundColor == .slovoGreen
             })
             if filtredRow.count == 5 {
-                strongSelf.handleWin(currentRow: currentRow)
+                strongSelf.onWin(currentRow: currentRow)
             } else if currentRow == 6 {
-                strongSelf.handleDefeat()
+                strongSelf.onDefeat()
             }
         }
     }
+}
 
-    // обработка поражения
-    private func handleDefeat() {
+extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
+    /// обработка поражения
+    func onDefeat() {
         router?.openStopPopup(typePopup: .defeat, word: "", delegate: self)
     }
 
-    // обработка победы
-    private func handleWin(currentRow: Int) {
+    /// обработка победы
+    func onWin(currentRow: Int) {
         router?.openStopPopup(typePopup: .win, word: "", delegate: self)
         guard !isReOpenApp else {
             print("⚪️ Переоткрытие приложения, бонусы не добавим")
@@ -125,18 +127,10 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         view?.setupValetView(viewModel: getModelVallet())
     }
     
-    // обработка неверного слова
-    private func handleWrongWord(word: String) {
+    /// обработка неверного слова
+    func onWrongWord(word: String) {
         router?.openStopPopup(typePopup: .wrong, word: word, delegate: self)
     }
-}
-
-extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
-    /*
-     Тут нужен будет рефакторинг
-     Протокол не должен быть пустым
-     Нужно вынести некоторые методы в интерактор
-     */
 }
 
 extension MainGamePresenter: KeyboardViewControllerDelegate {

@@ -36,6 +36,12 @@ protocol MainGameViewToPresenterProtocol: AnyObject {
 }
 
 protocol MainGameInteractorToPresenterProtocol: AnyObject {
+    /// обработка поражения
+    func onDefeat()
+    /// обработка победы
+    func onWin(currentRow: Int)
+    /// обработка неверного слова
+    func onWrongWord(word: String)
 }
 
 // MARK: Interactor -
