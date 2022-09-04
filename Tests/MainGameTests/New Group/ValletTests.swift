@@ -25,7 +25,8 @@ class ValletTests: XCTestCase {
                                             wordsLoadService: DIContainer.shared.wordsLoadService,
                                             keyboardManager: DIContainer.shared.keyboardManager,
                                             valletStorage: valletStorage,
-                                            gameBoardStorage: DIContainer.shared.gameBoardStorage)
+                                            gameBoardStorage: DIContainer.shared.gameBoardStorage,
+                                            winStreakStorage: DIContainer.shared.winStreakStorage)
         presenter.interactor = interactor
         valletStorage.resetCountVallet()
         

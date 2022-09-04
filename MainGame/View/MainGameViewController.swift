@@ -38,16 +38,21 @@ final class MainGameViewController: UIViewController {
         return view
     }()
 
-    /// первая ячейка с бонусом
-    let valletView: BonusView = {
+    /// Ячейка с побед подряд
+    let winStreak: BonusView = {
         let view = BonusView.newAutoLayout()
         return view
     }()
-
-    /// первая ячейка с бонусом
-    let profileView: ProfileView = {
-        let view = ProfileView.newAutoLayout()
-        view.isHidden = true
+    
+    /// Ячейка обучением
+    let tutorialView: BonusView = {
+        let view = BonusView.newAutoLayout()
+        return view
+    }()
+    
+    /// Ячейка с кошельком
+    let valletView: BonusView = {
+        let view = BonusView.newAutoLayout()
         return view
     }()
     
@@ -136,7 +141,7 @@ final class MainGameViewController: UIViewController {
         }
     }
     
-    // горизонтальный отступ элементов друг от друга
+    // горизонтальный отступ нижних элементов друг от друга
     var itemHorizontalInset: CGFloat {
         switch Display.typeIsLike {
         case .unknown:
@@ -162,8 +167,34 @@ final class MainGameViewController: UIViewController {
         }
     }
     
-    // размер элементов
-    var itemSize: CGSize {
+    // горизонтальный отступ верхних элементов друг от друга
+    var topItemHorizontalInset: CGFloat {
+        switch Display.typeIsLike {
+        case .unknown:
+            return 16
+        case .iphone4:
+            return 16
+        case .iphone5:
+            return 16
+        case .iphone6:
+            return 27
+        case .iphone6plus:
+            return 15
+        case .iphoneX:
+            return 15
+        case .iphoneXR:
+            return 15
+        case .iphone12:
+            return 15
+        case .iphone12mini:
+            return 6
+        case .iphone12proMax:
+            return 15
+        }
+    }
+    
+    // размер элементов бонусов
+    var itemSizeBonusView: CGSize {
         switch Display.typeIsLike {
         case .unknown:
             return CGSize(width: 110, height: 60)
@@ -187,6 +218,84 @@ final class MainGameViewController: UIViewController {
             return CGSize(width: 114, height: 60)
         }
     }
+    
+    // размер кошелька
+    var itemSizeValetView: CGSize {
+        switch Display.typeIsLike {
+        case .unknown:
+            return CGSize(width: 110, height: 60)
+        case .iphone4:
+            return CGSize(width: 60, height: 30)
+        case .iphone5:
+            return CGSize(width: 60, height: 30)
+        case .iphone6:
+            return CGSize(width: 60, height: 40)
+        case .iphone6plus:
+            return CGSize(width: 82.5, height: 40)
+        case .iphoneX:
+            return CGSize(width: 160, height: 60)
+        case .iphoneXR:
+            return CGSize(width: 160, height: 60)
+        case .iphone12:
+            return CGSize(width: 160, height: 60)
+        case .iphone12mini:
+            return CGSize(width: 140, height: 60)
+        case .iphone12proMax:
+            return CGSize(width: 160, height: 60)
+        }
+    }
+    
+    // размер серии побед
+    var itemWinStreakView: CGSize {
+        switch Display.typeIsLike {
+        case .unknown:
+            return CGSize(width: 110, height: 60)
+        case .iphone4:
+            return CGSize(width: 60, height: 30)
+        case .iphone5:
+            return CGSize(width: 60, height: 30)
+        case .iphone6:
+            return CGSize(width: 60, height: 40)
+        case .iphone6plus:
+            return CGSize(width: 82.5, height: 40)
+        case .iphoneX:
+            return CGSize(width: 130, height: 60)
+        case .iphoneXR:
+            return CGSize(width: 130, height: 60)
+        case .iphone12:
+            return CGSize(width: 130, height: 60)
+        case .iphone12mini:
+            return CGSize(width: 130, height: 60)
+        case .iphone12proMax:
+            return CGSize(width: 130, height: 60)
+        }
+    }
+    
+    // размер обучения
+    var itemSizeTutorialView: CGSize {
+        switch Display.typeIsLike {
+        case .unknown:
+            return CGSize(width: 60, height: 60)
+        case .iphone4:
+            return CGSize(width: 30, height: 30)
+        case .iphone5:
+            return CGSize(width: 30, height: 30)
+        case .iphone6:
+            return CGSize(width: 40, height: 40)
+        case .iphone6plus:
+            return CGSize(width: 40, height: 40)
+        case .iphoneX:
+            return CGSize(width: 60, height: 60)
+        case .iphoneXR:
+            return CGSize(width: 60, height: 60)
+        case .iphone12:
+            return CGSize(width: 60, height: 60)
+        case .iphone12mini:
+            return CGSize(width: 60, height: 60)
+        case .iphone12proMax:
+            return CGSize(width: 60, height: 60)
+        }
+    }
 
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
@@ -198,7 +307,7 @@ final class MainGameViewController: UIViewController {
         setupBonusSearch()
         setupBonusBomb()
         setupBonusBook()
-        setupProfileView()
+        setupTutorialView()
         presenter?.onViewDidLoad()
         view.backgroundColor = .slovoDarkBackground
     }
@@ -206,14 +315,22 @@ final class MainGameViewController: UIViewController {
     /// настроить вьюху с кошельком
     func setupValetView(viewModel: BonusViewModel) {
         valletView.setup(viewModel: viewModel)
-        valletView.setCorners(radius: itemSize.height/2)
+        valletView.setCorners(radius: itemSizeBonusView.height/2)
     }
-
-    // настроить профиль вьюху
-    func setupProfileView() {
-        profileView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: ""))
-        profileView.setCorners(radius: itemSize.height/2)
-        profileView.fireView.setCorners(radius: itemSize.height/2)
+    
+    /// Настроить вью с серией побед
+    func setupWinStreakView(viewModel: BonusViewModel) {
+        winStreak.setup(viewModel: viewModel)
+        winStreak.setCorners(radius: itemSizeBonusView.height/2)
+    }
+    
+    /// Настроить вью с серией побед
+    func setupTutorialView() {
+        let model = BonusViewModel(backgroundColor: .slovoGray,
+                       title: "?",
+                       titleColor: .black)
+        tutorialView.setup(viewModel: model)
+        tutorialView.setCorners(radius: itemSizeBonusView.height/2)
     }
 }
 
@@ -232,11 +349,12 @@ extension MainGameViewController {
         boardVC.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(boardVC.view)
 
+        view.addSubview(winStreak)
         view.addSubview(valletView)
+        view.addSubview(tutorialView)
         view.addSubview(bonusBombView)
         view.addSubview(bonusSearchView)
         view.addSubview(bonusBookView)
-        view.addSubview(profileView)
         
         view.addSubview(infoView)
         
@@ -248,13 +366,23 @@ extension MainGameViewController {
         guard !isConstraintsInstalled else { return }
         
         // задаем размеры
-        valletView.autoSetDimensions(to: itemSize)
-        bonusBombView.autoSetDimensions(to: itemSize)
-        bonusSearchView.autoSetDimensions(to: itemSize)
-        bonusBookView.autoSetDimensions(to: itemSize)
+        valletView.autoSetDimensions(to: itemSizeValetView)
+        tutorialView.autoSetDimensions(to: itemSizeTutorialView)
+        bonusBombView.autoSetDimensions(to: itemSizeBonusView)
+        bonusSearchView.autoSetDimensions(to: itemSizeBonusView)
+        bonusBookView.autoSetDimensions(to: itemSizeBonusView)
+        winStreak.autoSetDimensions(to: itemWinStreakView)
+        
+        // обучение
+        tutorialView.autoPinEdge(toSuperviewEdge: .right, withInset: itemHorizontalInset)
+        tutorialView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+        
+        // серия побед
+        winStreak.autoPinEdge(toSuperviewEdge: .left, withInset: itemHorizontalInset)
+        winStreak.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
         
         // кошелек
-        valletView.autoPinEdge(toSuperviewEdge: .left, withInset: itemHorizontalInset)
+        valletView.autoPinEdge(.leading, to: .trailing, of: winStreak, withOffset: topItemHorizontalInset)
         valletView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
         
         // игровое поле
@@ -272,8 +400,7 @@ extension MainGameViewController {
         // бонусы в зависимости от размера экрана
         if Display.isFormfactorX {
             // профиль
-            profileView.autoPinEdge(.trailing, to: .trailing, of: bonusBookView)
-            profileView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+
             // бомба бонус
             bonusBombView.autoAlignAxis(toSuperviewAxis: .vertical)
             bonusBombView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)

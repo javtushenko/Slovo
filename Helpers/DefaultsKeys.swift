@@ -78,3 +78,7 @@ extension DefaultsKeys {
     static let valletCount = DefaultsKey<Int>("vallet_count", defaultValue: 0)
 }
 
+extension DefaultsKeys {
+    /// Баланс кошелька
+    static let winStreak = DefaultsKey<Int>("win_streak_count", defaultValue: 0)
+}

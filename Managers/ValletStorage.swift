@@ -41,5 +41,5 @@ class ValletStorage: ValletStorageProtocol {
     /// очистить кошелек
     func resetCountVallet() {
     Defaults[key: DefaultsKeys.valletCount] = 0
-}
+    }
 }

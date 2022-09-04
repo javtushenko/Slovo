@@ -20,10 +20,16 @@ final class MainGameInteractor {
     var valletStorage: ValletStorageProtocol
     // менеджер игровой доски
     var gameBoardStorage: GameBoardStorageProtocol
+    // менеджер серии побед
+    var winStreakStorage: WinStreakStorageProtocol
     
     /// текущее количество бонусов
     var valletCount: Int {
         valletStorage.currentCount
+    }
+    /// текущее количество серии побед
+    var winStreakCount: Int {
+        winStreakStorage.currentCount
     }
     
     /// текущие буквы на игровой доске
@@ -43,13 +49,15 @@ final class MainGameInteractor {
          wordsLoadService: WordsLoadServiceProtocol,
          keyboardManager: KeyboardManagerProtocol,
          valletStorage: ValletStorageProtocol,
-         gameBoardStorage: GameBoardStorageProtocol
+         gameBoardStorage: GameBoardStorageProtocol,
+         winStreakStorage: WinStreakStorageProtocol
     ) {
         self.presenter = presenter
         self.wordsLoadService = wordsLoadService
         self.keyboardManager = keyboardManager
         self.valletStorage = valletStorage
         self.gameBoardStorage = gameBoardStorage
+        self.winStreakStorage = winStreakStorage
     }
 }
 
@@ -120,9 +128,14 @@ extension MainGameInteractor: MainGameInteractorProtocol {
         gameBoardStorage.chageColor(at: indexPath, color: color)
     }
 
-    /// Закончился парсинг документа в массив
-    /// Спарсить содержимое документа в массив
-    func onDidLoadWordsData() {
+    /// добавить одну победу в серию
+    func addWinStreak() {
+        winStreakStorage.addCountWinStreak(count: 1)
+    }
+    
+    /// сбросить серию побед
+    func resetWinStreak() {
+        winStreakStorage.resetWinStreak()
     }
 
     /// получить рандомное слово для загадки

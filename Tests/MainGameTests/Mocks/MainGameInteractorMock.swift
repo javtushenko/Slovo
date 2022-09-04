@@ -12,6 +12,8 @@ class MainGameInteractorMock: MainGameInteractorProtocol {
     var currentWord: String = "слово"
     /// текущее количество бонусов
     var valletCount: Int = 0
+    /// текущее количество серии побед
+    var winStreakCount: Int = 0
     /// текущие буквы на игровой доске
     var gammingLetters: [[Key?]] = [[nil]]
     /// Все слова спарсеные из документа
@@ -54,4 +56,10 @@ class MainGameInteractorMock: MainGameInteractorProtocol {
     func IsCanDeleteWithRow(gamingRow: Int) -> Bool  { true }
     /// изменить цвет ячейки
     func changeColor(at indexPath: IndexPath, color: UIColor)  {}
+    
+    /// добавить одну победу в серию
+    func addWinStreak() {}
+    /// сбросить серию побед
+    func resetWinStreak() {}
+
 }

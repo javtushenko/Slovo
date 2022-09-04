@@ -26,8 +26,13 @@ final public class DIContainer {
         WordsLoadService.shared
     }
     
-    /// сервис загрузки допустимых слов
+    /// сторож кошелька
     var gameBoardStorage: GameBoardStorageProtocol {
         GameBoardStorage.shared
+    }
+    
+    /// сторож серии побед
+    var winStreakStorage: WinStreakStorageProtocol {
+        WinStreakStorage.shared
     }
 }

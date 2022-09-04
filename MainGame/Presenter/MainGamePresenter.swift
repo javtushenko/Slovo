@@ -29,6 +29,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         interactor?.start()
         answer = interactor?.currentWord ?? "слово"
         view?.setupValetView(viewModel: getModelVallet())
+        view?.setupWinStreakView(viewModel: getWinStreakModel())
         view?.keyboardVC.delegate = self
         view?.keyboardVC.datasource = self
         view?.boardVC.datasource = self
@@ -45,9 +46,14 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             if valletCount >= 10000 {
                 return "\(valletCount / 1000)К"
             }
-            return String(valletCount)
+            return "💎" + String(valletCount)
         }
-        return BonusViewModel.init(backgroundColor: .slovoGreen, title: valetString)
+        return BonusViewModel.init(backgroundColor: .slovoOrange, title: valetString)
+    }
+    
+    // получить модель кошелька
+    func getWinStreakModel() -> BonusViewModel {
+        BonusViewModel(backgroundColor: .slovoGreen, title: "🔥" + String(interactor?.winStreakCount ?? 0))
     }
     
     // при открытии приложения с данными
@@ -115,6 +121,8 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
     /// обработка поражения
     func onDefeat() {
         router?.openStopPopup(typePopup: .defeat, word: "", delegate: self)
+        interactor?.resetWinStreak()
+        view?.setupWinStreakView(viewModel: getWinStreakModel())
     }
 
     /// обработка победы
@@ -124,6 +132,8 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
             print("⚪️ Переоткрытие приложения, бонусы не добавим")
             return }
         interactor?.addWinBonus(row: currentRow - 1)
+        interactor?.addWinStreak()
+        view?.setupWinStreakView(viewModel: getWinStreakModel())
         view?.setupValetView(viewModel: getModelVallet())
     }
     

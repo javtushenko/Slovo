@@ -21,6 +21,9 @@ protocol MainGameViewProtocol: AnyObject {
     func updateKeyboard()
     /// настроить вьюху с кошельком
     func setupValetView(viewModel: BonusViewModel)
+    /// Настроить вью с серией побед
+    func setupWinStreakView(viewModel: BonusViewModel)
+    
 }
 
 // MARK: Presenter -
@@ -50,6 +53,8 @@ protocol MainGameInteractorProtocol: AnyObject {
     var currentWord: String { get }
     /// текущее количество бонусов
     var valletCount: Int { get }
+    /// текущее количество серии побед
+    var winStreakCount: Int { get }
     /// текущие буквы на игровой доске
     var gammingLetters: [[Key?]] { get }
     /// Все слова спарсеные из документа
@@ -87,6 +92,11 @@ protocol MainGameInteractorProtocol: AnyObject {
     func IsCanDeleteWithRow(gamingRow: Int) -> Bool
     /// изменить цвет ячейки
     func changeColor(at indexPath: IndexPath, color: UIColor)
+    
+    /// добавить одну победу в серию
+    func addWinStreak()
+    /// сбросить серию побед
+    func resetWinStreak()
 }
 
 // MARK: Router -

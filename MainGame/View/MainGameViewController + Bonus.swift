@@ -11,7 +11,7 @@ extension MainGameViewController {
     // настроить вьюху с бонусом ЛУПА
     func setupBonusSearch() {
         bonusSearchView.setup(viewModel: .init(backgroundColor: .slovoGray, title: "🔎"))
-        bonusSearchView.setCorners(radius: itemSize.height/2)
+        bonusSearchView.setCorners(radius: itemSizeBonusView.height/2)
         let touch = UITapGestureRecognizer(
             target: self,
             action: #selector(handleTapBonusSearch)
@@ -22,7 +22,7 @@ extension MainGameViewController {
     // настроить вьюху с бонусом БОМБА
     func setupBonusBomb() {
         bonusBombView.setup(viewModel: .init(backgroundColor: .slovoOrange, title: "💣"))
-        bonusBombView.setCorners(radius: itemSize.height/2)
+        bonusBombView.setCorners(radius: itemSizeBonusView.height/2)
         let touch = UITapGestureRecognizer(
             target: self,
             action: #selector(handleTapBonusBomb)
@@ -33,7 +33,7 @@ extension MainGameViewController {
     // настроить вьюху с бонусом КНИГА
     func setupBonusBook() {
         bonusBookView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: "📖"))
-        bonusBookView.setCorners(radius: itemSize.height/2)
+        bonusBookView.setCorners(radius: itemSizeBonusView.height/2)
         let touch = UITapGestureRecognizer(
             target: self,
             action: #selector(handleTapBonusBook)

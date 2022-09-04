@@ -15,10 +15,10 @@
 		1333E83128A6468B003FE3E5 /* KeyboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E83028A6468B003FE3E5 /* KeyboardManager.swift */; };
 		1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E83328A64D83003FE3E5 /* DIContainer.swift */; };
 		1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1333E84128A65538003FE3E5 /* PopupViewController.swift */; };
+		1352612328C493E5005235FB /* WinStreakStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1352612228C493E5005235FB /* WinStreakStorage.swift */; };
 		1357F42D28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F42C28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift */; };
 		1357F42F28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F42E28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift */; };
 		1357F43128B80285002F194D /* GameBoardStorage + isCanDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */; };
-		136AC17628AACD5600972C60 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136AC17528AACD5600972C60 /* ProfileView.swift */; };
 		13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */; };
 		13747FCA28BD2C6A005888B7 /* ValletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FBB28BD2C51005888B7 /* ValletTests.swift */; };
 		137B249D28719628003618B2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B249C28719628003618B2 /* Key.swift */; };
@@ -92,10 +92,10 @@
 		1333E83028A6468B003FE3E5 /* KeyboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardManager.swift; sourceTree = "<group>"; };
 		1333E83328A64D83003FE3E5 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		1333E84128A65538003FE3E5 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
+		1352612228C493E5005235FB /* WinStreakStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinStreakStorage.swift; sourceTree = "<group>"; };
 		1357F42C28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + isCanGoNext.swift"; sourceTree = "<group>"; };
 		1357F42E28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + haveSuccessNext.swift"; sourceTree = "<group>"; };
 		1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + isCanDelete.swift"; sourceTree = "<group>"; };
-		136AC17528AACD5600972C60 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorageProtocol.swift; sourceTree = "<group>"; };
 		13747FBB28BD2C51005888B7 /* ValletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValletTests.swift; sourceTree = "<group>"; };
 		13747FC128BD2C63005888B7 /* SlovoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlovoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				131E1D1A28B976D600B2329A /* ValletStorage.swift */,
+				1352612228C493E5005235FB /* WinStreakStorage.swift */,
 				1333E83028A6468B003FE3E5 /* KeyboardManager.swift */,
 				13099B57286A13A800C8E2C5 /* WordsLoadService.swift */,
 				1357F42B28B7EF78002F194D /* GameBoardStorage */,
@@ -377,7 +378,6 @@
 			isa = PBXGroup;
 			children = (
 				13E55F2F28AE9DA400E510DE /* InfoView */,
-				13E55F2928AE85E800E510DE /* ProfileView */,
 				1386CCDC28A7E85E00251C9C /* BonusView */,
 				1333E84028A65524003FE3E5 /* PopupViewController */,
 				137B249B287195D6003618B2 /* Entity */,
@@ -394,14 +394,6 @@
 				13ADEA4C285F502900C6AA23 /* KeyCell.swift */,
 			);
 			path = KeyCell;
-			sourceTree = "<group>";
-		};
-		13E55F2928AE85E800E510DE /* ProfileView */ = {
-			isa = PBXGroup;
-			children = (
-				136AC17528AACD5600972C60 /* ProfileView.swift */,
-			);
-			path = ProfileView;
 			sourceTree = "<group>";
 		};
 		13E55F2F28AE9DA400E510DE /* InfoView */ = {
@@ -620,7 +612,6 @@
 				13E55F3528AE9E0F00E510DE /* InfoContentViewModel.swift in Sources */,
 				1386CCD528A7925500251C9C /* UIFont + Extension.swift in Sources */,
 				1386CCD328A77C2300251C9C /* StopPopupViewModel.swift in Sources */,
-				136AC17628AACD5600972C60 /* ProfileView.swift in Sources */,
 				13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */,
 				1386CCD028A77BBB00251C9C /* StopPopupInteractor.swift in Sources */,
 				1386CCD128A77BBB00251C9C /* StopPopupModuleConfigurator.swift in Sources */,
@@ -630,6 +621,7 @@
 				1386CCCC28A77BBB00251C9C /* StopPopupPresenter.swift in Sources */,
 				1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */,
 				13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */,
+				1352612328C493E5005235FB /* WinStreakStorage.swift in Sources */,
 				131E1D1928B974B100B2329A /* GameBoardStorage + LettersDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -806,7 +798,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 9H42AN9X2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Config/Info.plist;
@@ -821,7 +813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yavtushenko.slovo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -837,7 +829,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 9H42AN9X2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Config/Info.plist;
@@ -852,7 +844,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yavtushenko.slovo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

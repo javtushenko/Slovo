@@ -11,18 +11,21 @@ import Atributika
 public class BonusViewModel {
     var backgroundColor: UIColor
     var title: String
+    var titleColor: UIColor
 
     init(backgroundColor: UIColor,
-         title: String) {
+         title: String,
+         titleColor: UIColor = .slovoWhite) {
         self.backgroundColor = backgroundColor
         self.title = title
+        self.titleColor = titleColor
     }
     
     var titleAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
             size: Display.isFormfactorX ? 35 : 15,
             fontType: .bold,
-            color: .white,
+            color: titleColor,
             alignment: .center,
             letterSpacing: -0.05,
             lineHeight: Display.isFormfactorX ? 38 : 17
