@@ -61,5 +61,6 @@ class MainGameInteractorMock: MainGameInteractorProtocol {
     func addWinStreak() {}
     /// сбросить серию побед
     func resetWinStreak() {}
-
+    /// Сколько бонусов добавлено за победу
+    func getBonusCount(row: Int) -> Int {0}
 }

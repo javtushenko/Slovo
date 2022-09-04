@@ -13,15 +13,18 @@ final class StopPopupPresenter {
     var router: StopPopupRouterProtocol?
 
     var word: String
+    var addValletCount: String
 
     var typePopup: StopType
 
     init(view: StopPopupViewProtocol,
          typePopup: StopType,
-         word: String) {
+         word: String = "",
+         addValletCount: String = "") {
         self.view = view
         self.typePopup = typePopup
         self.word = word
+        self.addValletCount = addValletCount
     }
 
     // создать модель попапа успеха
@@ -30,8 +33,8 @@ final class StopPopupPresenter {
         case .win:
             return StopPopupViewModel(
                 title: "ПОБЕДА! 🥳",
-                subtitle: "+N БАЛЛОВ",
-                description: "Тебе удалось угадать загаданное слово \nза N попыток",
+                subtitle: "ПОЛУЧЕНО 💎\(addValletCount)",
+                titleButton: "НОВАЯ ИГРА",
                 popupHeight: 215,
                 popupType: .win
             )
@@ -39,7 +42,7 @@ final class StopPopupPresenter {
             return StopPopupViewModel(
                 title: "УВЫ, КОНЕЦ.. 🥺",
                 subtitle: "ПОВТОРИМ?",
-                description: "Смахни сообщение вниз\nи мы загадаем новое слово,\nа ты попробуешь угадать",
+                titleButton: "НОВАЯ ИГРА",
                 popupHeight: 215,
                 popupType: .defeat
             )
@@ -47,7 +50,7 @@ final class StopPopupPresenter {
             return StopPopupViewModel(
                 title: "МЫ НЕ ЗНАЕМ",
                 subtitle: word.uppercased(),
-                description: "Но если ты уверен, и тебе не безразлична судьба нашей игры, ты можешь внести свой вклад и отправить это слово нам на почтовый ящик: email@yandex.ru",
+                titleButton: "ПОДЕЛИТЬСЯ",
                 popupHeight: 215,
                 popupType: .wrong
             )

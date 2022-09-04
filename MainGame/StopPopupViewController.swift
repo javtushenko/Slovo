@@ -34,10 +34,10 @@ final class StopPopupViewController: UIViewController {
     }()
 
     // Описание попапа
-    private let descriptionLabel: UILabel = {
-        let label = UILabel.newAutoLayout()
-        label.numberOfLines = 0
-        return label
+    private let mainButton: UIButton = {
+        let mainButton = UIButton.newAutoLayout()
+        mainButton.backgroundColor = .slovoGreen
+        return mainButton
     }()
 
     private var isViewHieararchyCreated = false
@@ -58,7 +58,9 @@ extension StopPopupViewController: StopPopupViewProtocol {
         popupType = viewModel.popupType
         titleLable.attributedText = viewModel.titleAttributedText
         subTitleLable.attributedText = viewModel.subTitleAttributedText
-        descriptionLabel.attributedText = viewModel.descriptionAttributedText
+        mainButton.setAttributedTitle(viewModel.titleButtonAttributedText, for: .normal)
+        mainButton.setCorners(radius: 15)
+        addTargets()
     }
 }
 
@@ -72,7 +74,7 @@ extension StopPopupViewController {
         isViewHieararchyCreated = true
         view.addSubview(titleLable)
         view.addSubview(subTitleLable)
-        view.addSubview(descriptionLabel)
+        view.addSubview(mainButton)
     }
 
     // Установка Constraints
@@ -89,10 +91,24 @@ extension StopPopupViewController {
         subTitleLable.autoPinEdge(.top, to: .bottom, of: titleLable, withOffset: 10)
         subTitleLable.autoPinEdge(toSuperviewEdge: .leading, withInset: 16)
         subTitleLable.autoPinEdge(toSuperviewEdge: .trailing, withInset: 16)
+//
+        mainButton.autoPinEdge(.top, to: .bottom, of: subTitleLable, withOffset: 10)
+        mainButton.autoSetDimensions(to: CGSize(width: 250, height: 50))
+        mainButton.autoAlignAxis(toSuperviewMarginAxis: .vertical)
+    }
+    
+    // установка таргетов
+    func addTargets() {
+        mainButton.addTarget(
+            self,
+            action: #selector(onTapButton),
+            for: .touchUpInside
+        )
+    }
 
-        descriptionLabel.autoPinEdge(.top, to: .bottom, of: subTitleLable, withOffset: 10)
-        descriptionLabel.autoPinEdge(toSuperviewEdge: .leading, withInset: 16)
-        descriptionLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: 16)
+    // нажата кнопка
+    @objc func onTapButton() {
+        popup?.closeScreenWithAnimation()
     }
 }
 

@@ -120,14 +120,21 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
 extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
     /// обработка поражения
     func onDefeat() {
-        router?.openStopPopup(typePopup: .defeat, word: "", delegate: self)
+        router?.openStopPopup(typePopup: .defeat,
+                              word: "",
+                              addValletCount: "",
+                              delegate: self)
         interactor?.resetWinStreak()
         view?.setupWinStreakView(viewModel: getWinStreakModel())
     }
 
     /// обработка победы
     func onWin(currentRow: Int) {
-        router?.openStopPopup(typePopup: .win, word: "", delegate: self)
+        let bonusCount = String(interactor?.getBonusCount(row: currentRow - 1) ?? 0)
+        router?.openStopPopup(typePopup: .win,
+                              word: "",
+                              addValletCount: bonusCount,
+                              delegate: self)
         guard !isReOpenApp else {
             print("⚪️ Переоткрытие приложения, бонусы не добавим")
             return }
@@ -139,7 +146,10 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
     
     /// обработка неверного слова
     func onWrongWord(word: String) {
-        router?.openStopPopup(typePopup: .wrong, word: word, delegate: self)
+        router?.openStopPopup(typePopup: .wrong,
+                              word: word,
+                              addValletCount: "",
+                              delegate: self)
     }
 }
 

@@ -9,12 +9,16 @@ import UIKit
 
 final class StopPopupModuleConfigurator {
     /// Собрать модуль
-    class func build(typePopup: StopType, word: String, delegate: StopPopupViewDelegate) -> UIViewController {
+    class func build(typePopup: StopType,
+                     word: String,
+                     addValltCount: String,
+                     delegate: StopPopupViewDelegate) -> UIViewController {
         let view = StopPopupViewController()
         let presenter = StopPopupPresenter(
             view: view,
             typePopup: typePopup,
-            word: word
+            word: word,
+            addValletCount: addValltCount
         )
         let interactor = StopPopupInteractor(
             presenter: presenter,

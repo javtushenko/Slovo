@@ -15,12 +15,18 @@ final class MainGameRouter: MainGameRouterProtocol {
     }
 
     /// Открыть попап остановки игры
-    func openStopPopup(typePopup: StopType, word: String = "", delegate: StopPopupViewDelegate) {
+    func openStopPopup(typePopup: StopType,
+                       word: String = "",
+                       addValletCount: String = "",
+                       delegate: StopPopupViewDelegate) {
         // Достаем опционал
         guard let baseViewController = baseViewController else {
             return
         }
-        let popup = StopPopupModuleConfigurator.build(typePopup: typePopup, word: word, delegate: delegate)
+        let popup = StopPopupModuleConfigurator.build(typePopup: typePopup,
+                                                      word: word,
+                                                      addValltCount: addValletCount,
+                                                      delegate: delegate)
         baseViewController.present(
             popup,
             animated: false,

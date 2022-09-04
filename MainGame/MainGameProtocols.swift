@@ -97,10 +97,15 @@ protocol MainGameInteractorProtocol: AnyObject {
     func addWinStreak()
     /// сбросить серию побед
     func resetWinStreak()
+    /// Сколько бонусов добавлено за победу
+    func getBonusCount(row: Int) -> Int
 }
 
 // MARK: Router -
 protocol MainGameRouterProtocol: AnyObject {
     /// Открыть попап остановки игры
-    func openStopPopup(typePopup: StopType, word: String, delegate: StopPopupViewDelegate)
+    func openStopPopup(typePopup: StopType,
+                       word: String,
+                       addValletCount: String,
+                       delegate: StopPopupViewDelegate)
 }

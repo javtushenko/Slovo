@@ -172,7 +172,11 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     
     /// Добавить бонусы после победы с попытки
     func addWinBonus(row: Int) {
-        let result = 100 - (row * 10)
-        valletStorage.addCountVallet(count: result)
+        valletStorage.addCountVallet(count: getBonusCount(row: row))
+    }
+    
+    /// Сколько бонусов добавлено за победу
+    func getBonusCount(row: Int) -> Int {
+        100 - (row * 10)
     }
 }

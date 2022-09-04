@@ -11,18 +11,18 @@ import Atributika
 public class StopPopupViewModel {
     var title: String
     var subtitle: String
-    var description: String
+    var titleButton: String
     var popupHeight: CGFloat
     var popupType: StopType
 
     init(title: String,
          subtitle: String,
-         description: String,
+         titleButton: String,
          popupHeight: CGFloat,
          popupType: StopType) {
         self.title = title
         self.subtitle = subtitle
-        self.description = description
+        self.titleButton = titleButton
         self.popupHeight = popupHeight
         self.popupType = popupType
     }
@@ -51,15 +51,15 @@ public class StopPopupViewModel {
         return subtitle.styleAll(generalStyle).attributedString
     }
 
-    var descriptionAttributedText: NSAttributedString {
+    var titleButtonAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
-            size: 16,
-            fontType: .regular,
-            color: .black,
+            size: 20,
+            fontType: .bold,
+            color: .white,
             alignment: .center,
             letterSpacing: -0.25,
-            lineHeight: 16
+            lineHeight: 20
         )
-        return description.styleAll(generalStyle).attributedString
+        return titleButton.styleAll(generalStyle).attributedString
     }
 }
