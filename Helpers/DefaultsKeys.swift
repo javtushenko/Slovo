@@ -82,3 +82,8 @@ extension DefaultsKeys {
     /// Баланс кошелька
     static let winStreak = DefaultsKey<Int>("win_streak_count", defaultValue: 0)
 }
+
+extension DefaultsKeys {
+    /// Массив букв из подсказки лупа
+    static let searchLetterArray = DefaultsKey<String>("search_letter_array", defaultValue: "")
+}

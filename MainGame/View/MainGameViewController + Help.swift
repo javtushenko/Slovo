@@ -7,11 +7,18 @@
 
 import UIKit
 
+/// тип игровой подсказки
+public enum helpType {
+    case search
+    case bomb
+    case book
+}
+
 extension MainGameViewController {
-    // настроить вьюху с бонусом ЛУПА
+    // настроить вьюху с подсказкой ЛУПА
     func setupBonusSearch() {
         bonusSearchView.setup(viewModel: .init(backgroundColor: .slovoGray, title: "🔎"))
-        bonusSearchView.setCorners(radius: itemSizeBonusView.height/2)
+        bonusSearchView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
         let touch = UITapGestureRecognizer(
             target: self,
             action: #selector(handleTapBonusSearch)
@@ -19,10 +26,10 @@ extension MainGameViewController {
         bonusSearchView.addGestureRecognizer(touch)
     }
 
-    // настроить вьюху с бонусом БОМБА
+    // настроить вьюху с подсказкой БОМБА
     func setupBonusBomb() {
         bonusBombView.setup(viewModel: .init(backgroundColor: .slovoOrange, title: "💣"))
-        bonusBombView.setCorners(radius: itemSizeBonusView.height/2)
+        bonusBombView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
         let touch = UITapGestureRecognizer(
             target: self,
             action: #selector(handleTapBonusBomb)
@@ -30,10 +37,10 @@ extension MainGameViewController {
         bonusBombView.addGestureRecognizer(touch)
     }
 
-    // настроить вьюху с бонусом КНИГА
+    // настроить вьюху с подсказкой КНИГА
     func setupBonusBook() {
         bonusBookView.setup(viewModel: .init(backgroundColor: .slovoGreen, title: "📖"))
-        bonusBookView.setCorners(radius: itemSizeBonusView.height/2)
+        bonusBookView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
         let touch = UITapGestureRecognizer(
             target: self,
             action: #selector(handleTapBonusBook)
@@ -71,6 +78,7 @@ extension MainGameViewController: InfoViewDelegate {
         didTapContentButton identifier: String
     ) {
         infoView.isHidden = true
+        presenter?.onUseHelpSearch()
     }
 
     /// нажато на бэкграунд

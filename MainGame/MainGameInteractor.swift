@@ -71,6 +71,7 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     /// Начать новую игру
     func reset() {
         gameBoardStorage.clearGame()
+        keyboardManager.resetSearchHelpArray()
     }
 
     /// Спарсить содержимое документа в массив
@@ -178,5 +179,21 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     /// Сколько бонусов добавлено за победу
     func getBonusCount(row: Int) -> Int {
         100 - (row * 10)
+    }
+    
+    /// Показать одну оранжевую букву на клавиатуре
+    func showOneOrangeLetter() {
+        keyboardManager.getBombLetters(currentWord: currentWord)
+    }
+    
+    /// Можно ли использовать бонус ЛУПА
+    func isCanUseHelpSearch() -> Bool {
+        keyboardManager.isArraySearchFull(currentWord: currentWord) && valletCount >= 25
+    }
+    
+    /// Отнять бонусы из кошелька
+    func minusBonusAtVallet(count: Int) {
+        valletStorage.minusCountVallet(count: count)
+        presenter?.onUpdateValletCount()
     }
 }

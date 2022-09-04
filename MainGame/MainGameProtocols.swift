@@ -23,17 +23,21 @@ protocol MainGameViewProtocol: AnyObject {
     func setupValetView(viewModel: BonusViewModel)
     /// Настроить вью с серией побед
     func setupWinStreakView(viewModel: BonusViewModel)
-    
 }
 
 // MARK: Presenter -
 protocol MainGameViewToPresenterProtocol: AnyObject {
     /// Вью загружено
     func onViewDidLoad()
+    
     /// Нажат бонус ЛУПА
     func onTapBonusSearch()
+    /// Использован бонус ЛУПА
+    func onUseHelpSearch()
+    
     /// Нажат бонус БОМБА
     func onTapBonusBomb()
+    
     /// Нажат бонус КНИГА
     func onTapBonusBook()
 }
@@ -45,6 +49,8 @@ protocol MainGameInteractorToPresenterProtocol: AnyObject {
     func onWin(currentRow: Int)
     /// обработка неверного слова
     func onWrongWord(word: String)
+    /// когда значение кошелек обновился
+    func onUpdateValletCount()
 }
 
 // MARK: Interactor -
@@ -99,6 +105,13 @@ protocol MainGameInteractorProtocol: AnyObject {
     func resetWinStreak()
     /// Сколько бонусов добавлено за победу
     func getBonusCount(row: Int) -> Int
+    
+    /// Показать одну оранжевую букву на клавиатуре
+    func showOneOrangeLetter()
+    /// Можно ли использовать бонус ЛУПА
+    func isCanUseHelpSearch() -> Bool
+    /// Отнять бонусы из кошелька
+    func minusBonusAtVallet(count: Int)
 }
 
 // MARK: Router -

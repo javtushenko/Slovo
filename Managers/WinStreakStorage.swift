@@ -35,6 +35,6 @@ class WinStreakStorage: WinStreakStorageProtocol {
     
     /// очистить кошелек
     func resetWinStreak() {
-    Defaults[key: DefaultsKeys.winStreak] = 0
+        Defaults[key: DefaultsKeys.winStreak] = 0
     }
 }

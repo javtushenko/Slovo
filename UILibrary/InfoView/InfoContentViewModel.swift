@@ -12,6 +12,7 @@ public class InfoContentViewModel {
     public let title: String
     public let description: String
     public let titleButton: String
+    public let isButtonEnable: Bool
     public let backgroundColor: UIColor
     public let cornerRadius: CGFloat
     public let mainIdentifier: String
@@ -31,20 +32,33 @@ public class InfoContentViewModel {
     
     public var descriptionAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
-            size: 16,
+            size: 20,
             fontType: .regular,
             color: .slovoWhite,
             alignment: .center,
             letterSpacing: -0.25,
-            lineHeight: 16
+            lineHeight: 20
         )
         return description.styleAll(generalStyle).attributedString
+    }
+    
+    public var titleButtonAttributedText: NSAttributedString {
+        let generalStyle = Style.mainStyle(
+            size: 20,
+            fontType: .bold,
+            color: .slovoWhite,
+            alignment: .center,
+            letterSpacing: -0.25,
+            lineHeight: 20
+        )
+        return titleButton.styleAll(generalStyle).attributedString
     }
 
     public init(
         title: String,
         description: String,
         titleButton: String,
+        isButtonEnable: Bool = true,
         backgroundColor: UIColor = .slovoDarkBackground,
         cornerRadius: CGFloat = 5,
         mainIdentifier: String = "",
@@ -57,5 +71,6 @@ public class InfoContentViewModel {
         self.cornerRadius = cornerRadius
         self.mainIdentifier = mainIdentifier
         self.accessibilityInfo = accessibilityInfo
+        self.isButtonEnable = isButtonEnable
     }
 }

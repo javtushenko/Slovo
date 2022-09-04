@@ -72,10 +72,17 @@ public extension InfoContentView {
         setCorners(radius: viewModel.cornerRadius)
     }
     
+    /// Установить кнопку
     func setupButton(viewModel: InfoContentViewModel) {
-        button.setTitle(viewModel.titleButton, for: .normal)
+        button.setAttributedTitle(viewModel.titleButtonAttributedText, for: .normal)
+        button.isEnabled = viewModel.isButtonEnable
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .slovoGreen
+        if button.isEnabled {
+            button.backgroundColor = .slovoGreen
+        } else {
+            button.backgroundColor = .slovoDark
+        }
+        button.setCorners(radius: 15)
     }
 }
 
@@ -98,19 +105,17 @@ private extension InfoContentView {
         guard !isConstraintsInstalled else { return }
         isConstraintsInstalled = true
 
-        titleLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 32)
+        titleLabel.autoPinEdge(toSuperviewEdge: .top, withInset: 35)
         titleLabel.autoAlignAxis(toSuperviewAxis: .vertical)
 
-        descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel, withOffset: 17)
+        descriptionLabel.autoPinEdge(.top, to: .bottom, of: titleLabel, withOffset: 25)
         descriptionLabel.autoPinEdge(toSuperviewEdge: .leading, withInset: 23)
         descriptionLabel.autoPinEdge(toSuperviewEdge: .trailing, withInset: 24)
 
-        button.autoPinEdge(.top, to: .bottom, of: descriptionLabel, withOffset: 23)
-        button.autoSetDimensions(to: CGSize(width: 35, height: 35))
-        button.autoPinEdgesToSuperviewEdges(
-            with: .init(top: 0, left: 120, bottom: 32, right: 120),
-            excludingEdge: .top
-        )
+        button.autoSetDimensions(to: CGSize(width: 110, height: 50))
+        button.autoPinEdge(.top, to: .bottom, of: descriptionLabel, withOffset: 25)
+        button.autoPinEdge(toSuperviewEdge: .bottom, withInset: 35)
+        button.autoAlignAxis(toSuperviewMarginAxis: .vertical)
     }
 
     // установка таргетов

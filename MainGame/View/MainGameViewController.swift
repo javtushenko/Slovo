@@ -62,240 +62,6 @@ final class MainGameViewController: UIViewController {
         view.isHidden = true
         return view
     }()
-    
-    /// верхний отступ от границы экрана
-    var topInset: CGFloat {
-        switch Display.typeIsLike {
-        case .unknown:
-            return 60
-        case .iphone4:
-            return 60
-        case .iphone5:
-            return 20
-        case .iphone6:
-            return 25
-        case .iphone6plus:
-            return 25
-        case .iphoneX:
-            return 60
-        case .iphoneXR:
-            return 60
-        case .iphone12:
-            return 50
-        case .iphone12mini:
-            return 50
-        case .iphone12proMax:
-            return 60
-        }
-    }
-    
-    // нижний отступ от границы экрана
-    var bottomInset: CGFloat {
-        switch Display.typeIsLike {
-        case .unknown:
-            return 50
-        case .iphone4:
-            return 50
-        case .iphone5:
-            return 5
-        case .iphone6:
-            return 5
-        case .iphone6plus:
-            return 5
-        case .iphoneX:
-            return 50
-        case .iphoneXR:
-            return 50
-        case .iphone12:
-            return 40
-        case .iphone12mini:
-            return 35
-        case .iphone12proMax:
-            return 50
-        }
-    }
-    
-    /// вертикальный отступ элементов друг от друга
-    var itemVerticalInset: CGFloat {
-        switch Display.typeIsLike {
-        case .unknown:
-            return 15
-        case .iphone4:
-            return 15
-        case .iphone5:
-            return 5
-        case .iphone6:
-            return 10
-        case .iphone6plus:
-            return 15
-        case .iphoneX:
-            return 15
-        case .iphoneXR:
-            return 15
-        case .iphone12:
-            return 15
-        case .iphone12mini:
-            return 12
-        case .iphone12proMax:
-            return 15
-        }
-    }
-    
-    // горизонтальный отступ нижних элементов друг от друга
-    var itemHorizontalInset: CGFloat {
-        switch Display.typeIsLike {
-        case .unknown:
-            return 16
-        case .iphone4:
-            return 16
-        case .iphone5:
-            return 16
-        case .iphone6:
-            return 27
-        case .iphone6plus:
-            return 16
-        case .iphoneX:
-            return 16
-        case .iphoneXR:
-            return 16
-        case .iphone12:
-            return 16
-        case .iphone12mini:
-            return 16
-        case .iphone12proMax:
-            return 16
-        }
-    }
-    
-    // горизонтальный отступ верхних элементов друг от друга
-    var topItemHorizontalInset: CGFloat {
-        switch Display.typeIsLike {
-        case .unknown:
-            return 16
-        case .iphone4:
-            return 16
-        case .iphone5:
-            return 16
-        case .iphone6:
-            return 27
-        case .iphone6plus:
-            return 15
-        case .iphoneX:
-            return 15
-        case .iphoneXR:
-            return 15
-        case .iphone12:
-            return 15
-        case .iphone12mini:
-            return 6
-        case .iphone12proMax:
-            return 15
-        }
-    }
-    
-    // размер элементов бонусов
-    var itemSizeBonusView: CGSize {
-        switch Display.typeIsLike {
-        case .unknown:
-            return CGSize(width: 110, height: 60)
-        case .iphone4:
-            return CGSize(width: 60, height: 30)
-        case .iphone5:
-            return CGSize(width: 60, height: 30)
-        case .iphone6:
-            return CGSize(width: 60, height: 40)
-        case .iphone6plus:
-            return CGSize(width: 82.5, height: 40)
-        case .iphoneX:
-            return CGSize(width: 114, height: 60)
-        case .iphoneXR:
-            return CGSize(width: 114, height: 60)
-        case .iphone12:
-            return CGSize(width: 114, height: 60)
-        case .iphone12mini:
-            return CGSize(width: 110, height: 60)
-        case .iphone12proMax:
-            return CGSize(width: 114, height: 60)
-        }
-    }
-    
-    // размер кошелька
-    var itemSizeValetView: CGSize {
-        switch Display.typeIsLike {
-        case .unknown:
-            return CGSize(width: 110, height: 60)
-        case .iphone4:
-            return CGSize(width: 60, height: 30)
-        case .iphone5:
-            return CGSize(width: 60, height: 30)
-        case .iphone6:
-            return CGSize(width: 60, height: 40)
-        case .iphone6plus:
-            return CGSize(width: 82.5, height: 40)
-        case .iphoneX:
-            return CGSize(width: 160, height: 60)
-        case .iphoneXR:
-            return CGSize(width: 160, height: 60)
-        case .iphone12:
-            return CGSize(width: 160, height: 60)
-        case .iphone12mini:
-            return CGSize(width: 140, height: 60)
-        case .iphone12proMax:
-            return CGSize(width: 160, height: 60)
-        }
-    }
-    
-    // размер серии побед
-    var itemWinStreakView: CGSize {
-        switch Display.typeIsLike {
-        case .unknown:
-            return CGSize(width: 110, height: 60)
-        case .iphone4:
-            return CGSize(width: 60, height: 30)
-        case .iphone5:
-            return CGSize(width: 60, height: 30)
-        case .iphone6:
-            return CGSize(width: 60, height: 40)
-        case .iphone6plus:
-            return CGSize(width: 82.5, height: 40)
-        case .iphoneX:
-            return CGSize(width: 130, height: 60)
-        case .iphoneXR:
-            return CGSize(width: 130, height: 60)
-        case .iphone12:
-            return CGSize(width: 130, height: 60)
-        case .iphone12mini:
-            return CGSize(width: 130, height: 60)
-        case .iphone12proMax:
-            return CGSize(width: 130, height: 60)
-        }
-    }
-    
-    // размер обучения
-    var itemSizeTutorialView: CGSize {
-        switch Display.typeIsLike {
-        case .unknown:
-            return CGSize(width: 60, height: 60)
-        case .iphone4:
-            return CGSize(width: 30, height: 30)
-        case .iphone5:
-            return CGSize(width: 30, height: 30)
-        case .iphone6:
-            return CGSize(width: 40, height: 40)
-        case .iphone6plus:
-            return CGSize(width: 40, height: 40)
-        case .iphoneX:
-            return CGSize(width: 60, height: 60)
-        case .iphoneXR:
-            return CGSize(width: 60, height: 60)
-        case .iphone12:
-            return CGSize(width: 60, height: 60)
-        case .iphone12mini:
-            return CGSize(width: 60, height: 60)
-        case .iphone12proMax:
-            return CGSize(width: 60, height: 60)
-        }
-    }
 
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
@@ -315,13 +81,13 @@ final class MainGameViewController: UIViewController {
     /// настроить вьюху с кошельком
     func setupValetView(viewModel: BonusViewModel) {
         valletView.setup(viewModel: viewModel)
-        valletView.setCorners(radius: itemSizeBonusView.height/2)
+        valletView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
     }
     
     /// Настроить вью с серией побед
     func setupWinStreakView(viewModel: BonusViewModel) {
         winStreak.setup(viewModel: viewModel)
-        winStreak.setCorners(radius: itemSizeBonusView.height/2)
+        winStreak.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
     }
     
     /// Настроить вью с серией побед
@@ -330,7 +96,7 @@ final class MainGameViewController: UIViewController {
                        title: "?",
                        titleColor: .black)
         tutorialView.setup(viewModel: model)
-        tutorialView.setCorners(radius: itemSizeBonusView.height/2)
+        tutorialView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
     }
 }
 
@@ -366,36 +132,36 @@ extension MainGameViewController {
         guard !isConstraintsInstalled else { return }
         
         // задаем размеры
-        valletView.autoSetDimensions(to: itemSizeValetView)
-        tutorialView.autoSetDimensions(to: itemSizeTutorialView)
-        bonusBombView.autoSetDimensions(to: itemSizeBonusView)
-        bonusSearchView.autoSetDimensions(to: itemSizeBonusView)
-        bonusBookView.autoSetDimensions(to: itemSizeBonusView)
-        winStreak.autoSetDimensions(to: itemWinStreakView)
+        valletView.autoSetDimensions(to: MainUIConstatnts.itemSizeValetView)
+        tutorialView.autoSetDimensions(to: MainUIConstatnts.itemSizeTutorialView)
+        bonusBombView.autoSetDimensions(to: MainUIConstatnts.itemSizeBonusView)
+        bonusSearchView.autoSetDimensions(to: MainUIConstatnts.itemSizeBonusView)
+        bonusBookView.autoSetDimensions(to: MainUIConstatnts.itemSizeBonusView)
+        winStreak.autoSetDimensions(to: MainUIConstatnts.itemWinStreakView)
         
         // обучение
-        tutorialView.autoPinEdge(toSuperviewEdge: .right, withInset: itemHorizontalInset)
-        tutorialView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+        tutorialView.autoPinEdge(toSuperviewEdge: .right, withInset: MainUIConstatnts.itemHorizontalInset)
+        tutorialView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
         
         // серия побед
-        winStreak.autoPinEdge(toSuperviewEdge: .left, withInset: itemHorizontalInset)
-        winStreak.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+        winStreak.autoPinEdge(toSuperviewEdge: .left, withInset: MainUIConstatnts.itemHorizontalInset)
+        winStreak.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
         
         // кошелек
-        valletView.autoPinEdge(.leading, to: .trailing, of: winStreak, withOffset: topItemHorizontalInset)
-        valletView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+        valletView.autoPinEdge(.leading, to: .trailing, of: winStreak, withOffset: MainUIConstatnts.topItemHorizontalInset)
+        valletView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
         
         // игровое поле
         boardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
         boardVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: itemVerticalInset)
-        boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: itemVerticalInset)
+        boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: MainUIConstatnts.itemVerticalInset)
+        boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: MainUIConstatnts.itemVerticalInset)
         // клавиатура
         
         keyboardVC.view.autoSetDimension(.height, toSize: 160)
         keyboardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
         keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: bottomInset)
+        keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: MainUIConstatnts.bottomInset)
         
         // бонусы в зависимости от размера экрана
         if Display.isFormfactorX {
@@ -403,23 +169,23 @@ extension MainGameViewController {
 
             // бомба бонус
             bonusBombView.autoAlignAxis(toSuperviewAxis: .vertical)
-            bonusBombView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)
+            bonusBombView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: MainUIConstatnts.itemVerticalInset)
             // лупа бонус
-            bonusSearchView.autoPinEdge(toSuperviewEdge: .left, withInset: itemHorizontalInset)
-            bonusSearchView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)
+            bonusSearchView.autoPinEdge(toSuperviewEdge: .left, withInset: MainUIConstatnts.itemHorizontalInset)
+            bonusSearchView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: MainUIConstatnts.itemVerticalInset)
             // книга бонус
-            bonusBookView.autoPinEdge(toSuperviewEdge: .right, withInset: itemHorizontalInset)
-            bonusBookView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: itemVerticalInset)
+            bonusBookView.autoPinEdge(toSuperviewEdge: .right, withInset: MainUIConstatnts.itemHorizontalInset)
+            bonusBookView.autoPinEdge(.top, to: .bottom, of: valletView, withOffset: MainUIConstatnts.itemVerticalInset)
         } else {
             // лупа бонус
-            bonusSearchView.autoPinEdge(.left, to: .right, of: valletView, withOffset: itemHorizontalInset)
-            bonusSearchView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
+            bonusSearchView.autoPinEdge(.left, to: .right, of: valletView, withOffset: MainUIConstatnts.itemHorizontalInset)
+            bonusSearchView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
             // бомба бонус
-            bonusBombView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
-            bonusBombView.autoPinEdge(.left, to: .right, of: bonusSearchView, withOffset: itemHorizontalInset)
+            bonusBombView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
+            bonusBombView.autoPinEdge(.left, to: .right, of: bonusSearchView, withOffset: MainUIConstatnts.itemHorizontalInset)
             // книга бонус
-            bonusBookView.autoPinEdge(toSuperviewEdge: .top, withInset: topInset)
-            bonusBookView.autoPinEdge(.left, to: .right, of: bonusBombView, withOffset: itemHorizontalInset)
+            bonusBookView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
+            bonusBookView.autoPinEdge(.left, to: .right, of: bonusBombView, withOffset: MainUIConstatnts.itemHorizontalInset)
         }
         
         infoView.autoPinEdgesToSuperviewEdges()

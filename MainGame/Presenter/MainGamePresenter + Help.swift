@@ -13,6 +13,13 @@ extension MainGamePresenter {
         view?.showInfoView(viewModel: createBonusModelSearch())
     }
     
+    /// Использован бонус ЛУПА
+    func onUseHelpSearch() {
+        interactor?.showOneOrangeLetter()
+        interactor?.minusBonusAtVallet(count: Price.priseSearch)
+        view?.updateKeyboard()
+    }
+    
     /// Нажат бонус БОМБА
     func onTapBonusBomb() {
         view?.showInfoView(viewModel: createBonusModelBomb())
@@ -26,24 +33,25 @@ extension MainGamePresenter {
     // создать модель бонуса ЛУПЫ
     func createBonusModelSearch() -> InfoContentViewModel {
         InfoContentViewModel(title: "🔎",
-                             description: "Если применить этот бонус, мы выделим оранжевым букву на клавитатуре, которая точно присутствует в загаданом слове",
-                             titleButton: "100💎",
+                             description: "Подсветить оранжевым\nОДНУ букву на клавиатуре",
+                             titleButton: "💎25",
+                             isButtonEnable: interactor?.isCanUseHelpSearch() ?? false,
                              accessibilityInfo: "")
     }
     
     // создать модель бонуса БОМБЫ
     func createBonusModelBomb() -> InfoContentViewModel {
         InfoContentViewModel(title: "💣",
-                             description: "Если применить этот бонус, мы выделим оранжевым букву на клавитатуре, которая точно присутствует в загаданом слове",
-                             titleButton: "100💎",
+                             description: "Убрать на клавиатуре ТРИ буквы которых точно нет в слове",
+                             titleButton: "💎50",
                              accessibilityInfo: "")
     }
     
     // создать модель бонуса КНИГИ
     func createBonusModelBook() -> InfoContentViewModel {
         InfoContentViewModel(title: "📖",
-                             description: "Если применить этот бонус, мы выделим оранжевым букву на клавитатуре, которая точно присутствует в загаданом слове",
-                             titleButton: "100💎",
+                             description: "Показать значение загаданного слова из словаря",
+                             titleButton: "💎90",
                              accessibilityInfo: "")
     }
 }

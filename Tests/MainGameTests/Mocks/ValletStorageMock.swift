@@ -16,4 +16,7 @@ class ValletStorageMock: ValletStorageProtocol {
     
     /// очистить кошелек
     func resetCountVallet() {}
+    
+    /// вычесть значение из кошелька
+    func minusCountVallet(count: Int) {}
 }

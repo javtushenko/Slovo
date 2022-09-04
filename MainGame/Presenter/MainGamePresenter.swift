@@ -151,6 +151,11 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
                               addValletCount: "",
                               delegate: self)
     }
+    
+    /// когда значение кошелек обновился
+    func onUpdateValletCount() {
+        view?.setupValetView(viewModel: getModelVallet())
+    }
 }
 
 extension MainGamePresenter: KeyboardViewControllerDelegate {
