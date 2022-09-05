@@ -16,11 +16,15 @@ public protocol KeyboardManagerProtocol {
     /// получить цвет кнопки
     func getKeyColor(key: Character, gameLetters: [[Key?]], successRow: Int) -> UIColor
     /// добавить оранжевые кнопки в массив
-    func getBombLetters(currentWord: String)
+    func getSearchLetters(currentWord: String)
     /// полон ли массив букв подсказки ЛУПА
     func isArraySearchFull(currentWord: String) -> Bool
     /// Очистить буквы с подсказки лупы
     func resetSearchHelpArray()
+    /// Очистить буквы с подсказки бомбы
+    func resetBombHelpArray()
+    /// добавить темно-серые кнопки в массив
+    func getBombLetters(currentWord: String)
 }
 
 class KeyboardManager: KeyboardManagerProtocol {
@@ -31,6 +35,11 @@ class KeyboardManager: KeyboardManagerProtocol {
     var searchHelpLetters: String {
         Defaults[key: DefaultsKeys.searchLetterArray]
     }
+    
+    /// Подсказка бомба, оранжевые кнопки
+    var bombHelpLetters: String {
+        Defaults[key: DefaultsKeys.bombLetterArray]
+    }
 
     /// получить цвет кнопки
     public func getKeyColor(key: Character, gameLetters: [[Key?]], successRow: Int) -> UIColor {
@@ -40,6 +49,11 @@ class KeyboardManager: KeyboardManagerProtocol {
         // если буква есть в списке подсказки, вернет оранжевый
         if searchHelpLetters.contains(key) {
             currentColor = .slovoOrange
+        }
+        
+        // если буква есть в списке подсказки, вернет серый
+        if bombHelpLetters.contains(key) {
+            currentColor = .slovoDark
         }
         
         // перебираем все строки игрового поля
@@ -86,6 +100,7 @@ class KeyboardManager: KeyboardManagerProtocol {
                 let currentKey = Key(character: key, backgroundColor: .slovoGray)
                 return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
             }).count != 0 {
+                Defaults[key: DefaultsKeys.bombLetterArray].append(key)
                 currentColor = .slovoDark
             }
         }
@@ -100,14 +115,35 @@ class KeyboardManager: KeyboardManagerProtocol {
         return currentColor
     }
     
-    /// добавить оранжевые кнопки в массив
+    /// добавить темно-серые кнопки в массив
     func getBombLetters(currentWord: String) {
+        // получаем клаву без загаданного слова
+        var keyboard = "йцукенгшщзфывапролджэячсмитьбюх"
+        for letter in currentWord {
+            keyboard = keyboard.replacingOccurrences(of: String(letter), with: "")
+        }
+        // получаем рандомные буквы
+        let randomIndex: Int = .random(in: 0..<keyboard.count)
+        let stringIndex = String.Index.init(utf16Offset: randomIndex, in: keyboard)
+        var letters = ""
+        while letters.count < 3 {
+            let letter = keyboard.remove(at: stringIndex)
+            if !bombHelpLetters.contains(letter),
+               !letters.contains(letter) {
+                letters.append(letter)
+            }
+        }
+        Defaults[key: DefaultsKeys.bombLetterArray].append(letters)
+    }
+    
+    /// добавить оранжевые кнопки в массив
+    func getSearchLetters(currentWord: String) {
         var currentWord = String(Set(currentWord))
         let randomIndex: Int = .random(in: 0..<currentWord.count)
         let index = String.Index.init(utf16Offset: randomIndex, in: currentWord)
         let letter = currentWord.remove(at: index)
         guard !searchHelpLetters.contains(letter) else {
-            getBombLetters(currentWord: currentWord)
+            getSearchLetters(currentWord: currentWord)
             return
         }
         Defaults[key: DefaultsKeys.searchLetterArray].append(letter)
@@ -116,6 +152,11 @@ class KeyboardManager: KeyboardManagerProtocol {
     /// Очистить буквы с подсказки лупы
     func resetSearchHelpArray() {
         Defaults[key: DefaultsKeys.searchLetterArray].removeAll()
+    }
+    
+    /// Очистить буквы с подсказки бомбы
+    func resetBombHelpArray() {
+        Defaults[key: DefaultsKeys.bombLetterArray].removeAll()
     }
     
     /// полон ли массив букв подсказки ЛУПА

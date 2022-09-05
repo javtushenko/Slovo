@@ -72,6 +72,7 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     func reset() {
         gameBoardStorage.clearGame()
         keyboardManager.resetSearchHelpArray()
+        keyboardManager.resetBombHelpArray()
     }
 
     /// Спарсить содержимое документа в массив
@@ -183,12 +184,22 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     
     /// Показать одну оранжевую букву на клавиатуре
     func showOneOrangeLetter() {
-        keyboardManager.getBombLetters(currentWord: currentWord)
+        keyboardManager.getSearchLetters(currentWord: currentWord)
     }
     
     /// Можно ли использовать бонус ЛУПА
     func isCanUseHelpSearch() -> Bool {
         keyboardManager.isArraySearchFull(currentWord: currentWord) && valletCount >= 25
+    }
+    
+    /// Показать три серых буквы на клавиатуре
+    func showThreeDarkGrayLetters() {
+        keyboardManager.getBombLetters(currentWord: currentWord)
+    }
+    
+    /// Можно ли использовать бонус БОМБА
+    func isCanUseHelpBomb() -> Bool {
+        valletCount >= 25
     }
     
     /// Отнять бонусы из кошелька

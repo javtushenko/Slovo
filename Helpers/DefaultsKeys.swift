@@ -87,3 +87,8 @@ extension DefaultsKeys {
     /// Массив букв из подсказки лупа
     static let searchLetterArray = DefaultsKey<String>("search_letter_array", defaultValue: "")
 }
+
+extension DefaultsKeys {
+    /// Массив букв из подсказки бомба
+    static let bombLetterArray = DefaultsKey<String>("bomb_letter_array", defaultValue: "")
+}

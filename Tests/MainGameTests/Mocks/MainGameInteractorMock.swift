@@ -7,7 +7,8 @@
 
 import UIKit
 
-class MainGameInteractorMock: MainGameInteractorProtocol { 
+class MainGameInteractorMock: MainGameInteractorProtocol {
+    
     /// Тукущее загаданное слово
     var currentWord: String = "слово"
     /// текущее количество бонусов
@@ -71,4 +72,13 @@ class MainGameInteractorMock: MainGameInteractorProtocol {
     
     /// Отнять бонусы из кошелька
     func minusBonusAtVallet(count: Int) {}
+    
+    /// Можно ли использовать бонус БОМБА
+    func isCanUseHelpBomb() -> Bool {
+        true
+    }
+    /// Показать три серых буквы на клавиатуре
+    func showThreeDarkGrayLetters() {
+        
+    }
 }

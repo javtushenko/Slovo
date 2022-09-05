@@ -251,5 +251,5 @@ public enum Price {
     static let priseBoom: Int = 25
     
     /// цена бонуса книги
-    static let priseBook: Int = 25
+    static let priseBook: Int = 90
 }

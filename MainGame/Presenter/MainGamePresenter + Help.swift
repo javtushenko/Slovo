@@ -25,6 +25,13 @@ extension MainGamePresenter {
         view?.showInfoView(viewModel: createBonusModelBomb())
     }
     
+    /// Использован бонус БОМБА
+    func onUseHelpBomb() {
+        interactor?.showThreeDarkGrayLetters()
+        interactor?.minusBonusAtVallet(count: Price.priseBoom)
+        view?.updateKeyboard()
+    }
+    
     /// Нажат бонус КНИГА
     func onTapBonusBook() {
         view?.showInfoView(viewModel: createBonusModelBook())
@@ -36,6 +43,7 @@ extension MainGamePresenter {
                              description: "Подсветить оранжевым\nОДНУ букву на клавиатуре",
                              titleButton: "💎25",
                              isButtonEnable: interactor?.isCanUseHelpSearch() ?? false,
+                             mainIdentifier: helpType.search.rawValue,
                              accessibilityInfo: "")
     }
     
@@ -43,7 +51,9 @@ extension MainGamePresenter {
     func createBonusModelBomb() -> InfoContentViewModel {
         InfoContentViewModel(title: "💣",
                              description: "Убрать на клавиатуре ТРИ буквы которых точно нет в слове",
-                             titleButton: "💎50",
+                             titleButton: "💎25",
+                             isButtonEnable: interactor?.isCanUseHelpBomb() ?? false,
+                             mainIdentifier: helpType.bomb.rawValue,
                              accessibilityInfo: "")
     }
     
@@ -52,6 +62,8 @@ extension MainGamePresenter {
         InfoContentViewModel(title: "📖",
                              description: "Показать значение загаданного слова из словаря",
                              titleButton: "💎90",
+                             isButtonEnable: false,
+                             mainIdentifier: helpType.book.rawValue,
                              accessibilityInfo: "")
     }
 }

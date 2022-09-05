@@ -8,10 +8,10 @@
 import UIKit
 
 /// тип игровой подсказки
-public enum helpType {
-    case search
-    case bomb
-    case book
+public enum helpType: String {
+    case search = "search"
+    case bomb = "bomb"
+    case book = "book"
 }
 
 extension MainGameViewController {
@@ -78,7 +78,16 @@ extension MainGameViewController: InfoViewDelegate {
         didTapContentButton identifier: String
     ) {
         infoView.isHidden = true
-        presenter?.onUseHelpSearch()
+        switch identifier {
+        case helpType.search.rawValue:
+            presenter?.onUseHelpSearch()
+        case helpType.bomb.rawValue:
+            presenter?.onUseHelpBomb()
+        case helpType.book.rawValue:
+            return
+        default:
+            return
+        }
     }
 
     /// нажато на бэкграунд

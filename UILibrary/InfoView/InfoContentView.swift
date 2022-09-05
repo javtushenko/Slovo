@@ -131,7 +131,7 @@ private extension InfoContentView {
     @objc func onTapButton() {
         delegate?.infoContentView(
             self,
-            didTapButton: ""
+            didTapButton: mainIdentifier
         )
     }
 }
