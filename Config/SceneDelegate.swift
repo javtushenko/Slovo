@@ -7,6 +7,8 @@
 
 import UIKit
 
+public var baseViewController: UIViewController?
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -15,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let winScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: winScene)
+        baseViewController = window?.rootViewController
         window?.rootViewController = MainGameModuleConfigurator.build()
         window?.makeKeyAndVisible()
     }

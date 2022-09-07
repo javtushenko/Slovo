@@ -16,11 +16,11 @@ public enum MainUIConstatnts {
         case .iphone4:
             return 60
         case .iphone5:
-            return 20
+            return 40
         case .iphone6:
-            return 25
+            return 40
         case .iphone6plus:
-            return 25
+            return 40
         case .iphoneX:
             return 60
         case .iphoneXR:
@@ -42,11 +42,11 @@ public enum MainUIConstatnts {
         case .iphone4:
             return 50
         case .iphone5:
-            return 5
+            return 10
         case .iphone6:
-            return 5
+            return 10
         case .iphone6plus:
-            return 5
+            return 10
         case .iphoneX:
             return 50
         case .iphoneXR:
@@ -68,7 +68,7 @@ public enum MainUIConstatnts {
         case .iphone4:
             return 15
         case .iphone5:
-            return 5
+            return 10
         case .iphone6:
             return 10
         case .iphone6plus:
@@ -92,13 +92,13 @@ public enum MainUIConstatnts {
         case .unknown:
             return 16
         case .iphone4:
-            return 16
+            return 7
         case .iphone5:
-            return 16
+            return 7
         case .iphone6:
-            return 27
+            return 8
         case .iphone6plus:
-            return 16
+            return 8
         case .iphoneX:
             return 16
         case .iphoneXR:
@@ -118,13 +118,13 @@ public enum MainUIConstatnts {
         case .unknown:
             return 16
         case .iphone4:
-            return 16
+            return 8
         case .iphone5:
-            return 16
+            return 8
         case .iphone6:
-            return 27
+            return 9
         case .iphone6plus:
-            return 15
+            return 9
         case .iphoneX:
             return 15
         case .iphoneXR:
@@ -144,13 +144,13 @@ public enum MainUIConstatnts {
         case .unknown:
             return CGSize(width: 110, height: 60)
         case .iphone4:
-            return CGSize(width: 60, height: 30)
+            return CGSize(width: 30, height: 30)
         case .iphone5:
-            return CGSize(width: 60, height: 30)
+            return CGSize(width: 30, height: 30)
         case .iphone6:
-            return CGSize(width: 60, height: 40)
+            return CGSize(width: 40, height: 40)
         case .iphone6plus:
-            return CGSize(width: 82.5, height: 40)
+            return CGSize(width: 50, height: 50)
         case .iphoneX:
             return CGSize(width: 114, height: 60)
         case .iphoneXR:
@@ -170,19 +170,19 @@ public enum MainUIConstatnts {
         case .unknown:
             return CGSize(width: 110, height: 60)
         case .iphone4:
-            return CGSize(width: 60, height: 30)
+            return CGSize(width: 80, height: 30)
         case .iphone5:
-            return CGSize(width: 60, height: 30)
+            return CGSize(width: 80, height: 30)
         case .iphone6:
-            return CGSize(width: 60, height: 40)
+            return CGSize(width: 80, height: 40)
         case .iphone6plus:
-            return CGSize(width: 82.5, height: 40)
+            return CGSize(width: 80, height: 50)
         case .iphoneX:
             return CGSize(width: 160, height: 60)
         case .iphoneXR:
             return CGSize(width: 160, height: 60)
         case .iphone12:
-            return CGSize(width: 160, height: 60)
+            return CGSize(width: 140, height: 60)
         case .iphone12mini:
             return CGSize(width: 140, height: 60)
         case .iphone12proMax:
@@ -196,13 +196,13 @@ public enum MainUIConstatnts {
         case .unknown:
             return CGSize(width: 110, height: 60)
         case .iphone4:
-            return CGSize(width: 60, height: 30)
+            return CGSize(width: 70, height: 30)
         case .iphone5:
-            return CGSize(width: 60, height: 30)
+            return CGSize(width: 70, height: 30)
         case .iphone6:
-            return CGSize(width: 60, height: 40)
+            return CGSize(width: 80, height: 40)
         case .iphone6plus:
-            return CGSize(width: 82.5, height: 40)
+            return CGSize(width: 80, height: 50)
         case .iphoneX:
             return CGSize(width: 130, height: 60)
         case .iphoneXR:
@@ -228,7 +228,7 @@ public enum MainUIConstatnts {
         case .iphone6:
             return CGSize(width: 40, height: 40)
         case .iphone6plus:
-            return CGSize(width: 40, height: 40)
+            return CGSize(width: 50, height: 50)
         case .iphoneX:
             return CGSize(width: 60, height: 60)
         case .iphoneXR:

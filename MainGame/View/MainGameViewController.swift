@@ -90,14 +90,25 @@ final class MainGameViewController: UIViewController {
         winStreak.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
     }
     
-    /// Настроить вью с серией побед
+    /// Настроить вью кнопки туториала
     func setupTutorialView() {
         let model = BonusViewModel(backgroundColor: .slovoGray,
                        title: "?",
                        titleColor: .black)
         tutorialView.setup(viewModel: model)
         tutorialView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
+        let touch = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTapTutorial)
+        )
+        tutorialView.addGestureRecognizer(touch)
     }
+    
+    // обработка нажатия на туториал
+    @objc func handleTapTutorial() {
+        presenter?.onTapTutorial()
+    }
+    
 }
 
 extension MainGameViewController {
@@ -107,12 +118,10 @@ extension MainGameViewController {
 
         addChild(keyboardVC)
         keyboardVC.didMove(toParent: self)
-        keyboardVC.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(keyboardVC.view)
 
         addChild(boardVC)
         boardVC.didMove(toParent: self)
-        boardVC.view.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(boardVC.view)
 
         view.addSubview(winStreak)
@@ -152,16 +161,30 @@ extension MainGameViewController {
         valletView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
         
         // игровое поле
-        boardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
-        boardVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: MainUIConstatnts.itemVerticalInset)
-        boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: MainUIConstatnts.itemVerticalInset)
-        // клавиатура
+        if Display.isFormfactorX {
+            boardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
+            boardVC.view.autoPinEdge(toSuperviewEdge: .leading)
+            boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: MainUIConstatnts.itemVerticalInset)
+            boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: MainUIConstatnts.itemVerticalInset)
+        } else {
+            boardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
+            boardVC.view.autoPinEdge(toSuperviewEdge: .leading)
+            boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: MainUIConstatnts.itemVerticalInset)
+            boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: MainUIConstatnts.itemVerticalInset)
+        }
         
-        keyboardVC.view.autoSetDimension(.height, toSize: 160)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
-        keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: MainUIConstatnts.bottomInset)
+        // клавиатура
+        if Display.isFormfactorX {
+            keyboardVC.view.autoSetDimension(.height, toSize: 160)
+            keyboardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
+            keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
+            keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: MainUIConstatnts.bottomInset)
+        } else {
+            keyboardVC.view.autoSetDimension(.height, toSize: 130)
+            keyboardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
+            keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
+            keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: MainUIConstatnts.bottomInset)
+        }
         
         // бонусы в зависимости от размера экрана
         if Display.isFormfactorX {

@@ -19,7 +19,6 @@ final class MainGameRouter: MainGameRouterProtocol {
                        word: String = "",
                        addValletCount: String = "",
                        delegate: StopPopupViewDelegate) {
-        // Достаем опционал
         guard let baseViewController = baseViewController else {
             return
         }
@@ -27,6 +26,20 @@ final class MainGameRouter: MainGameRouterProtocol {
                                                       word: word,
                                                       addValltCount: addValletCount,
                                                       delegate: delegate)
+        baseViewController.present(
+            popup,
+            animated: false,
+            completion: nil
+        )
+    }
+    
+    /// Открыть обучение
+    func openTutorialPopup() {
+        guard let baseViewController = baseViewController else {
+            return
+        }
+        let popup = TutorialModuleConfigurator.build()
+        
         baseViewController.present(
             popup,
             animated: false,

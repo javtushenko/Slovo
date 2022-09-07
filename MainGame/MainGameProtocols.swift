@@ -42,6 +42,9 @@ protocol MainGameViewToPresenterProtocol: AnyObject {
     
     /// Нажат бонус КНИГА
     func onTapBonusBook()
+    
+    /// когда нажали на туториал
+    func onTapTutorial()
 }
 
 protocol MainGameInteractorToPresenterProtocol: AnyObject {
@@ -127,4 +130,6 @@ protocol MainGameRouterProtocol: AnyObject {
                        word: String,
                        addValletCount: String,
                        delegate: StopPopupViewDelegate)
+    /// Открыть обучение
+    func openTutorialPopup()
 }

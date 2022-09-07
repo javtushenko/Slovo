@@ -69,6 +69,11 @@ extension DefaultsKeys {
 }
 
 extension DefaultsKeys {
+    /// Массив букв из подсказки бомба
+    static let isFirstOpenApp = DefaultsKey<Bool>("is_first_open_app", defaultValue: true)
+}
+
+extension DefaultsKeys {
     /// Загаданное слово
     static let currentWord = DefaultsKey<String?>("current_word")
 }

@@ -33,7 +33,18 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         view?.keyboardVC.delegate = self
         view?.keyboardVC.datasource = self
         view?.boardVC.datasource = self
+        handleFirstOpenApp()
         handleOpenAppWithData()
+    }
+    
+    // обработка первого октрытия
+    func handleFirstOpenApp() {
+        if Defaults[key: DefaultsKeys.isFirstOpenApp] {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.router?.openTutorialPopup()
+                Defaults[key: DefaultsKeys.isFirstOpenApp] = false
+            }
+        }
     }
     
     // получить модель кошелька
@@ -155,6 +166,11 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
     /// когда значение кошелек обновился
     func onUpdateValletCount() {
         view?.setupValetView(viewModel: getModelVallet())
+    }
+    
+    /// когда нажали на туториал
+    func onTapTutorial() {
+        router?.openTutorialPopup()
     }
 }
 

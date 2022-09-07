@@ -64,7 +64,28 @@ class KeyboardView: UIViewController {
     
     // высота ячейки клавиатуры в зависимости от устройства
     var heightKey: CGFloat {
-        50
+        switch Display.typeIsLike {
+        case .unknown:
+            return 50
+        case .iphone4:
+            return 40
+        case .iphone5:
+            return 40
+        case .iphone6:
+            return 40
+        case .iphone6plus:
+            return 40
+        case .iphoneX:
+            return 50
+        case .iphoneXR:
+            return 50
+        case .iphone12:
+            return 50
+        case .iphone12mini:
+            return 50
+        case .iphone12proMax:
+            return 50
+        }
     }
 
     override func viewDidLoad() {

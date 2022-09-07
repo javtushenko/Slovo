@@ -20,6 +20,14 @@
 		1357F42D28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F42C28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift */; };
 		1357F42F28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F42E28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift */; };
 		1357F43128B80285002F194D /* GameBoardStorage + isCanDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */; };
+		136087A528C7A47800B117EB /* TutorialPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087A428C7A47800B117EB /* TutorialPageController.swift */; };
+		136087B528C7BACB00B117EB /* ContentTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087B428C7BACB00B117EB /* ContentTutorialView.swift */; };
+		136087C928C7CDA500B117EB /* TutorialPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C328C7CDA500B117EB /* TutorialPresenter.swift */; };
+		136087CA28C7CDA500B117EB /* TutorialRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C428C7CDA500B117EB /* TutorialRouter.swift */; };
+		136087CB28C7CDA500B117EB /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C528C7CDA500B117EB /* TutorialViewController.swift */; };
+		136087CC28C7CDA500B117EB /* TutorialProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C628C7CDA500B117EB /* TutorialProtocols.swift */; };
+		136087CD28C7CDA500B117EB /* TutorialInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C728C7CDA500B117EB /* TutorialInteractor.swift */; };
+		136087CE28C7CDA500B117EB /* TutorialModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C828C7CDA500B117EB /* TutorialModuleConfigurator.swift */; };
 		13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */; };
 		13747FCA28BD2C6A005888B7 /* ValletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FBB28BD2C51005888B7 /* ValletTests.swift */; };
 		137B249D28719628003618B2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B249C28719628003618B2 /* Key.swift */; };
@@ -98,6 +106,14 @@
 		1357F42C28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + isCanGoNext.swift"; sourceTree = "<group>"; };
 		1357F42E28B7F449002F194D /* GameBoardStorage + haveSuccessNext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + haveSuccessNext.swift"; sourceTree = "<group>"; };
 		1357F43028B80285002F194D /* GameBoardStorage + isCanDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameBoardStorage + isCanDelete.swift"; sourceTree = "<group>"; };
+		136087A428C7A47800B117EB /* TutorialPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageController.swift; sourceTree = "<group>"; };
+		136087B428C7BACB00B117EB /* ContentTutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentTutorialView.swift; sourceTree = "<group>"; };
+		136087C328C7CDA500B117EB /* TutorialPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPresenter.swift; sourceTree = "<group>"; };
+		136087C428C7CDA500B117EB /* TutorialRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialRouter.swift; sourceTree = "<group>"; };
+		136087C528C7CDA500B117EB /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		136087C628C7CDA500B117EB /* TutorialProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialProtocols.swift; sourceTree = "<group>"; };
+		136087C728C7CDA500B117EB /* TutorialInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialInteractor.swift; sourceTree = "<group>"; };
+		136087C828C7CDA500B117EB /* TutorialModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModuleConfigurator.swift; sourceTree = "<group>"; };
 		13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorageProtocol.swift; sourceTree = "<group>"; };
 		13747FBB28BD2C51005888B7 /* ValletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValletTests.swift; sourceTree = "<group>"; };
 		13747FC128BD2C63005888B7 /* SlovoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlovoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +262,29 @@
 			path = GameBoardStorage;
 			sourceTree = "<group>";
 		};
+		136087BB28C7C49E00B117EB /* TutorialPopup */ = {
+			isa = PBXGroup;
+			children = (
+				136087CF28C7D3BA00B117EB /* TutorialSlider */,
+				136087C328C7CDA500B117EB /* TutorialPresenter.swift */,
+				136087C428C7CDA500B117EB /* TutorialRouter.swift */,
+				136087C528C7CDA500B117EB /* TutorialViewController.swift */,
+				136087C628C7CDA500B117EB /* TutorialProtocols.swift */,
+				136087C728C7CDA500B117EB /* TutorialInteractor.swift */,
+				136087C828C7CDA500B117EB /* TutorialModuleConfigurator.swift */,
+			);
+			name = TutorialPopup;
+			sourceTree = "<group>";
+		};
+		136087CF28C7D3BA00B117EB /* TutorialSlider */ = {
+			isa = PBXGroup;
+			children = (
+				136087A428C7A47800B117EB /* TutorialPageController.swift */,
+				136087B428C7BACB00B117EB /* ContentTutorialView.swift */,
+			);
+			name = TutorialSlider;
+			sourceTree = "<group>";
+		};
 		137B249B287195D6003618B2 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +313,7 @@
 		137FC002286A02500004FDDE /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				136087BB28C7C49E00B117EB /* TutorialPopup */,
 				1333E83A28A654CE003FE3E5 /* StopPopup */,
 				13D718E128638F18009ACC03 /* MainGame */,
 			);
@@ -364,12 +404,12 @@
 		13D718E128638F18009ACC03 /* MainGame */ = {
 			isa = PBXGroup;
 			children = (
+				13BA4E1E28B37A880089229D /* Presenter */,
+				13BA4E1A28B374B80089229D /* View */,
 				13D718D528638E88009ACC03 /* MainGameRouter.swift */,
 				13D718D728638E88009ACC03 /* MainGameProtocols.swift */,
 				13D718D828638E88009ACC03 /* MainGameInteractor.swift */,
 				13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */,
-				13BA4E1E28B37A880089229D /* Presenter */,
-				13BA4E1A28B374B80089229D /* View */,
 			);
 			name = MainGame;
 			sourceTree = "<group>";
@@ -588,13 +628,16 @@
 			files = (
 				13D718DA28638E88009ACC03 /* MainGamePresenter.swift in Sources */,
 				13BA4E1C28B374CB0089229D /* MainGameViewController + Help.swift in Sources */,
+				136087CD28C7CDA500B117EB /* TutorialInteractor.swift in Sources */,
 				1333E84228A65538003FE3E5 /* PopupViewController.swift in Sources */,
 				1386CCCF28A77BBB00251C9C /* StopPopupProtocols.swift in Sources */,
 				1357F42D28B7EFA8002F194D /* GameBoardStorage + isCanGoNext.swift in Sources */,
 				13BAF9FC28BD2D7B00819CD6 /* MainGameInteractorMock.swift in Sources */,
+				136087B528C7BACB00B117EB /* ContentTutorialView.swift in Sources */,
 				13BA4E2728B38E110089229D /* DefaultsKeys.swift in Sources */,
 				1357F43128B80285002F194D /* GameBoardStorage + isCanDelete.swift in Sources */,
 				13ADEA49285F478F00C6AA23 /* KeyboardView.swift in Sources */,
+				136087CB28C7CDA500B117EB /* TutorialViewController.swift in Sources */,
 				13BA4E2028B37A970089229D /* MainGamePresenter + Help.swift in Sources */,
 				13D718DF28638E88009ACC03 /* MainGameModuleConfigurator.swift in Sources */,
 				13E55F3928AE9F3500E510DE /* InfoView.swift in Sources */,
@@ -604,6 +647,7 @@
 				13ADEA4D285F502900C6AA23 /* KeyCell.swift in Sources */,
 				13099B58286A13A800C8E2C5 /* WordsLoadService.swift in Sources */,
 				1386CCCE28A77BBB00251C9C /* StopPopupViewController.swift in Sources */,
+				136087A528C7A47800B117EB /* TutorialPageController.swift in Sources */,
 				1352612528C4D5CF005235FB /* MainUIConstatnts.swift in Sources */,
 				13ADEA4B285F47CA00C6AA23 /* BoardView.swift in Sources */,
 				1386CCDE28A7E88000251C9C /* BonusView.swift in Sources */,
@@ -626,10 +670,14 @@
 				1386CCD328A77C2300251C9C /* StopPopupViewModel.swift in Sources */,
 				13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */,
 				1386CCD028A77BBB00251C9C /* StopPopupInteractor.swift in Sources */,
+				136087C928C7CDA500B117EB /* TutorialPresenter.swift in Sources */,
 				1386CCD128A77BBB00251C9C /* StopPopupModuleConfigurator.swift in Sources */,
 				13BAFA0128BD321D00819CD6 /* ValletStorageMock.swift in Sources */,
+				136087CC28C7CDA500B117EB /* TutorialProtocols.swift in Sources */,
+				136087CE28C7CDA500B117EB /* TutorialModuleConfigurator.swift in Sources */,
 				1306312E286B4FD000CD2607 /* BoardCell.swift in Sources */,
 				1386CCE128A7E91F00251C9C /* BonusViewModel.swift in Sources */,
+				136087CA28C7CDA500B117EB /* TutorialRouter.swift in Sources */,
 				1386CCCC28A77BBB00251C9C /* StopPopupPresenter.swift in Sources */,
 				1333E83428A64D83003FE3E5 /* DIContainer.swift in Sources */,
 				13D718DB28638E88009ACC03 /* MainGameRouter.swift in Sources */,
