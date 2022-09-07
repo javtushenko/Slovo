@@ -322,7 +322,6 @@ extension MainGamePresenter: StopPopupViewDelegate {
         interactor?.reset()
         view?.updateGuesses()
         view?.updateKeyboard()
-        Defaults[key: DefaultsKeys.currentWord] = nil
         answer = interactor?.currentWord ?? "слово"
     }
 }

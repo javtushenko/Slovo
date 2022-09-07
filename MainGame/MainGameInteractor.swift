@@ -70,6 +70,9 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     
     /// Начать новую игру
     func reset() {
+        Defaults[key: DefaultsKeys.currentWord] = nil
+        Defaults[key: DefaultsKeys.currentWordValue] = nil
+        Defaults[key: DefaultsKeys.didUseHelpBook] = false
         gameBoardStorage.clearGame()
         keyboardManager.resetSearchHelpArray()
         keyboardManager.resetBombHelpArray()
@@ -158,8 +161,9 @@ extension MainGameInteractor: MainGameInteractorProtocol {
             return "слово"
         }
         print("✅ Загадано слово рандомное - \(word)")
-        Defaults[key: DefaultsKeys.currentWord] = word
-        return word
+        Defaults[key: DefaultsKeys.currentWord] = word.key
+        Defaults[key: DefaultsKeys.currentWordValue] = word.value
+        return word.key
     }
 
     /// получить рандомное слово для загадки
@@ -189,7 +193,7 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     
     /// Можно ли использовать бонус ЛУПА
     func isCanUseHelpSearch() -> Bool {
-        keyboardManager.isArraySearchFull(currentWord: currentWord) && valletCount >= 25
+        keyboardManager.isArraySearchFull(currentWord: currentWord) && valletCount >= Price.priseSearch
     }
     
     /// Показать три серых буквы на клавиатуре
@@ -199,7 +203,18 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     
     /// Можно ли использовать бонус БОМБА
     func isCanUseHelpBomb() -> Bool {
-        valletCount >= 25
+        valletCount >= Price.priseBoom
+    }
+    
+    /// Можно ли использовать бонус КНИГА
+    func isCanUseHelpBook() -> Bool {
+        valletCount >= Price.priseBook
+    }
+    
+    /// Можно ли использовать бонус КНИГА
+    func didCanUseHelpBook() {
+        Defaults[key: DefaultsKeys.didUseHelpBook] = true
+        minusBonusAtVallet(count: Price.priseBook)
     }
     
     /// Отнять бонусы из кошелька

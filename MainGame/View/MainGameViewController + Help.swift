@@ -84,7 +84,7 @@ extension MainGameViewController: InfoViewDelegate {
         case helpType.bomb.rawValue:
             presenter?.onUseHelpBomb()
         case helpType.book.rawValue:
-            return
+            presenter?.onUseHelpBook()
         default:
             return
         }

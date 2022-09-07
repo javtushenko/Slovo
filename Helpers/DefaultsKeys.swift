@@ -69,13 +69,23 @@ extension DefaultsKeys {
 }
 
 extension DefaultsKeys {
-    /// Массив букв из подсказки бомба
+    /// Первое ли открытие приложения
     static let isFirstOpenApp = DefaultsKey<Bool>("is_first_open_app", defaultValue: true)
+}
+
+extension DefaultsKeys {
+    /// Использован ли бонус книга
+    static let didUseHelpBook = DefaultsKey<Bool>("did_use_help_book", defaultValue: false)
 }
 
 extension DefaultsKeys {
     /// Загаданное слово
     static let currentWord = DefaultsKey<String?>("current_word")
+}
+
+extension DefaultsKeys {
+    /// Значение загаданного слова
+    static let currentWordValue = DefaultsKey<String?>("current_word_value")
 }
 
 extension DefaultsKeys {

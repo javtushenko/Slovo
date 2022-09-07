@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyUserDefaults
 
 extension MainGamePresenter {
     /// Нажат бонус ЛУПА
@@ -34,7 +35,14 @@ extension MainGamePresenter {
     
     /// Нажат бонус КНИГА
     func onTapBonusBook() {
-        view?.showInfoView(viewModel: createBonusModelBook())
+        let model = Defaults[key: DefaultsKeys.didUseHelpBook] ? createUseBookModel() : createBonusModelBook()
+        view?.showInfoView(viewModel: model)
+    }
+    
+    /// Использован бонус КНИГА
+    func onUseHelpBook() {
+        interactor?.didCanUseHelpBook()
+        onTapBonusBook()
     }
     
     // создать модель бонуса ЛУПЫ
@@ -62,6 +70,16 @@ extension MainGamePresenter {
         InfoContentViewModel(title: "📖",
                              description: "Показать значение загаданного слова из словаря",
                              titleButton: "💎90",
+                             isButtonEnable: interactor?.isCanUseHelpBomb() ?? false,
+                             mainIdentifier: helpType.book.rawValue,
+                             accessibilityInfo: "")
+    }
+    
+    // создать модель использованого бонуса КНИГИ
+    func createUseBookModel() -> InfoContentViewModel {
+        InfoContentViewModel(title: "📖",
+                             description: Defaults[key: DefaultsKeys.currentWordValue] ?? "",
+                             titleButton: "Готово",
                              isButtonEnable: false,
                              mainIdentifier: helpType.book.rawValue,
                              accessibilityInfo: "")

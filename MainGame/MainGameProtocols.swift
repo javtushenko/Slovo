@@ -42,6 +42,8 @@ protocol MainGameViewToPresenterProtocol: AnyObject {
     
     /// Нажат бонус КНИГА
     func onTapBonusBook()
+    /// Использован бонус КНИГА
+    func onUseHelpBook()
     
     /// когда нажали на туториал
     func onTapTutorial()
@@ -113,14 +115,21 @@ protocol MainGameInteractorProtocol: AnyObject {
     
     /// Показать одну оранжевую букву на клавиатуре
     func showOneOrangeLetter()
+    /// Показать три серых буквы на клавиатуре
+    func showThreeDarkGrayLetters()
+    
     /// Можно ли использовать бонус ЛУПА
     func isCanUseHelpSearch() -> Bool
     /// Можно ли использовать бонус БОМБА
-    func isCanUseHelpBomb() -> Bool 
+    func isCanUseHelpBomb() -> Bool
+    /// Можно ли использовать бонус КНИГА
+    func isCanUseHelpBook() -> Bool
+    
+    /// Можно ли использовать бонус КНИГА
+    func didCanUseHelpBook()
+    
     /// Отнять бонусы из кошелька
     func minusBonusAtVallet(count: Int)
-    /// Показать три серых буквы на клавиатуре
-    func showThreeDarkGrayLetters()
 }
 
 // MARK: Router -

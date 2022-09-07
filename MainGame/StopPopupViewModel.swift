@@ -29,7 +29,7 @@ public class StopPopupViewModel {
 
     var titleAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
-            size: 40,
+            size: Display.isFormfactorX ? 40 : 35,
             fontType: .bold,
             color: popupType == .win ? .slovoGreen : .slovoOrange,
             alignment: .center,
@@ -41,7 +41,7 @@ public class StopPopupViewModel {
 
     var subTitleAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
-            size: 40,
+            size: Display.isFormfactorX ? 38 : 30,
             fontType: .bold,
             color: .black,
             alignment: .center,

@@ -77,8 +77,15 @@ class MainGameInteractorMock: MainGameInteractorProtocol {
     func isCanUseHelpBomb() -> Bool {
         true
     }
-    /// Показать три серых буквы на клавиатуре
-    func showThreeDarkGrayLetters() {
-        
+    
+    /// Можно ли использовать бонус КНИГА
+    func isCanUseHelpBook() -> Bool {
+        true
     }
+    
+    /// Показать три серых буквы на клавиатуре
+    func showThreeDarkGrayLetters() {}
+    
+    /// Можно ли использовать бонус КНИГА
+    func didCanUseHelpBook() {}
 }
