@@ -77,6 +77,10 @@ final class MainGameViewController: UIViewController {
         presenter?.onViewDidLoad()
         view.backgroundColor = .slovoDarkBackground
     }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
 
     /// настроить вьюху с кошельком
     func setupValetView(viewModel: BonusViewModel) {

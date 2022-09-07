@@ -122,11 +122,15 @@ class KeyboardManager: KeyboardManagerProtocol {
         for letter in currentWord {
             keyboard = keyboard.replacingOccurrences(of: String(letter), with: "")
         }
+        for letter in Defaults[key: DefaultsKeys.bombLetterArray] {
+            keyboard = keyboard.replacingOccurrences(of: String(letter), with: "")
+        }
         // получаем рандомные буквы
-        let randomIndex: Int = .random(in: 0..<keyboard.count)
-        let stringIndex = String.Index.init(utf16Offset: randomIndex, in: keyboard)
         var letters = ""
         while letters.count < 3 {
+            guard keyboard.count > 3 else { return }
+            let randomIndex: Int = .random(in: 0..<keyboard.count)
+            let stringIndex = String.Index.init(utf16Offset: randomIndex, in: keyboard)
             let letter = keyboard.remove(at: stringIndex)
             if !bombHelpLetters.contains(letter),
                !letters.contains(letter) {

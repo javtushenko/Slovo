@@ -203,7 +203,16 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     
     /// Можно ли использовать бонус БОМБА
     func isCanUseHelpBomb() -> Bool {
-        valletCount >= Price.priseBoom
+        var keyboard = "йцукенгшщзфывапролджэячсмитьбюх"
+        for letter in currentWord {
+            keyboard = keyboard.replacingOccurrences(of: String(letter), with: "")
+        }
+        for letter in Defaults[key: DefaultsKeys.bombLetterArray] {
+            keyboard = keyboard.replacingOccurrences(of: String(letter), with: "")
+        }
+        let haveLetters = keyboard.count >= 3
+        let haveMoney = valletCount >= Price.priseBoom
+        return haveLetters && haveMoney
     }
     
     /// Можно ли использовать бонус КНИГА
