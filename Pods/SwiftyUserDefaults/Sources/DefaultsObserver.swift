@@ -85,7 +85,7 @@ public final class DefaultsObserver<T: DefaultsSerializable>: NSObject, Defaults
     }
 
     // swiftlint:disable:next block_based_kvo
-    public override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         guard let change = change, object != nil, keyPath == key._key else {
             return
         }

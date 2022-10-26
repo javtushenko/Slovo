@@ -8,13 +8,15 @@
 import UIKit
 
 protocol KeyboardViewControllerDelegate: AnyObject {
+    /// нажали на кнопку
     func keyboardViewController(
-        _ vc: KeyboardView,
+        _ keyboardView: KeyboardView,
         didTapKey letter: Character
     )
 }
 
 protocol KeyboardViewDatasource: AnyObject {
+    /// какой цвет у кнопки
     func boxColor(at key: Character) -> UIColor
 }
 
@@ -35,7 +37,7 @@ class KeyboardView: UIViewController {
             collectionView.register(KeyCell.self, forCellWithReuseIdentifier: KeyCell.identifier)
             return collectionView
     }()
-    
+
     // ширина ячейки клавиатуры в зависимости от устройства
     var widthKey: CGFloat {
         switch Display.typeIsLike {
@@ -61,7 +63,7 @@ class KeyboardView: UIViewController {
             return 35
         }
     }
-    
+
     // высота ячейки клавиатуры в зависимости от устройства
     var heightKey: CGFloat {
         switch Display.typeIsLike {
@@ -94,6 +96,7 @@ class KeyboardView: UIViewController {
         createKeys()
     }
 
+    // установить коллекцию
     private func setupCollectionView() {
         view.addSubview(collectionView)
 
@@ -141,12 +144,12 @@ extension KeyboardView: UICollectionViewDelegate {
 
 extension KeyboardView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: widthKey, height: heightKey)
+        CGSize(width: widthKey, height: heightKey)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(
+        UIEdgeInsets(
             top: 0,
             left: 5,
             bottom: 3,

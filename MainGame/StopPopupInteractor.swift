@@ -9,10 +9,10 @@ import Foundation
 
 final class StopPopupInteractor {
     weak var presenter: StopPopupInteractorToPresenterProtocol?
-    
+
     // сторож кошелька бонусов
     var valetStorage: ValletStorageProtocol
-    
+
     /// текущее количество бонусов
     var valletCount: Int {
         valetStorage.currentCount

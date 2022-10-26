@@ -8,10 +8,10 @@
 import UIKit
 
 /// тип игровой подсказки
-public enum helpType: String {
-    case search = "search"
-    case bomb = "bomb"
-    case book = "book"
+public enum HelpType: String {
+    case search
+    case bomb
+    case book
 }
 
 extension MainGameViewController {
@@ -47,24 +47,24 @@ extension MainGameViewController {
         )
         bonusBookView.addGestureRecognizer(touch)
     }
-    
+
     // настроить вью с информацией о бонусе
     func setupInfoView(viewModel: InfoContentViewModel) {
         let model = InfoViewModel(contentViewModel: viewModel, accessibilityInfo: "")
         infoView.delegate = self
         infoView.setup(viewModel: model)
     }
-    
+
     // обработка нажатия на бонус ЛУПА
     @objc func handleTapBonusSearch() {
         presenter?.onTapBonusSearch()
     }
-    
+
     // обработка нажатия на бонус БОМБУ
     @objc func handleTapBonusBomb() {
         presenter?.onTapBonusBomb()
     }
-    
+
     // обработка нажатия на бонус КНИГУ
     @objc func handleTapBonusBook() {
         presenter?.onTapBonusBook()
@@ -79,11 +79,11 @@ extension MainGameViewController: InfoViewDelegate {
     ) {
         infoView.isHidden = true
         switch identifier {
-        case helpType.search.rawValue:
+        case HelpType.search.rawValue:
             presenter?.onUseHelpSearch()
-        case helpType.bomb.rawValue:
+        case HelpType.bomb.rawValue:
             presenter?.onUseHelpBomb()
-        case helpType.book.rawValue:
+        case HelpType.book.rawValue:
             presenter?.onUseHelpBook()
         default:
             return

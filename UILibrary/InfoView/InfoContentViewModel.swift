@@ -29,7 +29,7 @@ public class InfoContentViewModel {
         )
         return title.styleAll(generalStyle).attributedString
     }
-    
+
     public var descriptionAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
             size: 20,
@@ -41,7 +41,7 @@ public class InfoContentViewModel {
         )
         return description.styleAll(generalStyle).attributedString
     }
-    
+
     public var titleButtonAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
             size: 20,

@@ -28,7 +28,7 @@ extension GameBoardStorage {
             return
         }
     }
-    
+
     /// Получить был ли успешный переход в хранилище
     public func isSuccessWithRow(gamingRow: Int) -> Bool {
         switch gamingRow {
@@ -48,7 +48,7 @@ extension GameBoardStorage {
             return false
         }
     }
-    
+
     /// Получить номер последней успешной строки
     public func getCurrentSuccessRow() -> Int {
         for index in 1...6 {
@@ -58,7 +58,7 @@ extension GameBoardStorage {
         }
         return 0
     }
-    
+
     // почитстить все строки в хранилище
     func clearGamingRowSuccessDefault() {
         Defaults[key: DefaultsKeys.haveSuccessRow1] = false

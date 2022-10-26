@@ -28,16 +28,16 @@ protocol OptionalTypeCheck {
 
 public protocol OptionalType {
     associatedtype Wrapped
-    
+
     static var __swifty_empty: Self { get }
 }
 
 extension Optional: OptionalType, OptionalTypeCheck {
     public static var __swifty_empty: Optional {
-        return nil
+        nil
     }
 
     var isNil: Bool {
-        return self == nil
+        self == nil
     }
 }

@@ -4,11 +4,12 @@
 //
 //  Created by Николай Явтушенко on 29.08.2022.
 //
+// //  swiftlint:disable bool_var_naming
 
 import UIKit
 
 class MainGameInteractorMock: MainGameInteractorProtocol {
-    
+
     /// Тукущее загаданное слово
     var currentWord: String = "слово"
     /// текущее количество бонусов
@@ -16,76 +17,77 @@ class MainGameInteractorMock: MainGameInteractorProtocol {
     /// текущее количество серии побед
     var winStreakCount: Int = 0
     /// текущие буквы на игровой доске
-    var gammingLetters: [[Key?]] = [[nil]]
+    var gammingLetters: [[GameKey?]] = [[nil]]
     /// Все слова спарсеные из документа
     var words: [String]? = ["слово", "олово", "арбуз"]
-    
+
     /* ДЛЯ ТЕСТОВ */
-    var didAddMoneyToVallet: Bool = false
-    
+    var hasAddMoneyToVallet: Bool = false
+
     /// запуск
     func start() {}
     /// Начать новую игру
     func reset() {}
     /// получить рандомное слово для загадки
-    func getRandomWords() -> [String]  {[]}
-    
+    func getRandomWords() -> [String] {[]}
+
     /// Получить цвет для ячейки клавиатуры
     func getKeyColor(key: Character) -> UIColor { .red }
+
     /// Добавить бонусы после победы с попытки
     func addWinBonus(row: Int) {
-        didAddMoneyToVallet = true
+        hasAddMoneyToVallet = true
     }
     /// Была ли победа на данной строке
-    func isSuccessWithRow(gamingRow: Int) -> Bool  { true }
-    
+    func isSuccessWithRow(gamingRow: Int) -> Bool { true }
+
     /// сохранить букву на доску
-    func saveLetter(gamingRow: Int, positionLetter: Int, character: Character)  {}
+    func saveLetter(gamingRow: Int, positionLetter: Int, character: Character) {}
     /// удалить букву с доски
-    func removeLetter(gamingRow: Int, positionLetter: Int)  {}
+    func removeLetter(gamingRow: Int, positionLetter: Int) {}
     /// сохранить возможность записи на строку
-    func saveIsCanGoNext(gamingRow: Int)  {}
+    func saveIsCanGoNext(gamingRow: Int) {}
     /// сохранить успешный переход на строке
-    func saveSuccessGoNet(gamingRow: Int)  {}
+    func saveSuccessGoNet(gamingRow: Int) {}
     /// есть ли возможность записи на строку
-    func isCanGoNext(gamingRow: Int) -> Bool  { true }
+    func isCanGoNext(gamingRow: Int) -> Bool { true }
     /// был ли успешный переход на строке
-    func isSuccessGoNet(gamingRow: Int) -> Bool  { true }
+    func isSuccessGoNet(gamingRow: Int) -> Bool { true }
     /// сохранить возможность удаления на строке
-    func saveIsCanDelete(gamingRow: Int)  { }
+    func saveIsCanDelete(gamingRow: Int) { }
     /// есть ли возможность записи на строку
-    func IsCanDeleteWithRow(gamingRow: Int) -> Bool  { true }
+    func isCanDeleteWithRow(gamingRow: Int) -> Bool { true }
     /// изменить цвет ячейки
-    func changeColor(at indexPath: IndexPath, color: UIColor)  {}
-    
+    func changeColor(at indexPath: IndexPath, color: UIColor) {}
+
     /// добавить одну победу в серию
     func addWinStreak() {}
     /// сбросить серию побед
     func resetWinStreak() {}
     /// Сколько бонусов добавлено за победу
     func getBonusCount(row: Int) -> Int {0}
-    
+
     /// Показать одну оранжевую букву на клавиатуре
     func showOneOrangeLetter() {}
     /// Можно ли использовать бонус ЛУПА
     func isCanUseHelpSearch() -> Bool { true }
-    
+
     /// Отнять бонусы из кошелька
     func minusBonusAtVallet(count: Int) {}
-    
+
     /// Можно ли использовать бонус БОМБА
     func isCanUseHelpBomb() -> Bool {
         true
     }
-    
+
     /// Можно ли использовать бонус КНИГА
     func isCanUseHelpBook() -> Bool {
         true
     }
-    
+
     /// Показать три серых буквы на клавиатуре
     func showThreeDarkGrayLetters() {}
-    
+
     /// Можно ли использовать бонус КНИГА
     func didCanUseHelpBook() {}
 }

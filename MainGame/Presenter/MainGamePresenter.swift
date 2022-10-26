@@ -15,7 +15,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
 
     // загаданное слово
     var answer: String
-    
+
     // повторное открытие
     var isReOpenApp: Bool = false
 
@@ -23,7 +23,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         self.view = view
         self.answer = interactor?.currentWord ?? "слово"
     }
-    
+
     /// Вью загружено
     func onViewDidLoad() {
         interactor?.start()
@@ -36,7 +36,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
         handleFirstOpenApp()
         handleOpenAppWithData()
     }
-    
+
     // обработка первого октрытия
     func handleFirstOpenApp() {
         if Defaults[key: DefaultsKeys.isFirstOpenApp] {
@@ -46,7 +46,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             }
         }
     }
-    
+
     // получить модель кошелька
     func getModelVallet() -> BonusViewModel {
         var valetString: String {
@@ -54,19 +54,19 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
                 print("❌MainGamePresenter: Кошелек без значения")
                 return "0"
             }
-            if valletCount >= 10000 {
-                return "\(valletCount / 1000)К"
+            if valletCount >= 10_000 {
+                return "\(valletCount / 1_000)К"
             }
             return "💎" + String(valletCount)
         }
-        return BonusViewModel.init(backgroundColor: .slovoOrange, title: valetString)
+        return BonusViewModel(backgroundColor: .slovoOrange, title: valetString)
     }
-    
+
     // получить модель кошелька
     func getWinStreakModel() -> BonusViewModel {
         BonusViewModel(backgroundColor: .slovoGreen, title: "🔥" + String(interactor?.winStreakCount ?? 0))
     }
-    
+
     // при открытии приложения с данными
     func handleOpenAppWithData() {
         guard let interactor = interactor else {
@@ -83,9 +83,9 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
             self.isReOpenApp = false
         }
     }
-    
+
     // можно ли переходить к следующей секции
-    private func isCanGoNextSectionGet(gamingCell: Int, gamingRow: Int, allLetters: [[Key?]]) -> Bool {
+    private func isCanGoNextSectionGet(gamingCell: Int, gamingRow: Int, allLetters: [[GameKey?]]) -> Bool {
         guard let words = interactor?.getRandomWords() else {
             print("❌ Массив слов не загрузился в фильтр ввода")
             return false
@@ -131,7 +131,7 @@ final class MainGamePresenter: MainGameViewToPresenterProtocol {
 extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
     /// обработка поражения
     func onDefeat() {
-        router?.openStopPopup(typePopup: .defeat,
+        router?.openStopPopup(typePopup: .stopDefeat,
                               word: "",
                               addValletCount: "",
                               delegate: self)
@@ -142,7 +142,7 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
     /// обработка победы
     func onWin(currentRow: Int) {
         let bonusCount = String(interactor?.getBonusCount(row: currentRow - 1) ?? 0)
-        router?.openStopPopup(typePopup: .win,
+        router?.openStopPopup(typePopup: .stopWin,
                               word: "",
                               addValletCount: bonusCount,
                               delegate: self)
@@ -154,20 +154,20 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
         view?.setupWinStreakView(viewModel: getWinStreakModel())
         view?.setupValetView(viewModel: getModelVallet())
     }
-    
+
     /// обработка неверного слова
     func onWrongWord(word: String) {
-        router?.openStopPopup(typePopup: .wrong,
+        router?.openStopPopup(typePopup: .stopWrong,
                               word: word,
                               addValletCount: "",
                               delegate: self)
     }
-    
+
     /// когда значение кошелек обновился
     func onUpdateValletCount() {
         view?.setupValetView(viewModel: getModelVallet())
     }
-    
+
     /// когда нажали на туториал
     func onTapTutorial() {
         router?.openTutorialPopup()
@@ -176,13 +176,13 @@ extension MainGamePresenter: MainGameInteractorToPresenterProtocol {
 
 extension MainGamePresenter: KeyboardViewControllerDelegate {
     /// Какую кнопку нажали на клавиаутере
-    func keyboardViewController(_ vc: KeyboardView, didTapKey letter: Character) {
+    func keyboardViewController(_ keyboardView: KeyboardView, didTapKey letter: Character) {
         guard let interactor = interactor else {
             print("❌MainGamePresenter: нет интерактора")
             return
         }
         let gamingLetters = interactor.gammingLetters
-        var stop = false
+        var isNeedStop = false
         // перебираем строки игрового поля
         for gamingRow in 0...6 {
             guard interactor.isCanGoNext(gamingRow: gamingRow + 1)
@@ -203,19 +203,19 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
                     }
                     view?.boardVC.isCanChangeColor = false
                     interactor.saveLetter(gamingRow: gamingRow, positionLetter: gamingCell, character: letter)
-                    stop = true
+                    isNeedStop = true
                     break
                 }
             }
-            if stop {
+            if isNeedStop {
                 break
             }
         }
         view?.updateGuesses()
     }
-    
+
     // обработка нажатого enter
-    func handlePressEnter(gamingCell: Int, gamingRow: Int, allLetters: [[Key?]]) {
+    func handlePressEnter(gamingCell: Int, gamingRow: Int, allLetters: [[GameKey?]]) {
         guard let interactor = interactor,
             isCanGoNextSectionGet(gamingCell: gamingCell, gamingRow: gamingRow, allLetters: allLetters) else { return }
         DispatchQueue.main.async { [weak self] in
@@ -226,7 +226,7 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
             self?.view?.updateKeyboard()
         }
     }
-    
+
     // обработка нажатого backspace
     func handlePressBackspace(gamingRow: Int, gamingCell: Int) {
         guard let interactor = interactor else {
@@ -234,7 +234,7 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
             return
         }
         if gamingRow-1 != -1,
-           interactor.IsCanDeleteWithRow(gamingRow: gamingRow),
+           interactor.isCanDeleteWithRow(gamingRow: gamingRow),
            gamingCell-1 == -1 {
             interactor.removeLetter(gamingRow: gamingRow-1, positionLetter: 4)
             self.view?.updateGuesses()
@@ -248,7 +248,7 @@ extension MainGamePresenter: KeyboardViewControllerDelegate {
 extension MainGamePresenter: BoardViewControllerDatasource {
 
     /// получить текущий массив введенных букв
-    func getGuesses() -> [[Key?]] {
+    func getGuesses() -> [[GameKey?]] {
         guard let interactor = interactor else {
             print("❌MainGamePresenter: нет интерактора")
             return [[nil]]
@@ -271,18 +271,18 @@ extension MainGamePresenter: BoardViewControllerDatasource {
             return
         }
 
-        let indexedAnswer = Array(answer)
+        let indexedAnswers = Array(answer)
 
         // если нет в слове тогда СЕРЫЙ
         guard let letter = guesses[indexPath.section][indexPath.row]?.character,
-              indexedAnswer.contains(letter)
+              indexedAnswers.contains(letter)
         else {
             interactor.changeColor(at: indexPath, color: .slovoGray)
             return
         }
 
         // если там где надо тогда ЗЕЛЕНЫЙ
-        if indexedAnswer[indexPath.row] == letter {
+        if indexedAnswers[indexPath.row] == letter {
             interactor.changeColor(at: indexPath, color: .slovoGreen)
             return
         }
@@ -304,19 +304,19 @@ extension MainGamePresenter: StopPopupViewDelegate {
     /// Popup закрылся
     func popupHidden(_ popupController: PopupViewController, popupType: StopType) {
         switch popupType {
-        case .win:
+        case .stopWin:
             // закрылся победный попап
             onNewGame()
             return
-        case .defeat:
+        case .stopDefeat:
             onNewGame()
             return
-        case .wrong:
+        case .stopWrong:
             // закрылся попап ошибки слова
             return
         }
     }
-    
+
     /// начать новую игру
     func onNewGame() {
         interactor?.reset()

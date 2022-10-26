@@ -29,8 +29,7 @@
 		136087CD28C7CDA500B117EB /* TutorialInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C728C7CDA500B117EB /* TutorialInteractor.swift */; };
 		136087CE28C7CDA500B117EB /* TutorialModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136087C828C7CDA500B117EB /* TutorialModuleConfigurator.swift */; };
 		13747FBA28BD164E005888B7 /* GameBoardStorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */; };
-		13747FCA28BD2C6A005888B7 /* ValletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FBB28BD2C51005888B7 /* ValletTests.swift */; };
-		137B249D28719628003618B2 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B249C28719628003618B2 /* Key.swift */; };
+		137B249D28719628003618B2 /* GameKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B249C28719628003618B2 /* GameKey.swift */; };
 		137B24A428719E00003618B2 /* GameBoardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137B24A328719E00003618B2 /* GameBoardStorage.swift */; };
 		1386CCBD28A662B000251C9C /* UIView + Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCBC28A662B000251C9C /* UIView + Helpers.swift */; };
 		1386CCC028A662E300251C9C /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCBF28A662E300251C9C /* Display.swift */; };
@@ -44,6 +43,9 @@
 		1386CCD528A7925500251C9C /* UIFont + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCD428A7925500251C9C /* UIFont + Extension.swift */; };
 		1386CCDE28A7E88000251C9C /* BonusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCDD28A7E88000251C9C /* BonusView.swift */; };
 		1386CCE128A7E91F00251C9C /* BonusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1386CCE028A7E91F00251C9C /* BonusViewModel.swift */; };
+		138733FE290594EF0094B3B0 /* Linter.h in Headers */ = {isa = PBXBuildFile; fileRef = 138733FD290594EF0094B3B0 /* Linter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13873401290594EF0094B3B0 /* Linter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138733FB290594EF0094B3B0 /* Linter.framework */; };
+		13873402290594EF0094B3B0 /* Linter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 138733FB290594EF0094B3B0 /* Linter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		13ADEA33285F469900C6AA23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA32285F469900C6AA23 /* AppDelegate.swift */; };
 		13ADEA35285F469900C6AA23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13ADEA34285F469900C6AA23 /* SceneDelegate.swift */; };
 		13ADEA3C285F469A00C6AA23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13ADEA3B285F469A00C6AA23 /* Assets.xcassets */; };
@@ -62,6 +64,8 @@
 		13D718DD28638E88009ACC03 /* MainGameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D728638E88009ACC03 /* MainGameProtocols.swift */; };
 		13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D828638E88009ACC03 /* MainGameInteractor.swift */; };
 		13D718DF28638E88009ACC03 /* MainGameModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */; };
+		13D7DD7828DB7B330046DB0C /* ValletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13747FBB28BD2C51005888B7 /* ValletTests.swift */; };
+		13D7DD7C28DB7BBA0046DB0C /* HelpsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D7DD7B28DB7BBA0046DB0C /* HelpsTests.swift */; };
 		13E55F3328AE9DE400E510DE /* InfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3228AE9DE400E510DE /* InfoViewModel.swift */; };
 		13E55F3528AE9E0F00E510DE /* InfoContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3428AE9E0F00E510DE /* InfoContentViewModel.swift */; };
 		13E55F3928AE9F3500E510DE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E55F3828AE9F3500E510DE /* InfoView.swift */; };
@@ -77,6 +81,13 @@
 			remoteGlobalIDString = 13ADEA2E285F469900C6AA23;
 			remoteInfo = Slovo;
 		};
+		138733FF290594EF0094B3B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13ADEA27285F469900C6AA23 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 138733FA290594EF0094B3B0;
+			remoteInfo = Linter;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -86,6 +97,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				13873402290594EF0094B3B0 /* Linter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,7 +129,7 @@
 		13747FB928BD164E005888B7 /* GameBoardStorageProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorageProtocol.swift; sourceTree = "<group>"; };
 		13747FBB28BD2C51005888B7 /* ValletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValletTests.swift; sourceTree = "<group>"; };
 		13747FC128BD2C63005888B7 /* SlovoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlovoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		137B249C28719628003618B2 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		137B249C28719628003618B2 /* GameKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameKey.swift; sourceTree = "<group>"; };
 		137B24A328719E00003618B2 /* GameBoardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardStorage.swift; sourceTree = "<group>"; };
 		1386CCBC28A662B000251C9C /* UIView + Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Helpers.swift"; sourceTree = "<group>"; };
 		1386CCBF28A662E300251C9C /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
@@ -131,6 +143,8 @@
 		1386CCD428A7925500251C9C /* UIFont + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont + Extension.swift"; sourceTree = "<group>"; };
 		1386CCDD28A7E88000251C9C /* BonusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusView.swift; sourceTree = "<group>"; };
 		1386CCE028A7E91F00251C9C /* BonusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusViewModel.swift; sourceTree = "<group>"; };
+		138733FB290594EF0094B3B0 /* Linter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Linter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		138733FD290594EF0094B3B0 /* Linter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Linter.h; sourceTree = "<group>"; };
 		13ADEA2F285F469900C6AA23 /* Slovo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slovo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13ADEA32285F469900C6AA23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13ADEA34285F469900C6AA23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +165,7 @@
 		13D718D728638E88009ACC03 /* MainGameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameProtocols.swift; sourceTree = "<group>"; };
 		13D718D828638E88009ACC03 /* MainGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameInteractor.swift; sourceTree = "<group>"; };
 		13D718D928638E88009ACC03 /* MainGameModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameModuleConfigurator.swift; sourceTree = "<group>"; };
+		13D7DD7B28DB7BBA0046DB0C /* HelpsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpsTests.swift; sourceTree = "<group>"; };
 		13E55F3228AE9DE400E510DE /* InfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewModel.swift; sourceTree = "<group>"; };
 		13E55F3428AE9E0F00E510DE /* InfoContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoContentViewModel.swift; sourceTree = "<group>"; };
 		13E55F3828AE9F3500E510DE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
@@ -168,10 +183,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		138733F8290594EF0094B3B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13ADEA2C285F469900C6AA23 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13873401290594EF0094B3B0 /* Linter.framework in Frameworks */,
 				46FA1979FCA04A69D69FC8E2 /* Pods_Slovo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,7 +311,7 @@
 		137B249B287195D6003618B2 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				137B249C28719628003618B2 /* Key.swift */,
+				137B249C28719628003618B2 /* GameKey.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -304,8 +327,9 @@
 		137FC000286A01B30004FDDE /* MainGameTests */ = {
 			isa = PBXGroup;
 			children = (
+				13747FBB28BD2C51005888B7 /* ValletTests.swift */,
+				13D7DD7B28DB7BBA0046DB0C /* HelpsTests.swift */,
 				13BAF9FA28BD2D6200819CD6 /* Mocks */,
-				13BAF9FD28BD2E4E00819CD6 /* New Group */,
 			);
 			path = MainGameTests;
 			sourceTree = "<group>";
@@ -330,9 +354,18 @@
 			path = BonusView;
 			sourceTree = "<group>";
 		};
+		138733FC290594EF0094B3B0 /* Linter */ = {
+			isa = PBXGroup;
+			children = (
+				138733FD290594EF0094B3B0 /* Linter.h */,
+			);
+			path = Linter;
+			sourceTree = "<group>";
+		};
 		13ADEA26285F469900C6AA23 = {
 			isa = PBXGroup;
 			children = (
+				138733FC290594EF0094B3B0 /* Linter */,
 				13ADEA30285F469900C6AA23 /* Products */,
 				D4F99FAA7C6B8649C36773B2 /* Pods */,
 				C3BD2E3E18CB94042D153AC0 /* Frameworks */,
@@ -351,6 +384,7 @@
 			children = (
 				13ADEA2F285F469900C6AA23 /* Slovo.app */,
 				13747FC128BD2C63005888B7 /* SlovoTests.xctest */,
+				138733FB290594EF0094B3B0 /* Linter.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -391,14 +425,6 @@
 				13BAFA0028BD321D00819CD6 /* ValletStorageMock.swift */,
 			);
 			path = Mocks;
-			sourceTree = "<group>";
-		};
-		13BAF9FD28BD2E4E00819CD6 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				13747FBB28BD2C51005888B7 /* ValletTests.swift */,
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		13D718E128638F18009ACC03 /* MainGame */ = {
@@ -477,6 +503,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		138733F6290594EF0094B3B0 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				138733FE290594EF0094B3B0 /* Linter.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		13747FC028BD2C63005888B7 /* SlovoTests */ = {
 			isa = PBXNativeTarget;
@@ -496,6 +533,25 @@
 			productReference = 13747FC128BD2C63005888B7 /* SlovoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		138733FA290594EF0094B3B0 /* Linter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13873405290594EF0094B3B0 /* Build configuration list for PBXNativeTarget "Linter" */;
+			buildPhases = (
+				138733F6290594EF0094B3B0 /* Headers */,
+				138733F7290594EF0094B3B0 /* Sources */,
+				138733F8290594EF0094B3B0 /* Frameworks */,
+				138733F9290594EF0094B3B0 /* Resources */,
+				13873406290594FE0094B3B0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Linter;
+			productName = Linter;
+			productReference = 138733FB290594EF0094B3B0 /* Linter.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		13ADEA2E285F469900C6AA23 /* Slovo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13ADEA43285F469A00C6AA23 /* Build configuration list for PBXNativeTarget "Slovo" */;
@@ -510,6 +566,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				13873400290594EF0094B3B0 /* PBXTargetDependency */,
 			);
 			name = Slovo;
 			productName = Slovo;
@@ -530,6 +587,9 @@
 						CreatedOnToolsVersion = 13.4.1;
 						TestTargetID = 13ADEA2E285F469900C6AA23;
 					};
+					138733FA290594EF0094B3B0 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
 					13ADEA2E285F469900C6AA23 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -549,12 +609,20 @@
 			targets = (
 				13ADEA2E285F469900C6AA23 /* Slovo */,
 				13747FC028BD2C63005888B7 /* SlovoTests */,
+				138733FA290594EF0094B3B0 /* Linter */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		13747FBF28BD2C63005888B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		138733F9290594EF0094B3B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -572,6 +640,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		13873406290594FE0094B3B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint autocorrect\n  swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		36B87FD81CE3677D73C00021 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -618,7 +703,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13747FCA28BD2C6A005888B7 /* ValletTests.swift in Sources */,
+				13D7DD7C28DB7BBA0046DB0C /* HelpsTests.swift in Sources */,
+				13D7DD7828DB7B330046DB0C /* ValletTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		138733F7290594EF0094B3B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -661,7 +754,7 @@
 				13ADEA35285F469900C6AA23 /* SceneDelegate.swift in Sources */,
 				13E55F3328AE9DE400E510DE /* InfoViewModel.swift in Sources */,
 				1306312B286B480E00CD2607 /* UIColor + Extension.swift in Sources */,
-				137B249D28719628003618B2 /* Key.swift in Sources */,
+				137B249D28719628003618B2 /* GameKey.swift in Sources */,
 				1386CCC028A662E300251C9C /* Display.swift in Sources */,
 				13D718DE28638E88009ACC03 /* MainGameInteractor.swift in Sources */,
 				13BAF9FF28BD303E00819CD6 /* GameBoardStorageMock.swift in Sources */,
@@ -693,6 +786,11 @@
 			isa = PBXTargetDependency;
 			target = 13ADEA2E285F469900C6AA23 /* Slovo */;
 			targetProxy = 13747FC528BD2C63005888B7 /* PBXContainerItemProxy */;
+		};
+		13873400290594EF0094B3B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 138733FA290594EF0094B3B0 /* Linter */;
+			targetProxy = 138733FF290594EF0094B3B0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -732,6 +830,70 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slovo.app/Slovo";
+			};
+			name = Release;
+		};
+		13873403290594EF0094B3B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9H42AN9X2T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JNStudio.Linter;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		13873404290594EF0094B3B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 9H42AN9X2T;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = JNStudio.Linter;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -858,11 +1020,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 9H42AN9X2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Config/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Слово";
+				INFOPLIST_KEY_CFBundleDisplayName = "Из 5 букв";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
@@ -873,7 +1035,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yavtushenko.slovo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -889,11 +1051,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 9H42AN9X2T;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Config/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Слово";
+				INFOPLIST_KEY_CFBundleDisplayName = "Из 5 букв";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIStatusBarHidden = NO;
@@ -904,7 +1066,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.yavtushenko.slovo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -921,6 +1083,15 @@
 			buildConfigurations = (
 				13747FC828BD2C63005888B7 /* Debug */,
 				13747FC928BD2C63005888B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13873405290594EF0094B3B0 /* Build configuration list for PBXNativeTarget "Linter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13873403290594EF0094B3B0 /* Debug */,
+				13873404290594EF0094B3B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

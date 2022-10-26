@@ -38,6 +38,7 @@ class KeyCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // установка констрейнтов
     private func setupConstraint() {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -54,6 +55,7 @@ class KeyCell: UICollectionViewCell {
         label.text = nil
     }
 
+    // конфигурируем вьюху
     func configure(with letter: Character) {
         label.text = String(letter).uppercased()
         label.isHidden = false

@@ -10,13 +10,13 @@ import UIKit
 final class TutorialViewController: UIViewController {
 	var presenter: TutorialViewToPresenterProtocol?
     weak var popup: PopupViewController?
-    
+
     // Высота попапа
     private var popupHeight: CGFloat = Display.isFormfactorX ? 700 : 500
 
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
-    
+
     let mainView: UIPageViewController = {
         TutorialPageController()
     }()
@@ -38,7 +38,7 @@ extension TutorialViewController {
     func createViewHierarchyIfNeeded() {
         guard !isViewHieararchyCreated else { return }
         isViewHieararchyCreated = true
-        
+
         addChild(mainView)
         mainView.didMove(toParent: self)
         view.addSubview(mainView.view)
@@ -48,7 +48,7 @@ extension TutorialViewController {
     func setupConstrainstsIfNeeded() {
         guard !isConstraintsInstalled else { return }
         isConstraintsInstalled = true
-        
+
         mainView.view.autoPinEdgesToSuperviewEdges()
     }
 }
@@ -56,6 +56,6 @@ extension TutorialViewController {
 extension TutorialViewController: PopupViewControllerDelegate {
     /// Высота попапа
     func getContentHeightForPopupController(_ popupController: PopupViewController) -> CGFloat {
-        return popupHeight
+        popupHeight
     }
 }

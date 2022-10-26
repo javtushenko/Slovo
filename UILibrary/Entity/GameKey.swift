@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public struct Key {
+public struct GameKey {
     var character: Character
     var backgroundColor: UIColor
 

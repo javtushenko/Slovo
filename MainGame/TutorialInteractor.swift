@@ -9,7 +9,7 @@ import Foundation
 
 final class TutorialInteractor {
     weak var presenter: TutorialInteractorToPresenterProtocol?
-    
+
     init(presenter: TutorialInteractorToPresenterProtocol) {
         self.presenter = presenter
     }

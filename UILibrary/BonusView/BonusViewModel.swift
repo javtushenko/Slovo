@@ -20,7 +20,7 @@ public class BonusViewModel {
         self.title = title
         self.titleColor = titleColor
     }
-    
+
     var titleAttributedText: NSAttributedString {
         let generalStyle = Style.mainStyle(
             size: Display.isFormfactorX ? 35 : 15,

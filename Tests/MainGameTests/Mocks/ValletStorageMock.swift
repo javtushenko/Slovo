@@ -10,13 +10,13 @@ import Foundation
 class ValletStorageMock: ValletStorageProtocol {
     /// текущее значение кошелька
     var currentCount: Int = 0
-    
+
     /// добавить значение в кошелек
     func addCountVallet(count: Int) {}
-    
+
     /// очистить кошелек
     func resetCountVallet() {}
-    
+
     /// вычесть значение из кошелька
     func minusCountVallet(count: Int) {}
 }

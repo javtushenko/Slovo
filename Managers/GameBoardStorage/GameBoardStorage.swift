@@ -12,13 +12,13 @@ import UIKit
 struct GameBoardStorage: GameBoardStorageProtocol {
     static let shared: GameBoardStorageProtocol = GameBoardStorage()
     private init() {}
-    
+
     // двумерный массив с введенными строками
-    var letters: [[Key?]] = Array(
+    var letters: [[GameKey?]] = Array(
         repeating: Array(repeating: nil, count: 5),
         count: 7
     )
-    
+
     // старт
     public mutating func start() {
         if getLetters()[0][0]?.character == nil {
@@ -27,14 +27,14 @@ struct GameBoardStorage: GameBoardStorageProtocol {
     }
 
     /// получить массив букв
-    public func getLetters() -> [[Key?]] {
+    public func getLetters() -> [[GameKey?]] {
        letters
     }
 
     /// изменить цвет буквы
     public mutating func chageColor(at indexPath: IndexPath, color: UIColor) {
         let character = letters[indexPath.section][indexPath.row]?.character
-        let key: Key = .init(character: character ?? " ", backgroundColor: color)
+        let key: GameKey = .init(character: character ?? " ", backgroundColor: color)
         letters[indexPath.section].remove(at: indexPath.row)
         letters[indexPath.section].insert(key, at: indexPath.row)
     }
@@ -44,7 +44,7 @@ struct GameBoardStorage: GameBoardStorageProtocol {
         guard positionLetter != -1 else {
             return
         }
-        let key: Key = .init(character: " ", backgroundColor: .slovoGray)
+        let key: GameKey = .init(character: " ", backgroundColor: .slovoGray)
         letters[gamingRow].remove(at: positionLetter)
         letters[gamingRow].insert(key, at: positionLetter)
         removeLetterDefaults(gamingRow: gamingRow, positionLetter: positionLetter)
@@ -53,13 +53,13 @@ struct GameBoardStorage: GameBoardStorageProtocol {
 
     /// записать букву
     public mutating func saveLetter(gamingRow: Int, positionLetter: Int, character: Character) {
-        let key: Key = .init(character: character, backgroundColor: .slovoGray)
+        let key: GameKey = .init(character: character, backgroundColor: .slovoGray)
         letters[gamingRow].remove(at: positionLetter)
         letters[gamingRow].insert(key, at: positionLetter)
         removeLetterDefaults(gamingRow: gamingRow, positionLetter: positionLetter)
         saveLetterDefaults(gamingRow: gamingRow, positionLetter: positionLetter, character: character)
     }
-    
+
     // почистить все строки в переменной
     mutating func clearGamingRows() {
         letters.removeAll()

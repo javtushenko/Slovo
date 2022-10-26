@@ -4,6 +4,7 @@
 //
 //  Created by Николай Явтушенко on 19.06.2022.
 //
+//  swiftlint:disable func_comment
 
 import UIKit
 

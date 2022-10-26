@@ -13,12 +13,12 @@ class TutorialPageController: UIPageViewController {
     let images: [UIImage?] = [UIImage(named: "tutorial_1"),
                               UIImage(named: "tutorial_2"),
                               UIImage(named: "tutorial_3")]
-    
+
     // количество контента
     var contentCount: Int {
         images.count
     }
-    
+
     init() {
         super.init(
             transitionStyle: .scroll,
@@ -30,16 +30,17 @@ class TutorialPageController: UIPageViewController {
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .slovoDarkBackground
         dataSource = self
-        if let contentViewController = showViewControllerAtIndex(0){
+        if let contentViewController = showViewControllerAtIndex(0) {
             setViewControllers([contentViewController], direction: .forward, animated: true, completion: nil)
         }
     }
-    
+
+    // вернет вьюконтроллер по индексу
     func showViewControllerAtIndex(_ index: Int) -> ContentTutorialView? {
         guard index >= 0, index < contentCount else { return nil }
         let contentViewController = ContentTutorialView()
@@ -51,16 +52,18 @@ class TutorialPageController: UIPageViewController {
 }
 
 extension TutorialPageController: UIPageViewControllerDataSource {
+    // если листнули назад, вернет контроллер
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        var pageNumber = (viewController as! ContentTutorialView).currentPage
+        var pageNumber = (viewController as? ContentTutorialView)?.currentPage ?? 0
         pageNumber -= 1
         return showViewControllerAtIndex(pageNumber)
     }
-    
+
+    // если листнули назад, вернет контроллер
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        var pageNumber = (viewController as! ContentTutorialView).currentPage
+        var pageNumber = (viewController as? ContentTutorialView)?.currentPage ?? 0
         pageNumber += 1
         return showViewControllerAtIndex(pageNumber)
     }

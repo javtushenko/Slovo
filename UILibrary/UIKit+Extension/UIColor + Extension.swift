@@ -24,7 +24,7 @@ public extension UIColor {
 
     /// белый
     static let slovoWhite: UIColor = .init(hex: "FFFFFF")
-    
+
     /// темно-серый
     static let slovoDark: UIColor = .init(hex: "928F8F")
 

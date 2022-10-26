@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class DIContainer {
+public final class DIContainer {
     static let shared = DIContainer()
     private init() {}
 
@@ -15,7 +15,7 @@ final public class DIContainer {
     var keyboardManager: KeyboardManagerProtocol {
         KeyboardManager.shared
     }
-    
+
     /// менеджер кошелька бонусов
     var valletStorage: ValletStorageProtocol {
         ValletStorage.shared
@@ -25,12 +25,12 @@ final public class DIContainer {
     var wordsLoadService: WordsLoadServiceProtocol {
         WordsLoadService.shared
     }
-    
+
     /// сторож кошелька
     var gameBoardStorage: GameBoardStorageProtocol {
         GameBoardStorage.shared
     }
-    
+
     /// сторож серии побед
     var winStreakStorage: WinStreakStorageProtocol {
         WinStreakStorage.shared

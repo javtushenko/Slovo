@@ -30,29 +30,29 @@ final class StopPopupPresenter {
     // создать модель попапа успеха
     func getViewModel(type: StopType) -> StopPopupViewModel {
         switch type {
-        case .win:
+        case .stopWin:
             return StopPopupViewModel(
                 title: "ПОБЕДА! 🥳",
                 subtitle: "ПОЛУЧЕНО 💎\(addValletCount)",
                 titleButton: "НОВАЯ ИГРА",
                 popupHeight: 215,
-                popupType: .win
+                popupType: .stopWin
             )
-        case .defeat:
+        case .stopDefeat:
             return StopPopupViewModel(
                 title: "УВЫ, КОНЕЦ.. 🥺",
                 subtitle: "ПОВТОРИМ?",
                 titleButton: "НОВАЯ ИГРА",
                 popupHeight: 215,
-                popupType: .defeat
+                popupType: .stopDefeat
             )
-        case .wrong:
+        case .stopWrong:
             return StopPopupViewModel(
                 title: "МЫ НЕ ЗНАЕМ",
                 subtitle: word.uppercased(),
                 titleButton: "ПОДЕЛИТЬСЯ",
                 popupHeight: 215,
-                popupType: .wrong
+                popupType: .stopWrong
             )
         }
     }

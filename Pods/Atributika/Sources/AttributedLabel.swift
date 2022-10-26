@@ -10,7 +10,7 @@ import UIKit
 
 @IBDesignable open class AttributedLabel: UIView {
 
-    open override func prepareForInterfaceBuilder() {
+    override open func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
         let gray = Style("gray").foregroundColor(.gray)
         attributedText = "<gray>Attributed</gray>Label"
@@ -44,13 +44,13 @@ import UIKit
             state.isEnabled = newValue
         }
         get {
-            return state.isEnabled
+            state.isEnabled
         }
     }
 
     @IBInspectable open var isSelectable: Bool {
         get {
-            return textView.isUserInteractionEnabled && textView.isSelectable
+            textView.isUserInteractionEnabled && textView.isSelectable
         }
         set {
             textView.isSelectable = newValue
@@ -64,24 +64,24 @@ import UIKit
             setNeedsLayout()
         }
         get {
-            return state.attributedText
+            state.attributedText
         }
     }
 
     @IBInspectable open var numberOfLines: Int {
         set { textView.textContainer.maximumNumberOfLines = newValue }
-        get { return textView.textContainer.maximumNumberOfLines }
+        get { textView.textContainer.maximumNumberOfLines }
     }
 
     @IBInspectable open var lineBreakMode: NSLineBreakMode {
         set { textView.textContainer.lineBreakMode = newValue }
-        get { return textView.textContainer.lineBreakMode }
+        get { textView.textContainer.lineBreakMode }
     }
 
     @available(iOS 10.0, *)
     @IBInspectable open var adjustsFontForContentSizeCategory: Bool {
         set { textView.adjustsFontForContentSizeCategory = newValue }
-        get { return textView.adjustsFontForContentSizeCategory }
+        get { textView.adjustsFontForContentSizeCategory }
     }
 
     @IBInspectable open var font: UIFont = .preferredFont(forTextStyle: .body) {
@@ -127,7 +127,7 @@ import UIKit
     }
 
     // MARK: - init
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
@@ -160,7 +160,7 @@ import UIKit
     }
 
     // MARK: - overrides
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
 
         detectionAreaButtons.forEach {
@@ -182,16 +182,16 @@ import UIKit
         }
     }
 
-    open override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return textView.sizeThatFits(size)
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        textView.sizeThatFits(size)
     }
 
-    open override var forFirstBaselineLayout: UIView {
-        return textView
+    override open var forFirstBaselineLayout: UIView {
+        textView
     }
 
-    open override var forLastBaselineLayout: UIView {
-        return textView
+    override open var forLastBaselineLayout: UIView {
+        textView
     }
 
     // MARK: - DetectionAreaButton

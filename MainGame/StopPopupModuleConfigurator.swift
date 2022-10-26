@@ -30,7 +30,7 @@ final class StopPopupModuleConfigurator {
 
         view.presenter = presenter
         view.delegate = delegate
-        
+
         presenter.interactor = interactor
         presenter.router = router
 

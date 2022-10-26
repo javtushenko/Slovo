@@ -28,9 +28,9 @@ extension GameBoardStorage {
             return
         }
     }
-    
+
     /// Получить можно ли перейти к следующей строке из хранилища
-    public func IsCanDeleteWithRow(gamingRow: Int) -> Bool {
+    public func isCanDeleteWithRow(gamingRow: Int) -> Bool {
         switch gamingRow {
         case 1:
             return Defaults[key: DefaultsKeys.isCanDelete1]
@@ -48,7 +48,7 @@ extension GameBoardStorage {
             return true
         }
     }
-    
+
     // почитстить все строки в хранилище
     func clearIsCanDeleteDefault() {
         Defaults[key: DefaultsKeys.isCanDelete1] = true

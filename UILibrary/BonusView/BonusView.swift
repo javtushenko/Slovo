@@ -15,7 +15,7 @@ public class BonusView: UIView {
         let view = UIView.newAutoLayout()
         return view
     }()
-    
+
     // основная вьюха
     private let label: UILabel = {
         let view = UILabel.newAutoLayout()
@@ -25,7 +25,7 @@ public class BonusView: UIView {
     private var isViewHieararchyCreated = false
     private var isConstraintsInstalled = false
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         createViewHierarchyIfNeeded()
         setupConstrainstsIfNeeded()
@@ -53,7 +53,7 @@ public class BonusView: UIView {
         guard !isConstraintsInstalled else { return }
         mainView.autoPinEdgesToSuperviewEdges()
         label.autoAlignAxis(toSuperviewMarginAxis: .vertical)
-        
+
         if Display.isFormfactorX {
             label.autoPinEdge(toSuperviewMargin: .bottom, withInset: 0)
         } else {

@@ -14,7 +14,7 @@ protocol MainGameViewProtocol: AnyObject {
     /// Коллекция с ячейками для ввода
     var boardVC: BoardView { get }
     /// показать вью с информацией о бонусе
-    func showInfoView(viewModel: InfoContentViewModel) 
+    func showInfoView(viewModel: InfoContentViewModel)
     /// обновить данные на игровом поле
     func updateGuesses()
     /// обновить данные клавиатуры
@@ -29,22 +29,22 @@ protocol MainGameViewProtocol: AnyObject {
 protocol MainGameViewToPresenterProtocol: AnyObject {
     /// Вью загружено
     func onViewDidLoad()
-    
+
     /// Нажат бонус ЛУПА
     func onTapBonusSearch()
     /// Использован бонус ЛУПА
     func onUseHelpSearch()
-    
+
     /// Нажат бонус БОМБА
     func onTapBonusBomb()
     /// Использован бонус БОМБА
     func onUseHelpBomb()
-    
+
     /// Нажат бонус КНИГА
     func onTapBonusBook()
     /// Использован бонус КНИГА
     func onUseHelpBook()
-    
+
     /// когда нажали на туториал
     func onTapTutorial()
 }
@@ -69,24 +69,24 @@ protocol MainGameInteractorProtocol: AnyObject {
     /// текущее количество серии побед
     var winStreakCount: Int { get }
     /// текущие буквы на игровой доске
-    var gammingLetters: [[Key?]] { get }
+    var gammingLetters: [[GameKey?]] { get }
     /// Все слова спарсеные из документа
     var words: [String]? { get set }
-    
+
     /// запуск
     func start()
     /// Начать новую игру
     func reset()
     /// получить рандомное слово для загадки
     func getRandomWords() -> [String]
-    
+
     /// Получить цвет для ячейки клавиатуры
     func getKeyColor(key: Character) -> UIColor
     /// Добавить бонусы после победы с попытки
     func addWinBonus(row: Int)
     /// Была ли победа на данной строке
     func isSuccessWithRow(gamingRow: Int) -> Bool
-    
+
     /// сохранить букву на доску
     func saveLetter(gamingRow: Int, positionLetter: Int, character: Character)
     /// удалить букву с доски
@@ -102,32 +102,32 @@ protocol MainGameInteractorProtocol: AnyObject {
     /// сохранить возможность удаления на строке
     func saveIsCanDelete(gamingRow: Int)
     /// есть ли возможность записи на строку
-    func IsCanDeleteWithRow(gamingRow: Int) -> Bool
+    func isCanDeleteWithRow(gamingRow: Int) -> Bool
     /// изменить цвет ячейки
     func changeColor(at indexPath: IndexPath, color: UIColor)
-    
+
     /// добавить одну победу в серию
     func addWinStreak()
     /// сбросить серию побед
     func resetWinStreak()
     /// Сколько бонусов добавлено за победу
     func getBonusCount(row: Int) -> Int
-    
+
     /// Показать одну оранжевую букву на клавиатуре
     func showOneOrangeLetter()
     /// Показать три серых буквы на клавиатуре
     func showThreeDarkGrayLetters()
-    
+
     /// Можно ли использовать бонус ЛУПА
     func isCanUseHelpSearch() -> Bool
     /// Можно ли использовать бонус БОМБА
     func isCanUseHelpBomb() -> Bool
     /// Можно ли использовать бонус КНИГА
     func isCanUseHelpBook() -> Bool
-    
+
     /// Можно ли использовать бонус КНИГА
     func didCanUseHelpBook()
-    
+
     /// Отнять бонусы из кошелька
     func minusBonusAtVallet(count: Int)
 }

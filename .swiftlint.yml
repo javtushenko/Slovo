@@ -1,0 +1,316 @@
+disabled_rules: # rule identifiers to exclude from running
+- large_tuple
+- file_length
+#- body_length
+- type_body_length
+- force_try
+#- function_body_length
+- force_cast
+- closure_parameter_position
+- line_length
+- cyclomatic_complexity
+- shorthand_operator
+- for_where
+- vertical_parameter_alignment
+- notification_center_detachment
+- block_based_kvo
+- discarded_notification_center_observer
+- unused_setter_value
+- implicit_getter
+- switch_case_alignment
+- vertical_whitespace_closing_braces
+- closure_end_indentation
+- operator_usage_whitespace
+- opening_brace
+- statement_position
+#  - colon
+#  - comma
+#  - control_statement
+opt_in_rules: # some rules are only opt-in
+#- closure_spacing
+#- vertical_whitespace_between_cases
+#- vertical_whitespace_closing_braces
+#- vertical_whitespace_opening_braces
+
+- closure_parameter_position
+- unused_import
+#- empty_count
+- explicit_init
+- explicit_self
+- implicit_return
+- joined_default_parameter
+- literal_expression_end_indentation
+- modifier_order
+- nimble_operator
+- number_separator
+
+- redundant_nil_coalescing
+
+excluded:
+  - Pods
+
+function_parameter_count:
+  warning: 7
+
+function_body_length:
+  warning: 50
+  error: 300
+
+nesting:
+  type_level:
+    warning: 3
+    error: 6
+
+type_name:
+  min_length: 4 # only warning
+  max_length: # warning and error
+    warning: 80
+    error: 100
+  excluded:
+    - Api
+    - ID
+identifier_name:
+  min_length: # only min_length
+    error: 4 # only error
+  excluded: # excluded via string array
+    - id
+    - URL
+    - GlobalAPIKey
+    - url
+    - i
+    - x
+    - y
+    - key
+    - ids
+    - dir
+    - row
+    - hex
+    - r
+    - g
+    - b
+    - a
+    - hue
+    - red
+    - h
+    - s
+    - b
+    - nib
+    - up
+    - rgb
+    - pad
+    - tv
+    - min
+    - max
+    - low
+    - end
+    - app
+    - top
+    - me
+    - bot
+    - sdp
+    - pmk
+    - tag
+    - wip
+    - now
+    - day
+    - one
+    - lhs
+    - rhs
+    - api
+    - dto
+    - add
+    - set
+    - get
+    - pin
+    - run
+    - tab
+    - few
+    - hr
+    - sum
+    - faq
+    
+reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)
+
+
+custom_rules:
+  sync_usage: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Sync usage" # rule name. optional.
+    regex: "([.]sync[\\s]*[{])" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "Don't forget to write a comment why did you use sync!" # violation message. optional.
+    severity: warning # violation severity. optional.
+    
+  for_each_usage: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "ForEach usage" # rule name. optional.
+    regex: "([.]forEach)" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "Use For-in loop instead." # violation message. optional.
+    severity: error # violation severity. optional.
+    
+  wrong_int: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Special Int usage" # rule name. optional.
+    regex: "(Int[813])" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "Use mere Int instead." # violation message. optional.
+    match_kinds: typeidentifier
+    severity: warning # violation severity. optional.
+    
+  bool_var_naming: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Bool naming." # rule name. optional.
+    regex: "(^(?!([\\t ]*override))[\\S\\t ]*(let|var)[\\s]+(?!(is|has))[\\S]*[\\s]*((:[\\s]*Bool)|(=[\\s]*(true|false))))" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All bool varibles must start with 'is' or 'has'!" # violation message. optional.
+    severity: warning # violation severity. optional.
+    
+  array_vars_naming: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Array naming." # rule name. optional.
+    regex: '((var|let)[\s]*[\w]*[^s ][ \t]*(:|=)[ \t]*([\[][^\]:]*[\]]|Array))' # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All array names must end with s!" # violation message. optional.
+    severity: warning # violation severity. optional.
+    
+  uicolor_init: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "UIColor init" # rule name. optional.
+    regex: "(UIColor[(][^rhpa)])" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "Use UIColor(hex:) or UIColor(r: g: b: a:) instead." # violation message. optional.
+    severity: error # violation severity. optional.
+    
+  snake_case_violation: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Snake case" # rule name. optional.
+    regex: "(_)" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    match_kinds: typeidentifier
+    message: "Snake case not allowed! User camel case instead." # violation message. optional.
+    severity: error # violation severity. optional.
+    
+  is_empty_violation: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Array elements count comparison" # rule name. optional.
+    regex: "([.]count[\\s]*(>|<|==)[\\s]*0)" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "Use .isEmpty instead!" # violation message. optional.
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - keyword
+      - identifier
+      - objectliteral
+      - parameter
+      - typeidentifier
+    severity: error # violation severity. optional.
+    
+  bool_comparison_violation: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Bool comparison" # rule name. optional.
+    regex: "([=!]=[\\s]*(true|false))" # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "Don't compare bools with true or false, just user it as it is!" # violation message. optional.
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - keyword
+      - identifier
+      - objectliteral
+      - parameter
+      - typeidentifier
+    severity: error # violation severity. optional.
+    
+  string_method_naming: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "String method naming" # rule name. optional.
+    regex: '(^[^o\n]*func[\s]+(?!get)[\W\w]*[\s]*->[\s]*String)' # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All string methods mast start with get!" # violation message. optional.
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - keyword
+      - identifier
+      - objectliteral
+      - parameter
+      - typeidentifier
+    severity: error # violation severity. optional.
+    
+  safe_array_access: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Safe array item access" # rule name. optional.
+    regex: '([^:>\s][\s]*[[][^: "]+[]](?![\s]*[(]))' # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All array item access has to use safe!" # violation message. optional.
+    severity: warning # violation severity. optional.
+    
+  func_comment: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Func comment" # rule name. optional.
+    regex: '(^[ \t]*(?!((?:\/\/)|(?:\*\/)))[^\n\/]*[\n][^\no]*func (?!(tableView)|(collectionView)|(numberOfSections)))' # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All methdos must have comments!" # violation message. optional.
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - keyword
+      - identifier
+      - objectliteral
+      - parameter
+      - typeidentifier
+    severity: warning # violation severity. optional.
+
+  bool_param_naming: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Bool param naming" # rule name. optional.
+    regex: '([\s]*[,(](?!((is|has)|_))[a-zA-z]*[\s]*:[\s]*Bool)' # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All bool params must start with 'is' or 'has'!" # violation message. optional.
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - keyword
+      - identifier
+      - objectliteral
+      - parameter
+      - typeidentifier
+    severity: warning # violation severity. optional.
+    
+  bool_param_double_naming: # rule identifier
+    included: ".*\\.swift" # regex that defines paths to include during linting. optional.
+    excluded: ".*Test\\.swift" # regex that defines paths to exclude during linting. optional
+    name: "Bool param naming" # rule name. optional.
+    regex: '([\s]*[,(][\s]*(?!((is|has|with)|_))[a-zA-z]+[\s]+[a-zA-Z]+[\s]*:[\s]*Bool)' # matching pattern
+    capture_group: 0 # number of regex capture group to highlight the rule violation at. optional.
+    message: "All bool params must start with 'is' or 'has'!" # violation message. optional.
+    match_kinds:
+      - argument
+      - attribute.builtin
+      - attribute.id
+      - keyword
+      - identifier
+      - objectliteral
+      - parameter
+      - typeidentifier
+    severity: warning # violation severity. optional.

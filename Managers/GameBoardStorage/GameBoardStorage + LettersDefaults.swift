@@ -9,7 +9,7 @@ import Foundation
 import SwiftyUserDefaults
 
 extension GameBoardStorage {
-    
+
     /// Почистить все хранилище
     public mutating func clearGame() {
         clearGamingRowsDefault()
@@ -18,7 +18,7 @@ extension GameBoardStorage {
         clearIsCanGoNextDefault()
         clearIsCanDeleteDefault()
     }
-    
+
     // почитстить все строки в хранилище
     private func clearGamingRowsDefault() {
         Defaults[key: DefaultsKeys.gamingRow1].removeAll()
@@ -28,7 +28,7 @@ extension GameBoardStorage {
         Defaults[key: DefaultsKeys.gamingRow5].removeAll()
         Defaults[key: DefaultsKeys.gamingRow6].removeAll()
     }
-    
+
     // наполнить массив из хранилища
     mutating func fillLettersArray() {
         for (index, letter) in getGamingRow1().enumerated() {
@@ -36,7 +36,7 @@ extension GameBoardStorage {
                   stringLetter != " ",
                   index < 5
             else { break }
-            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            let key: GameKey = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
             letters[0].remove(at: index)
             letters[0].insert(key, at: index)
         }
@@ -45,7 +45,7 @@ extension GameBoardStorage {
                   stringLetter != " ",
                   index < 5
             else { break }
-            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            let key: GameKey = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
             letters[1].remove(at: index)
             letters[1].insert(key, at: index)
         }
@@ -54,7 +54,7 @@ extension GameBoardStorage {
                   stringLetter != " ",
                   index < 5
             else { break }
-            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            let key: GameKey = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
             letters[2].remove(at: index)
             letters[2].insert(key, at: index)
         }
@@ -63,7 +63,7 @@ extension GameBoardStorage {
                   stringLetter != " ",
                   index < 5
             else { break }
-            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            let key: GameKey = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
             letters[3].remove(at: index)
             letters[3].insert(key, at: index)
         }
@@ -72,7 +72,7 @@ extension GameBoardStorage {
                   stringLetter != " ",
                   index < 5
             else { break }
-            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            let key: GameKey = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
             letters[4].remove(at: index)
             letters[4].insert(key, at: index)
         }
@@ -81,12 +81,12 @@ extension GameBoardStorage {
                   stringLetter != " ",
                   index < 5
             else { break }
-            let key: Key = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
+            let key: GameKey = .init(character: Character(stringLetter), backgroundColor: .slovoGray)
             letters[5].remove(at: index)
             letters[5].insert(key, at: index)
         }
     }
-    
+
     // записать букву в хранилище
     func saveLetterDefaults(gamingRow: Int, positionLetter: Int, character: Character) {
         switch gamingRow {
@@ -106,7 +106,7 @@ extension GameBoardStorage {
             break
         }
     }
-    
+
     // удалить букву из хранилища
     func removeLetterDefaults(gamingRow: Int, positionLetter: Int) {
         switch gamingRow {
@@ -132,32 +132,32 @@ extension GameBoardStorage {
             break
         }
     }
-    
+
     // получить массив букв 1 игровой строки из хранилища
     private func getGamingRow1() -> [String?] {
         Defaults[key: DefaultsKeys.gamingRow1]
     }
-    
+
     // получить массив букв 2 игровой строки из хранилища
     private func getGamingRow2() -> [String?] {
         Defaults[key: DefaultsKeys.gamingRow2]
     }
-    
+
     // получить массив букв 3 игровой строки из хранилища
     private func getGamingRow3() -> [String?] {
         Defaults[key: DefaultsKeys.gamingRow3]
     }
-    
+
     // получить массив букв 4 игровой строки из хранилища
     private func getGamingRow4() -> [String?] {
         Defaults[key: DefaultsKeys.gamingRow4]
     }
-    
+
     // получить массив букв 5 игровой строки из хранилища
     private func getGamingRow5() -> [String?] {
         Defaults[key: DefaultsKeys.gamingRow5]
     }
-    
+
     // получить массив букв 6 игровой строки из хранилища
     private func getGamingRow6() -> [String?] {
         Defaults[key: DefaultsKeys.gamingRow6]

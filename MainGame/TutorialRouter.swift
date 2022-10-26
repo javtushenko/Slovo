@@ -10,7 +10,7 @@ import UIKit
 final class TutorialRouter: TutorialRouterProtocol {
     weak var baseViewController: UIViewController?
     weak var popup: PopupViewController?
-    
+
     init(baseViewController: UIViewController) {
         self.baseViewController = baseViewController
     }

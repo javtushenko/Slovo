@@ -31,6 +31,7 @@ class BoardCell: UICollectionViewCell {
         contentView.addSubview(label)
     }
 
+    // установка констрейнтов если нужно
     private func setupConstrainstsIfNeeded() {
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -50,7 +51,7 @@ class BoardCell: UICollectionViewCell {
     }
 
     /// Конфигурировать ячейку
-    func configure(with letter: Key) {
+    func configure(with letter: GameKey) {
         label.text = String(letter.character).uppercased()
     }
 }

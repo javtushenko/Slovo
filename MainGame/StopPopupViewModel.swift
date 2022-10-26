@@ -31,7 +31,7 @@ public class StopPopupViewModel {
         let generalStyle = Style.mainStyle(
             size: Display.isFormfactorX ? 40 : 35,
             fontType: .bold,
-            color: popupType == .win ? .slovoGreen : .slovoOrange,
+            color: popupType == .stopWin ? .slovoGreen : .slovoOrange,
             alignment: .center,
             letterSpacing: -0.25,
             lineHeight: 40

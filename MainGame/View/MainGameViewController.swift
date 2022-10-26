@@ -43,19 +43,19 @@ final class MainGameViewController: UIViewController {
         let view = BonusView.newAutoLayout()
         return view
     }()
-    
+
     /// Ячейка обучением
     let tutorialView: BonusView = {
         let view = BonusView.newAutoLayout()
         return view
     }()
-    
+
     /// Ячейка с кошельком
     let valletView: BonusView = {
         let view = BonusView.newAutoLayout()
         return view
     }()
-    
+
     /// Информационное вью о бонусе с кнопкой применения
     let infoView: InfoView = {
         let view = InfoView.newAutoLayout()
@@ -77,9 +77,9 @@ final class MainGameViewController: UIViewController {
         presenter?.onViewDidLoad()
         view.backgroundColor = .slovoDarkBackground
     }
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .portrait
+        .portrait
     }
 
     /// настроить вьюху с кошельком
@@ -87,13 +87,13 @@ final class MainGameViewController: UIViewController {
         valletView.setup(viewModel: viewModel)
         valletView.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
     }
-    
+
     /// Настроить вью с серией побед
     func setupWinStreakView(viewModel: BonusViewModel) {
         winStreak.setup(viewModel: viewModel)
         winStreak.setCorners(radius: MainUIConstatnts.itemSizeBonusView.height/2)
     }
-    
+
     /// Настроить вью кнопки туториала
     func setupTutorialView() {
         let model = BonusViewModel(backgroundColor: .slovoGray,
@@ -107,12 +107,12 @@ final class MainGameViewController: UIViewController {
         )
         tutorialView.addGestureRecognizer(touch)
     }
-    
+
     // обработка нажатия на туториал
     @objc func handleTapTutorial() {
         presenter?.onTapTutorial()
     }
-    
+
 }
 
 extension MainGameViewController {
@@ -134,16 +134,16 @@ extension MainGameViewController {
         view.addSubview(bonusBombView)
         view.addSubview(bonusSearchView)
         view.addSubview(bonusBookView)
-        
+
         view.addSubview(infoView)
-        
+
         isViewHieararchyCreated = true
     }
 
     // Установка Constraints
     func setupConstrainstsIfNeeded() {
         guard !isConstraintsInstalled else { return }
-        
+
         // задаем размеры
         valletView.autoSetDimensions(to: MainUIConstatnts.itemSizeValetView)
         tutorialView.autoSetDimensions(to: MainUIConstatnts.itemSizeTutorialView)
@@ -151,19 +151,19 @@ extension MainGameViewController {
         bonusSearchView.autoSetDimensions(to: MainUIConstatnts.itemSizeBonusView)
         bonusBookView.autoSetDimensions(to: MainUIConstatnts.itemSizeBonusView)
         winStreak.autoSetDimensions(to: MainUIConstatnts.itemWinStreakView)
-        
+
         // обучение
         tutorialView.autoPinEdge(toSuperviewEdge: .right, withInset: MainUIConstatnts.itemHorizontalInset)
         tutorialView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
-        
+
         // серия побед
         winStreak.autoPinEdge(toSuperviewEdge: .left, withInset: MainUIConstatnts.itemHorizontalInset)
         winStreak.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
-        
+
         // кошелек
         valletView.autoPinEdge(.leading, to: .trailing, of: winStreak, withOffset: MainUIConstatnts.topItemHorizontalInset)
         valletView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
-        
+
         // игровое поле
         if Display.isFormfactorX {
             boardVC.view.autoPinEdge(toSuperviewEdge: .trailing)
@@ -176,7 +176,7 @@ extension MainGameViewController {
             boardVC.view.autoPinEdge(.top, to: .bottom, of: bonusSearchView, withOffset: MainUIConstatnts.itemVerticalInset)
             boardVC.view.autoPinEdge(.bottom, to: .top, of: keyboardVC.view, withOffset: MainUIConstatnts.itemVerticalInset)
         }
-        
+
         // клавиатура
         if Display.isFormfactorX {
             keyboardVC.view.autoSetDimension(.height, toSize: 160)
@@ -189,7 +189,7 @@ extension MainGameViewController {
             keyboardVC.view.autoPinEdge(toSuperviewEdge: .leading)
             keyboardVC.view.autoPinEdge(toSuperviewEdge: .bottom, withInset: MainUIConstatnts.bottomInset)
         }
-        
+
         // бонусы в зависимости от размера экрана
         if Display.isFormfactorX {
             // профиль
@@ -214,7 +214,7 @@ extension MainGameViewController {
             bonusBookView.autoPinEdge(toSuperviewEdge: .top, withInset: MainUIConstatnts.topInset)
             bonusBookView.autoPinEdge(.left, to: .right, of: bonusBombView, withOffset: MainUIConstatnts.itemHorizontalInset)
         }
-        
+
         infoView.autoPinEdgesToSuperviewEdges()
 
         isConstraintsInstalled = true
@@ -234,7 +234,7 @@ extension MainGameViewController: MainGameViewProtocol {
             self.boardVC.reloadData()
         }
     }
-    
+
     /// обновить данные клавиатуры
     func updateKeyboard() {
         DispatchQueue.main.async {

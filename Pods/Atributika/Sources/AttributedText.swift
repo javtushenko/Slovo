@@ -80,11 +80,11 @@ public final class AttributedText: AttributedTextProtocol {
         self.baseStyle = baseStyle
     }
 
-    public lazy private(set) var attributedString: NSAttributedString  = {
+    public private(set) lazy var attributedString: NSAttributedString  = {
         makeAttributedString { $0.attributes }
     }()
 
-    public lazy private(set) var disabledAttributedString: NSAttributedString  = {
+    public private(set) lazy var disabledAttributedString: NSAttributedString  = {
         makeAttributedString { $0.disabledAttributes }
     }()
 }
@@ -93,7 +93,7 @@ extension AttributedTextProtocol {
 
     /// style the whole string
     public func styleAll(_ style: Style) -> AttributedText {
-        return AttributedText(string: string, detections: detections, baseStyle: baseStyle.merged(with: style))
+        AttributedText(string: string, detections: detections, baseStyle: baseStyle.merged(with: style))
     }
 
     /// style things like #xcode #mentions
@@ -153,18 +153,18 @@ extension AttributedTextProtocol {
 extension String: AttributedTextProtocol {
 
     public var string: String {
-        return self
+        self
     }
 
     public var detections: [Detection] {
-        return []
+        []
     }
 
     public var baseStyle: Style {
-        return Style()
+        Style()
     }
 
-    public func style(tags: [Style], transformers: [TagTransformer] = [TagTransformer.brTransformer], tuner: (Style, Tag) -> Style = { s, _ in return  s}) -> AttributedText {
+    public func style(tags: [Style], transformers: [TagTransformer] = [TagTransformer.brTransformer], tuner: (Style, Tag) -> Style = { s, _ in s}) -> AttributedText {
         let (string, tagsInfo) = detectTags(transformers: transformers)
 
         var ds: [Detection] = []
@@ -181,16 +181,16 @@ extension String: AttributedTextProtocol {
         return AttributedText(string: string, detections: ds, baseStyle: baseStyle)
     }
 
-    public func style(tags: Style..., transformers: [TagTransformer] = [TagTransformer.brTransformer], tuner: (Style, Tag) -> Style = { s, _ in return  s}) -> AttributedText {
-        return style(tags: tags, transformers: transformers, tuner: tuner)
+    public func style(tags: Style..., transformers: [TagTransformer] = [TagTransformer.brTransformer], tuner: (Style, Tag) -> Style = { s, _ in s}) -> AttributedText {
+        style(tags: tags, transformers: transformers, tuner: tuner)
     }
 
     public var attributedString: NSAttributedString {
-        return makeAttributedString { $0.attributes }
+        makeAttributedString { $0.attributes }
     }
 
     public var disabledAttributedString: NSAttributedString {
-        return makeAttributedString { $0.disabledAttributes }
+        makeAttributedString { $0.disabledAttributes }
     }
 }
 
@@ -210,14 +210,14 @@ extension NSAttributedString: AttributedTextProtocol {
     }
 
     public var baseStyle: Style {
-        return Style()
+        Style()
     }
 
     public var attributedString: NSAttributedString {
-        return makeAttributedString { $0.attributes }
+        makeAttributedString { $0.attributes }
     }
 
     public var disabledAttributedString: NSAttributedString {
-        return makeAttributedString { $0.disabledAttributes }
+        makeAttributedString { $0.disabledAttributes }
     }
 }

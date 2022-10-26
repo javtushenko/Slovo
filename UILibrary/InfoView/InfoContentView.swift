@@ -71,7 +71,7 @@ public extension InfoContentView {
         setupButton(viewModel: viewModel)
         setCorners(radius: viewModel.cornerRadius)
     }
-    
+
     /// Установить кнопку
     func setupButton(viewModel: InfoContentViewModel) {
         button.setAttributedTitle(viewModel.titleButtonAttributedText, for: .normal)

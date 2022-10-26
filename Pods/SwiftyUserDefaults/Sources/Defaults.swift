@@ -38,7 +38,7 @@ public extension UserDefaults {
 
     /// Returns `true` if `key` exists
     func hasKey<T>(_ key: DefaultsKey<T>) -> Bool {
-        return object(forKey: key._key) != nil
+        object(forKey: key._key) != nil
     }
 
     /// Removes value for `key`
@@ -60,7 +60,7 @@ public extension UserDefaults {
 internal extension UserDefaults {
 
     func number(forKey key: String) -> NSNumber? {
-        return object(forKey: key) as? NSNumber
+        object(forKey: key) as? NSNumber
     }
 
     func decodable<T: Decodable>(forKey key: String) -> T? {

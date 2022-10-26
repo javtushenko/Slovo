@@ -8,9 +8,9 @@
 import UIKit
 
 public enum StopType {
-    case win
-    case defeat
-    case wrong
+    case stopWin
+    case stopDefeat
+    case stopWrong
 }
 
 // MARK: View Delegate -

@@ -13,7 +13,7 @@ final class StopPopupViewController: UIViewController {
     weak var popup: PopupViewController?
     /// делегат
     var delegate: StopPopupViewDelegate?
-    
+
     // тип попапа
     private var popupType: StopType?
 
@@ -96,7 +96,7 @@ extension StopPopupViewController {
         mainButton.autoSetDimensions(to: CGSize(width: 250, height: 50))
         mainButton.autoAlignAxis(toSuperviewMarginAxis: .vertical)
     }
-    
+
     // установка таргетов
     func addTargets() {
         mainButton.addTarget(
@@ -115,9 +115,9 @@ extension StopPopupViewController {
 extension StopPopupViewController: PopupViewControllerDelegate {
     /// Высота попапа
     func getContentHeightForPopupController(_ popupController: PopupViewController) -> CGFloat {
-        return popupHeight
+        popupHeight
     }
-    
+
     /// Popup закрылся
     func popupHidden(_ popupController: PopupViewController) {
         guard let popupType = popupType else {

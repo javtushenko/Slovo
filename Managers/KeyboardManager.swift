@@ -14,7 +14,7 @@ public protocol KeyboardManagerProtocol {
     /// Подсказка лупа, оранжевые кнопки
     var searchHelpLetters: String { get }
     /// получить цвет кнопки
-    func getKeyColor(key: Character, gameLetters: [[Key?]], successRow: Int) -> UIColor
+    func getKeyColor(key: Character, gameLetters: [[GameKey?]], successRow: Int) -> UIColor
     /// добавить оранжевые кнопки в массив
     func getSearchLetters(currentWord: String)
     /// полон ли массив букв подсказки ЛУПА
@@ -30,39 +30,39 @@ public protocol KeyboardManagerProtocol {
 class KeyboardManager: KeyboardManagerProtocol {
     static let shared = KeyboardManager()
     private init() {}
-    
+
     /// Подсказка лупа, оранжевые кнопки
     var searchHelpLetters: String {
         Defaults[key: DefaultsKeys.searchLetterArray]
     }
-    
+
     /// Подсказка бомба, оранжевые кнопки
     var bombHelpLetters: String {
         Defaults[key: DefaultsKeys.bombLetterArray]
     }
 
     /// получить цвет кнопки
-    public func getKeyColor(key: Character, gameLetters: [[Key?]], successRow: Int) -> UIColor {
+    public func getKeyColor(key: Character, gameLetters: [[GameKey?]], successRow: Int) -> UIColor {
         // если совпадений не будет, вернем серый
         var currentColor: UIColor = .slovoGray
-        
+
         // если буква есть в списке подсказки, вернет оранжевый
         if searchHelpLetters.contains(key) {
             currentColor = .slovoOrange
         }
-        
+
         // если буква есть в списке подсказки, вернет серый
         if bombHelpLetters.contains(key) {
             currentColor = .slovoDark
         }
-        
+
         // перебираем все строки игрового поля
         for index in 0..<successRow {
             let row = gameLetters[index]
-            
+
             // вернет зеленый если есть совпадение
             let greenFilterArray = row.filter({ filtredKey in
-                let currentKey = Key(character: key, backgroundColor: .slovoGreen)
+                let currentKey = GameKey(character: key, backgroundColor: .slovoGreen)
                 return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
             })
             if greenFilterArray.count != 0 {
@@ -74,7 +74,7 @@ class KeyboardManager: KeyboardManagerProtocol {
                 currentColor = .slovoGreen
                 break
             }
-            
+
             // вернет оранжевый если есть совпадение
             if searchHelpLetters.filter({ filtredKey in
                 filtredKey == key
@@ -83,7 +83,7 @@ class KeyboardManager: KeyboardManagerProtocol {
             }
             // вернет оранжевый если есть совпадение
             let orangeFilterArray = row.filter({ filtredKey in
-                let currentKey = Key(character: key, backgroundColor: .slovoOrange)
+                let currentKey = GameKey(character: key, backgroundColor: .slovoOrange)
                 return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
             })
             if orangeFilterArray.count != 0 {
@@ -94,17 +94,17 @@ class KeyboardManager: KeyboardManagerProtocol {
                 }
                 currentColor = .slovoOrange
             }
-            
+
             // вернет темный если есть совпадение
             if row.filter({ filtredKey in
-                let currentKey = Key(character: key, backgroundColor: .slovoGray)
+                let currentKey = GameKey(character: key, backgroundColor: .slovoGray)
                 return filtredKey?.character == currentKey.character && filtredKey?.backgroundColor == currentKey.backgroundColor
             }).count != 0 {
                 Defaults[key: DefaultsKeys.bombLetterArray].append(key)
                 currentColor = .slovoDark
             }
         }
-        
+
         // обработка кнопок управления
         if key == "+" {
             currentColor = .slovoGreen
@@ -114,7 +114,7 @@ class KeyboardManager: KeyboardManagerProtocol {
         }
         return currentColor
     }
-    
+
     /// добавить темно-серые кнопки в массив
     func getBombLetters(currentWord: String) {
         // получаем клаву без загаданного слова
@@ -130,7 +130,7 @@ class KeyboardManager: KeyboardManagerProtocol {
         while letters.count < 3 {
             guard keyboard.count > 3 else { return }
             let randomIndex: Int = .random(in: 0..<keyboard.count)
-            let stringIndex = String.Index.init(utf16Offset: randomIndex, in: keyboard)
+            let stringIndex = String.Index(utf16Offset: randomIndex, in: keyboard)
             let letter = keyboard.remove(at: stringIndex)
             if !bombHelpLetters.contains(letter),
                !letters.contains(letter) {
@@ -139,12 +139,12 @@ class KeyboardManager: KeyboardManagerProtocol {
         }
         Defaults[key: DefaultsKeys.bombLetterArray].append(letters)
     }
-    
+
     /// добавить оранжевые кнопки в массив
     func getSearchLetters(currentWord: String) {
         var currentWord = String(Set(currentWord))
         let randomIndex: Int = .random(in: 0..<currentWord.count)
-        let index = String.Index.init(utf16Offset: randomIndex, in: currentWord)
+        let index = String.Index(utf16Offset: randomIndex, in: currentWord)
         let letter = currentWord.remove(at: index)
         guard !searchHelpLetters.contains(letter) else {
             getSearchLetters(currentWord: currentWord)
@@ -152,17 +152,17 @@ class KeyboardManager: KeyboardManagerProtocol {
         }
         Defaults[key: DefaultsKeys.searchLetterArray].append(letter)
     }
-    
+
     /// Очистить буквы с подсказки лупы
     func resetSearchHelpArray() {
         Defaults[key: DefaultsKeys.searchLetterArray].removeAll()
     }
-    
+
     /// Очистить буквы с подсказки бомбы
     func resetBombHelpArray() {
         Defaults[key: DefaultsKeys.bombLetterArray].removeAll()
     }
-    
+
     /// полон ли массив букв подсказки ЛУПА
     func isArraySearchFull(currentWord: String) -> Bool {
         searchHelpLetters.count < Set(currentWord).count ? true : false
@@ -170,7 +170,7 @@ class KeyboardManager: KeyboardManagerProtocol {
 }
 
 extension String {
-  subscript (i: Int) -> Character {
-    return self[index(startIndex, offsetBy: i)]
+  subscript (indexChar: Int) -> Character {
+    self[index(startIndex, offsetBy: indexChar)]
   }
 }

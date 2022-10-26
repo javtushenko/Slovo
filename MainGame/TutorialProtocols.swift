@@ -7,12 +7,12 @@
 
 import UIKit
 
-//MARK: View -
+// MARK: View -
 protocol TutorialViewProtocol: AnyObject {
 
 }
 
-//MARK: Presenter -
+// MARK: Presenter -
 protocol TutorialViewToPresenterProtocol: AnyObject {
     /// Вью загружено
     func onViewDidLoad()
@@ -21,13 +21,13 @@ protocol TutorialViewToPresenterProtocol: AnyObject {
 protocol TutorialInteractorToPresenterProtocol: AnyObject {
 }
 
-//MARK: Interactor -
+// MARK: Interactor -
 protocol TutorialInteractorProtocol: AnyObject {
     /// запуск
     func start()
 }
 
-//MARK: Router -
+// MARK: Router -
 protocol TutorialRouterProtocol: AnyObject {
-    
+
 }

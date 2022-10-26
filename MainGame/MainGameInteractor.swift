@@ -22,7 +22,7 @@ final class MainGameInteractor {
     var gameBoardStorage: GameBoardStorageProtocol
     // менеджер серии побед
     var winStreakStorage: WinStreakStorageProtocol
-    
+
     /// текущее количество бонусов
     var valletCount: Int {
         valletStorage.currentCount
@@ -31,9 +31,9 @@ final class MainGameInteractor {
     var winStreakCount: Int {
         winStreakStorage.currentCount
     }
-    
+
     /// текущие буквы на игровой доске
-    var gammingLetters: [[Key?]] {
+    var gammingLetters: [[GameKey?]] {
         gameBoardStorage.getLetters()
     }
 
@@ -67,7 +67,7 @@ extension MainGameInteractor: MainGameInteractorProtocol {
         getWordsData()
         gameBoardStorage.start()
     }
-    
+
     /// Начать новую игру
     func reset() {
         Defaults[key: DefaultsKeys.currentWord] = nil
@@ -82,52 +82,52 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     func getWordsData() {
         words = wordsLoadService.loadWords()
     }
-    
+
     /// Была ли победа на данной строке
     func isSuccessWithRow(gamingRow: Int) -> Bool {
         gameBoardStorage.isSuccessWithRow(gamingRow: gamingRow)
     }
-    
+
     /// сохранить букву на доску
     func saveLetter(gamingRow: Int, positionLetter: Int, character: Character) {
         gameBoardStorage.saveLetter(gamingRow: gamingRow, positionLetter: positionLetter, character: character)
     }
-    
+
     /// удалить букву с доски
     func removeLetter(gamingRow: Int, positionLetter: Int) {
         gameBoardStorage.removeLetter(gamingRow: gamingRow, positionLetter: positionLetter)
     }
-    
+
     /// сохранить возможность записи на строку
     func saveIsCanGoNext(gamingRow: Int) {
         gameBoardStorage.saveIsCanGoNext(gamingRow: gamingRow)
     }
-    
+
     /// сохранить успешный переход на строке
     func saveSuccessGoNet(gamingRow: Int) {
         gameBoardStorage.saveSuccessGoNet(gamingRow: gamingRow)
     }
-    
+
     /// есть ли возможность записи на строку
     func isCanGoNext(gamingRow: Int) -> Bool {
-        gameBoardStorage.IsCanGoNextWithRow(gamingRow: gamingRow)
+        gameBoardStorage.isCanGoNextWithRow(gamingRow: gamingRow)
     }
-    
+
     /// был ли успешный переход на строке
     func isSuccessGoNet(gamingRow: Int) -> Bool {
         gameBoardStorage.isSuccessWithRow(gamingRow: gamingRow)
     }
-    
+
     /// сохранить возможность удаления на строке
     func saveIsCanDelete(gamingRow: Int) {
         gameBoardStorage.saveIsCanDelete(gamingRow: gamingRow)
     }
-    
+
     /// есть ли возможность записи на строку
-    func IsCanDeleteWithRow(gamingRow: Int) -> Bool {
-        gameBoardStorage.IsCanDeleteWithRow(gamingRow: gamingRow)
+    func isCanDeleteWithRow(gamingRow: Int) -> Bool {
+        gameBoardStorage.isCanDeleteWithRow(gamingRow: gamingRow)
     }
-    
+
     /// изменить цвет ячейки
     func changeColor(at indexPath: IndexPath, color: UIColor) {
         gameBoardStorage.chageColor(at: indexPath, color: color)
@@ -137,7 +137,7 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     func addWinStreak() {
         winStreakStorage.addCountWinStreak(count: 1)
     }
-    
+
     /// сбросить серию побед
     func resetWinStreak() {
         winStreakStorage.resetWinStreak()
@@ -152,7 +152,7 @@ extension MainGameInteractor: MainGameInteractorProtocol {
                 return word
             }
         }
-        
+
         // если нет в хранилище, создадим новое
         let words = wordsLoadService.loadSecretWords()
         guard let word = words.randomElement() else {
@@ -175,32 +175,32 @@ extension MainGameInteractor: MainGameInteractorProtocol {
     func getKeyColor(key: Character) -> UIColor {
         keyboardManager.getKeyColor(key: key, gameLetters: gammingLetters, successRow: gameBoardStorage.getCurrentSuccessRow())
     }
-    
+
     /// Добавить бонусы после победы с попытки
     func addWinBonus(row: Int) {
         valletStorage.addCountVallet(count: getBonusCount(row: row))
     }
-    
+
     /// Сколько бонусов добавлено за победу
     func getBonusCount(row: Int) -> Int {
         100 - (row * 10)
     }
-    
+
     /// Показать одну оранжевую букву на клавиатуре
     func showOneOrangeLetter() {
         keyboardManager.getSearchLetters(currentWord: currentWord)
     }
-    
+
     /// Можно ли использовать бонус ЛУПА
     func isCanUseHelpSearch() -> Bool {
         keyboardManager.isArraySearchFull(currentWord: currentWord) && valletCount >= Price.priseSearch
     }
-    
+
     /// Показать три серых буквы на клавиатуре
     func showThreeDarkGrayLetters() {
         keyboardManager.getBombLetters(currentWord: currentWord)
     }
-    
+
     /// Можно ли использовать бонус БОМБА
     func isCanUseHelpBomb() -> Bool {
         var keyboard = "йцукенгшщзфывапролджэячсмитьбюх"
@@ -214,18 +214,18 @@ extension MainGameInteractor: MainGameInteractorProtocol {
         let haveMoney = valletCount >= Price.priseBoom
         return haveLetters && haveMoney
     }
-    
+
     /// Можно ли использовать бонус КНИГА
     func isCanUseHelpBook() -> Bool {
         valletCount >= Price.priseBook
     }
-    
+
     /// Можно ли использовать бонус КНИГА
     func didCanUseHelpBook() {
         Defaults[key: DefaultsKeys.didUseHelpBook] = true
         minusBonusAtVallet(count: Price.priseBook)
     }
-    
+
     /// Отнять бонусы из кошелька
     func minusBonusAtVallet(count: Int) {
         valletStorage.minusCountVallet(count: count)

@@ -11,16 +11,6 @@ import UIKit
 public typealias PopupContentViewController = UIViewController &
     PopupViewControllerDelegate
 
-/// Аксессабилити для всех попапов
-public enum PopupViewControllerAid {
-    /// язычок попапа
-    public static let tongueView = "PopupViewController.tongueView"
-
-    /// кнопка затемнения на фоне
-    public static let darkBackgroundButton =
-        "PopupViewController.darkBackgroundButton"
-}
-
 extension Notification.Name {
     // попап полностью открылся
     static let onPopupFullOpen = Notification
@@ -31,49 +21,13 @@ public protocol PopupViewControllerDelegate: UIGestureRecognizerDelegate {
     // получить высоту контента
     func getContentHeightForPopupController(
         _ popupController: PopupViewController
-    )
-        -> CGFloat
-
-    // Когда смахнули вниз или нажали на пустую область, чтобы закрыть (но ещё по факту не закрылся)
-    func didStartSwipeOrTapToDissmis(_ popupController: PopupViewController)
-
-    // При старте изменения высоты
-    func popupController(
-        _ popupController: PopupViewController,
-        onStartChangeHeight height: CGFloat
-    )
-
-    // Время анимации возврата popup к открытому состоянию
-    func popupOpenedStateDuration(_ popupController: PopupViewController)
-        -> TimeInterval?
-
-    // Время для анимации первого запуска
-    func popupStartAnimationDuration(_ popupController: PopupViewController)
-        -> TimeInterval?
-
-    // Время для анимации закрытия
-    func popupFinishAnimationDuration(_ popupController: PopupViewController)
-        -> TimeInterval?
-
-    /// Время необходимое для отображения background
-    func popupUnhiddenBackgroundView(_ popupConroller: PopupViewController)
-        -> TimeInterval?
-
-    /// Время необходимое для скрытия background
-    func popupHiddenBackgroundView(_ popupController: PopupViewController)
-        -> TimeInterval?
+    ) -> CGFloat
 
     // Уведомляем делегатов об жесте
     func popupControllerGestureUpdateY(
         _ popupController: PopupViewController,
         state: UIGestureRecognizer.State
     )
-
-    // При отмене закрытия
-    func didCancelledClosing(_ popupController: PopupViewController)
-
-    // можем ли закрыть попап
-    func isCanClose(_ popupController: PopupViewController) -> Bool
 
     /// Popup закрылся
     func popupHidden(_ popupController: PopupViewController)
@@ -91,12 +45,6 @@ public protocol PopupViewProtocol: AnyObject {
     func setupController(
         viewController: PopupContentViewController,
         completion: ((_ isSuccess: Bool) -> Void)?
-    )
-
-    /// Установить контроллер для отображения
-    func reSetupController(
-        viewController: PopupContentViewController,
-        animationDuration: TimeInterval?
     )
 }
 
@@ -123,16 +71,6 @@ public extension PopupViewProtocol {
     func setupController(viewController: PopupContentViewController) {
         setupController(viewController: viewController, completion: nil)
     }
-
-    /// Установить контроллер для отображения
-    func reSetupController(
-        viewController: PopupContentViewController
-    ) {
-        reSetupController(
-            viewController: viewController,
-            animationDuration: nil
-        )
-    }
 }
 
 extension PopupViewControllerDelegate {
@@ -143,58 +81,11 @@ extension PopupViewControllerDelegate {
         // Пустая реализация по умолчанию
     }
 
-    // При старте изменения высоты
-    public func popupController(
-        _ popupController: PopupViewController,
-        onStartChangeHeight height: CGFloat
-    ) {
-        // Пустая реализация по умолчанию
-    }
-
-    // При отмене закрытия
-    public func didCancelledClosing(_ popupController: PopupViewController) {
-        // Пустая реализация по умолчанию
-    }
-
-    // можем ли закрыть попап
-    public func isCanClose(_ popupController: PopupViewController) -> Bool {
-        // по умолчанию можем
-        true
-    }
-
     /// Пустая реализация по умолчанию
     public func popupControllerGestureUpdateY(
         _ popupController: PopupViewController,
         state: UIGestureRecognizer.State
     ) {}
-
-    // Время анимации возврата popup к открытому состоянию
-    public func popupOpenedStateDuration(_ popupController: PopupViewController)
-        -> TimeInterval? { nil }
-
-    // Время для стартовой анимации
-    public func popupStartAnimationDuration(
-        _ popupController: PopupViewController
-    )
-        -> TimeInterval? { nil }
-
-    // Время для анимации закрытия
-    public func popupFinishAnimationDuration(
-        _ popupController: PopupViewController
-    )
-        -> TimeInterval? { nil }
-
-    /// Время необходимое для отображения background
-    public func popupUnhiddenBackgroundView(
-        _ popupConroller: PopupViewController
-    )
-        -> TimeInterval? { nil }
-
-    /// Время необходимое для скрытия background
-    public func popupHiddenBackgroundView(
-        _ popupController: PopupViewController
-    )
-        -> TimeInterval? { nil }
 
     /// Popup закрылся
     public func popupHidden(_ popupController: PopupViewController) {}
@@ -249,24 +140,6 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
         view.backgroundColor = UIColor.slovoWhite
         return view
     }()
-
-    let keyboardSeparatorView: UIView = {
-        let view = UIView.newAutoLayout()
-        view.backgroundColor = .slovoWhite
-        view.frame.size.height = 2
-        view.isHidden = true
-        return view
-    }()
-
-    open var isHiddenInputAccessoryView: Bool = true {
-        didSet {
-            keyboardSeparatorView.isHidden = isHiddenInputAccessoryView
-        }
-    }
-
-    override open var inputAccessoryView: UIView? {
-        keyboardSeparatorView
-    }
 
     // Прозрачность заднего фона
     public var backGroundAlphaContent: CGFloat = 0.5
@@ -325,9 +198,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
 
         setupConstraint()
         setupCorners()
-        setupColors()
         setupUI()
-        setupAccessability()
     }
 
     // Создать иерархию вью
@@ -347,20 +218,20 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // установить констрейнты для tongueView
-    fileprivate func setupTongueView() {
+    private func setupTongueView() {
         tongueView.autoSetDimensions(to: CGSize(width: 38, height: 4))
         tongueView.autoAlignAxis(toSuperviewAxis: .vertical)
     }
 
     // установить констрейнты для contentView
-    fileprivate func setupContentView() {
+    private func setupContentView() {
         contentView.autoPinEdge(toSuperviewEdge: .top)
         contentView.autoPinEdge(toSuperviewEdge: .leading)
         contentView.autoPinEdge(toSuperviewEdge: .trailing)
     }
 
     // установить констрейнты для topBorderView
-    fileprivate func setupTopBorderView() {
+    private func setupTopBorderView() {
         topBorderView.autoPinEdge(toSuperviewEdge: .top)
         topBorderView.autoPinEdge(toSuperviewEdge: .leading)
         topBorderView.autoPinEdge(toSuperviewEdge: .trailing)
@@ -368,7 +239,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // установить констрейнты для whiteView
-    fileprivate func setupWhiteView() {
+    private func setupWhiteView() {
         whiteView.autoPinEdge(toSuperviewEdge: .bottom)
         whiteView.autoPinEdge(toSuperviewEdge: .leading)
         whiteView.autoPinEdge(toSuperviewEdge: .trailing)
@@ -382,7 +253,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // установить констрейнты для bottomView
-    fileprivate func setupBottomView() {
+    private func setupBottomView() {
         bottomView.autoSetDimension(.height, toSize: 1_000)
         bottomView.autoPinEdge(
             .top,
@@ -393,7 +264,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // установить нижнюю view
-    fileprivate func setBottomView() {
+    private func setBottomView() {
         if isInterfaceOrientationPortrait {
             bottomViewLeadingConstraint = bottomView
                 .autoPinEdge(toSuperviewEdge: .leading)
@@ -416,7 +287,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // установить основное view контента
-    fileprivate func setMainContentView() {
+    private func setMainContentView() {
         mainContentView.autoPinEdge(toSuperviewEdge: .bottom)
         if isInterfaceOrientationPortrait {
             contentLeadingConstraint = mainContentView
@@ -500,18 +371,6 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
             }
     }
 
-    // устанавливаем цветa
-    open func setupColors() {
-        whiteView.backgroundColor = colorForBorderView
-    }
-
-    // аксессабилити
-    open func setupAccessability() {
-        tongueView.accessibilityIdentifier = PopupViewControllerAid.tongueView
-        darkBackgroundButton.accessibilityIdentifier = PopupViewControllerAid
-            .darkBackgroundButton
-    }
-
     // устанавливаем констрейнты
     open func setupConstraint() {
         // если есть пространство между super view и safe area, то выставляем белую вьюшку под таблицей
@@ -537,7 +396,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // Спрятать язычок
-    fileprivate func hideTongue(duration: TimeInterval = 0.4) {
+    private func hideTongue(duration: TimeInterval = 0.4) {
         UIView.animate(withDuration: duration, animations: { [weak self] in
             self?.tongueView.alpha = 0
         }, completion: { _ in
@@ -546,7 +405,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // устанавливаем закругления
-    fileprivate func setupCorners() {
+    private func setupCorners() {
         let cornerRadius = 15
         mainContentView.layer.cornerRadius = CGFloat(cornerRadius)
         mainContentView.clipsToBounds = true
@@ -556,139 +415,8 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
         ]
     }
 
-    // стартовая анимация (при разворачивании)
-    fileprivate func openScreenWithAnimation() {
-        guard !isPopupOpen else { return }
-        setupConstraint()
-        let transform = CGAffineTransform.identity
-        tongueView.isHidden = !isTongueShowed
-        topBorderView.isHidden = !isNeedTopBorderShowed
-        backgroundView.backgroundColor = UIColor(hex: "04040A")
-        contentViewHeightConstraint
-            .constant = height + safeAreaViewHeightConstraint.constant
-        mainContentView.transform = transform.translatedBy(x: 0, y: height)
-        tongueView.transform = transform.translatedBy(x: 0, y: height)
-        bottomView.transform = transform.translatedBy(x: 0, y: height)
-        if mainPosition != 0 {
-            mainPosition = height - mainPosition
-        } else {
-            NotificationCenter.default.post(
-                name: Notification.Name.onPopupFullOpen,
-                object: nil
-            )
-        }
-
-        var defaultDuration: TimeInterval {
-            specialAnimationInterval == 0 ? animationInterval :
-                specialAnimationInterval
-        }
-
-        let animationDurationPopup = delegate?
-            .popupStartAnimationDuration(self) ?? defaultDuration
-        let animationDurationBackground = delegate?
-            .popupUnhiddenBackgroundView(self) ?? defaultDuration
-
-        delegate?.popupController(self, onStartChangeHeight: height)
-        UIView.animate(withDuration: animationDurationBackground) {
-            self.backgroundView.alpha = self.backGroundAlphaContent
-        }
-
-        UIView.animate(
-            withDuration: animationDurationPopup,
-            delay: 0,
-            usingSpringWithDamping: openingScreenSpringWithDamping,
-            initialSpringVelocity: openingScreenInitialSpringVelocity,
-            options: .curveEaseOut, animations: {
-                self.mainContentView.transform = transform.translatedBy(
-                    x: 0,
-                    y: self.mainPosition
-                )
-                self.tongueView.transform = transform.translatedBy(
-                    x: 0,
-                    y: self.mainPosition
-                )
-                self.bottomView.transform = transform.translatedBy(
-                    x: 0,
-                    y: self.mainPosition
-                )
-            }, completion: { _ in
-                self.isPopupOpen = true
-                self.addPanGestureRecognizer()
-                self.setupTargets()
-            }
-        )
-    }
-
-    // анимация при сворачивании
-    open func closeScreenWithAnimation(
-        timeInterval: TimeInterval = 0.3,
-        isNeedNotifyDelegate: Bool = false,
-        completion: (() -> Void)? = nil
-    ) {
-        guard delegate?.isCanClose(self) ?? true else {
-            delegate?.didCancelledClosing(self)
-            return
-        }
-        isPopupClosed = true
-
-        var animationDuration = timeInterval
-        if height < 200 {
-            animationDuration = 0.2
-        }
-        if specialAnimationInterval != 0 {
-            animationDuration = 0.4
-        }
-
-        let animationDurationPopup = delegate?
-            .popupFinishAnimationDuration(self) ?? animationDuration
-        let animationDurationBackground = delegate?
-            .popupHiddenBackgroundView(self) ?? animationDuration
-
-        if isTongueShowed {
-            hideTongue(duration: animationDuration)
-        }
-
-        view.endEditing(true)
-
-        if isNeedNotifyDelegate {
-            delegate?.didStartSwipeOrTapToDissmis(self)
-        }
-
-        let transform = CGAffineTransform.identity
-
-        UIView
-            .animate(withDuration: animationDurationBackground) { [weak self] in
-                self?.backgroundView.alpha = 0
-            }
-
-        UIView.animate(
-            withDuration: animationDurationPopup,
-            delay: 0,
-            options: .curveEaseOut, animations: {
-                self.mainContentView.transform = transform.translatedBy(
-                    x: 0,
-                    y: self.height + self.safeAreaViewHeightConstraint.constant
-                )
-                self.tongueView.transform = transform.translatedBy(
-                    x: 0,
-                    y: self.height + self.safeAreaViewHeightConstraint.constant
-                )
-                self.bottomView.transform = transform.translatedBy(
-                    x: 0,
-                    y: self.height + self.safeAreaViewHeightConstraint.constant
-                )
-            }, completion: { _ in
-                self.dismiss(animated: false, completion: { [weak self] in
-                    guard let self = self else { return }
-                    self.delegate?.popupHidden(self)
-                    completion?()
-                })
-            }
-        )
-    }
-
     // добавляем распознавание жестов (свайпы)
-    fileprivate func addPanGestureRecognizer() {
+    private func addPanGestureRecognizer() {
         panGestureRecognizer = UIPanGestureRecognizer(
             target: self,
             action: #selector(onDragView)
@@ -699,7 +427,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     }
 
     // обработка жестов
-    @objc fileprivate func onDragView(
+    @objc private func onDragView(
         gestureRecognizer: UIPanGestureRecognizer
     ) {
         let state = gestureRecognizer.state
@@ -715,7 +443,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
 
                 if Display.isFormfactorX {
                     topPadding = view.safeAreaInsets.top
-                    topPadding = topPadding + 18
+                    topPadding += 18
                 }
 
                 guard -translationY * 0.5 + height - mainPosition < UIScreen
@@ -787,8 +515,7 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
     // вернуть к мейн позиции с анимацией если попап не открыт на фул
     func backToMainPositionWithAnamation() {
         guard !isFullOpenedPopup else { return }
-        let duration = delegate?
-            .popupOpenedStateDuration(self) ?? animationInterval
+        let duration = animationInterval
         let transform = CGAffineTransform.identity
         UIView.animate(
             withDuration: duration,
@@ -814,50 +541,8 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
         )
     }
 
-    // возвращаемся к основному состоянию с анимацией
-    fileprivate func backToTheMainStateWithAnamation() {
-        UIView.animate(
-            withDuration: animationInterval,
-            delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0.8,
-            options: .curveEaseOut,
-            animations: { [weak self] in
-                self?.mainContentView.transform = .identity
-                self?.tongueView.transform = .identity
-                self?.bottomView.transform = .identity
-            }
-        )
-    }
-
-    // попап в развернутом виде
-    open func setupOpenedStateWithAnamation() {
-        // Проверяем есть ли у делегата собственное время анимации
-        let duration = delegate?
-            .popupOpenedStateDuration(self) ?? animationInterval
-        UIView.animate(
-            withDuration: duration,
-            delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0.8,
-            options: .curveEaseOut,
-            animations: {
-                self.mainContentView.transform = .identity
-                self.tongueView.transform = .identity
-                self.bottomView.transform = .identity
-            }, completion: { [weak self] _ in
-                // Ставим слабую ссылку потому что блок является @escaping
-                self?.mainPosition = 0
-                NotificationCenter.default.post(
-                    name: Notification.Name.onPopupFullOpen,
-                    object: nil
-                )
-            }
-        )
-    }
-
     // тапнули по темному фону
-    @IBAction func onTapDarkBackground(_ sender: Any) {
+    @objc func onTapDarkBackground(_ sender: Any) {
         closeScreenWithAnimation(isNeedNotifyDelegate: true)
     }
 
@@ -883,41 +568,50 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
         }
         height = viewController.getContentHeightForPopupController(self)
         panGestureRecognizer.delegate = viewController
-        if colorForBorderView == UIColor.black {
-            setupColors()
-        }
     }
+}
 
-    /// Установить контроллер для отображения
-    open func reSetupController(
-        viewController: PopupContentViewController,
-        animationDuration: TimeInterval? = nil
-    ) {
-        _ = view
-        delegate = viewController
-
-        currentViewController = viewController
-
-        if let subView = viewController.view {
-            for subview in contentView.subviews {
-                subview.removeFromSuperview()
-            }
-            contentView.addSubview(subView)
-            subView.autoPinEdgesToSuperviewEdges()
-        }
+// MARK: - Анимации
+extension PopupViewController {
+    // стартовая анимация (при разворачивании)
+    private func openScreenWithAnimation() {
+        guard !isPopupOpen else { return }
+        setupConstraint()
         let transform = CGAffineTransform.identity
-        height = viewController.getContentHeightForPopupController(self)
+        tongueView.isHidden = !isTongueShowed
+        topBorderView.isHidden = !isNeedTopBorderShowed
+        backgroundView.backgroundColor = UIColor(hex: "04040A")
         contentViewHeightConstraint
             .constant = height + safeAreaViewHeightConstraint.constant
-        contentView.layoutIfNeeded()
+        mainContentView.transform = transform.translatedBy(x: 0, y: height)
+        tongueView.transform = transform.translatedBy(x: 0, y: height)
+        bottomView.transform = transform.translatedBy(x: 0, y: height)
+        if mainPosition != 0 {
+            mainPosition = height - mainPosition
+        } else {
+            NotificationCenter.default.post(
+                name: Notification.Name.onPopupFullOpen,
+                object: nil
+            )
+        }
 
-        panGestureRecognizer.delegate = viewController
-        guard let animationDuration = animationDuration else { return }
+        var defaultDuration: TimeInterval {
+            specialAnimationInterval == 0 ? animationInterval :
+            specialAnimationInterval
+        }
+
+        let animationDurationPopup = defaultDuration
+        let animationDurationBackground = defaultDuration
+
+        UIView.animate(withDuration: animationDurationBackground) {
+            self.backgroundView.alpha = self.backGroundAlphaContent
+        }
+
         UIView.animate(
-            withDuration: animationDuration,
+            withDuration: animationDurationPopup,
             delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0.8,
+            usingSpringWithDamping: openingScreenSpringWithDamping,
+            initialSpringVelocity: openingScreenInitialSpringVelocity,
             options: .curveEaseOut, animations: {
                 self.mainContentView.transform = transform.translatedBy(
                     x: 0,
@@ -931,216 +625,114 @@ open class PopupViewController: UIViewController, PopupViewProtocol {
                     x: 0,
                     y: self.mainPosition
                 )
-                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.isPopupOpen = true
+                self.addPanGestureRecognizer()
+                self.setupTargets()
             }
         )
-        if colorForBorderView == UIColor.black {
-            setupColors()
-        }
     }
 
-    /// Установить контроллер для отображения
-    open func reSetupControllerV2(
-        viewController: PopupContentViewController,
-        animationDuration: TimeInterval? = nil
+    // анимация при сворачивании
+    public func closeScreenWithAnimation(
+        timeInterval: TimeInterval = 0.3,
+        isNeedNotifyDelegate: Bool = false,
+        completion: (() -> Void)? = nil
     ) {
-        _ = view
-        delegate = viewController
+        isPopupClosed = true
 
-        currentViewController = viewController
-
-        setupTongueUI()
-        setupConstraint()
-        if let subView = viewController.view {
-            for subview in contentView.subviews {
-                subview.removeFromSuperview()
-            }
-            contentView.addSubview(subView)
-            subView.autoPinEdgesToSuperviewEdges()
+        var animationDuration = timeInterval
+        if height < 200 {
+            animationDuration = 0.2
         }
-        contentView.layoutIfNeeded()
-        let transform = CGAffineTransform.identity
-        height = viewController.getContentHeightForPopupController(self)
-        contentViewHeightConstraint
-            .constant = height + safeAreaViewHeightConstraint.constant
-        contentView.layoutIfNeeded()
+        if specialAnimationInterval != 0 {
+            animationDuration = 0.4
+        }
 
-        panGestureRecognizer.delegate = viewController
-        guard let animationDuration = animationDuration else { return }
+        let animationDurationPopup = animationDuration
+        let animationDurationBackground = animationDuration
+
+        if isTongueShowed {
+            hideTongue(duration: animationDuration)
+        }
+
+        view.endEditing(true)
+
+        if isNeedNotifyDelegate {
+            delegate?.didStartSwipeOrTapToDissmis(self)
+        }
+
+        let transform = CGAffineTransform.identity
+
+        UIView
+            .animate(withDuration: animationDurationBackground) { [weak self] in
+                self?.backgroundView.alpha = 0
+            }
+
         UIView.animate(
-            withDuration: animationDuration,
+            withDuration: animationDurationPopup,
             delay: 0,
-            usingSpringWithDamping: 0.8,
-            initialSpringVelocity: 0.8,
             options: .curveEaseOut, animations: {
                 self.mainContentView.transform = transform.translatedBy(
                     x: 0,
-                    y: self.mainPosition
+                    y: self.height + self.safeAreaViewHeightConstraint.constant
                 )
                 self.tongueView.transform = transform.translatedBy(
                     x: 0,
-                    y: self.mainPosition
+                    y: self.height + self.safeAreaViewHeightConstraint.constant
                 )
                 self.bottomView.transform = transform.translatedBy(
                     x: 0,
-                    y: self.mainPosition
+                    y: self.height + self.safeAreaViewHeightConstraint.constant
                 )
-                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.dismiss(animated: false, completion: { [weak self] in
+                    guard let self = self else { return }
+                    self.delegate?.popupHidden(self)
+                    completion?()
+                })
             }
         )
-        if colorForBorderView == UIColor.black {
-            setupColors()
-        }
     }
 
-    /// Установить контроллер для отображения
-    open func reSetupControllerWithoutSpring(
-        viewController: PopupContentViewController,
-        animationDuration: TimeInterval? = nil
-    ) {
-        guard !isPopupClosed else { return }
-        _ = view
-        delegate = viewController
-
-        currentViewController = viewController
-
-        setupTongueUI()
-        setupConstraint()
-        if let subView = viewController.view {
-            for subview in contentView.subviews {
-                subview.removeFromSuperview()
-            }
-            contentView.addSubview(subView)
-            subView.autoPinEdgesToSuperviewEdges()
-        }
-
-        contentView.layoutIfNeeded()
-        let transform = CGAffineTransform.identity
-        height = viewController.getContentHeightForPopupController(self)
-        contentViewHeightConstraint
-            .constant = height + safeAreaViewHeightConstraint.constant
-        contentView.layoutIfNeeded()
-
-        panGestureRecognizer.delegate = viewController
-
-        UIView.animate(withDuration: animationDuration ?? 0.2, animations: {
-            self.mainContentView.transform = transform.translatedBy(
-                x: 0,
-                y: self.mainPosition
-            )
-            self.tongueView.transform = transform.translatedBy(
-                x: 0,
-                y: self.mainPosition
-            )
-            self.bottomView.transform = transform.translatedBy(
-                x: 0,
-                y: self.mainPosition
-            )
-            self.view.layoutIfNeeded()
-        })
-
-        if colorForBorderView == UIColor.black {
-            setupColors()
-        }
-    }
-
-    /// пересетапить высоту
-    open func reSetupHeight(viewController: PopupContentViewController) {
-        let height = viewController.getContentHeightForPopupController(self)
-        self.height = height
-        contentViewHeightConstraint
-            .constant = height + safeAreaViewHeightConstraint.constant
-        contentView.layoutIfNeeded()
-    }
-
-    /// пересетапить высоту
-    open func reSetupHeight(height: CGFloat) {
-        if height > self.height {
-            contentViewHeightConstraint.constant = height
-        } else {
-            contentViewHeightConstraint
-                .constant = height + safeAreaViewHeightConstraint.constant
-        }
-        self.height = height
-        contentView.layoutIfNeeded()
-    }
-
-    /// Изменить высоту попапа
-    open func changeControllerHeight(
-        height: CGFloat,
-        animationDuration: TimeInterval? = nil
-    ) {
-        if height > self.height {
-            contentViewHeightConstraint.constant = height
-        } else {
-            contentViewHeightConstraint
-                .constant = height + safeAreaViewHeightConstraint.constant
-        }
-        self.height = height
-        UIView.animate(withDuration: animationDuration ?? 0.01) {
-            self.mainContentView.transform = .identity
-        }
-    }
-
-    /// Изменить высоту попапа без учета safeArea
-    open func changeControllerHeightWithoutSafeArea(
-        height: CGFloat,
-        animationDuration: TimeInterval? = nil
-    ) {
-        contentViewHeightConstraint.constant = height
-        self.height = height
-        UIView.animate(withDuration: animationDuration ?? 0.01) {
-            self.mainContentView.transform = .identity
-        }
-    }
-
-    /// Плавно изменить высоту попапа
-    open func changeControllerHeightForNewPopup(
-        height: CGFloat,
-        animationDuration: Double = 0.01,
-        animationCurve: Int = 1
-    ) {
-        if height >= self.height {
-            contentViewHeightConstraint.constant = height
-        } else {
-            contentViewHeightConstraint
-                .constant = height + safeAreaViewHeightConstraint.constant
-        }
-        self.height = height
-        UIView.animateKeyframes(
-            withDuration: animationDuration,
+    // возвращаемся к основному состоянию с анимацией
+    private func backToTheMainStateWithAnamation() {
+        UIView.animate(
+            withDuration: animationInterval,
             delay: 0,
-            options: UIView
-                .KeyframeAnimationOptions(rawValue: UInt(animationCurve)),
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0.8,
+            options: .curveEaseOut,
+            animations: { [weak self] in
+                self?.mainContentView.transform = .identity
+                self?.tongueView.transform = .identity
+                self?.bottomView.transform = .identity
+            }
+        )
+    }
+
+    // попап в развернутом виде
+    public func setupOpenedStateWithAnamation() {
+        // Проверяем есть ли у делегата собственное время анимации
+        let duration = animationInterval
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            usingSpringWithDamping: 0.8,
+            initialSpringVelocity: 0.8,
+            options: .curveEaseOut,
             animations: {
                 self.mainContentView.transform = .identity
-                self.view.layoutIfNeeded()
+                self.tongueView.transform = .identity
+                self.bottomView.transform = .identity
+            }, completion: { [weak self] _ in
+                // Ставим слабую ссылку потому что блок является @escaping
+                self?.mainPosition = 0
+                NotificationCenter.default.post(
+                    name: Notification.Name.onPopupFullOpen,
+                    object: nil
+                )
             }
         )
-    }
-
-    /// повернуть попап (отдельный для extension, потому что работает через viewWillTransition)
-    open func rotateExtensionPopup(isInterfaceOrientationPortrait: Bool) {
-        self.isInterfaceOrientationPortrait = isInterfaceOrientationPortrait
-        if isInterfaceOrientationPortrait {
-            contentLeadingConstraint.constant = 0
-            contentTrailingConstraint.constant = 0
-            bottomViewLeadingConstraint.constant = 0
-            bottomViewTrailingConstraint.constant = 0
-        } else {
-            let minSide = min(
-                UIScreen.main.bounds.width,
-                UIScreen.main.bounds.height
-            )
-            let maxSide = max(
-                UIScreen.main.bounds.width,
-                UIScreen.main.bounds.height
-            )
-            let inset = (maxSide - minSide) / 2
-            contentLeadingConstraint.constant = inset
-            contentTrailingConstraint.constant = -inset
-            bottomViewLeadingConstraint.constant = inset
-            bottomViewTrailingConstraint.constant = -inset
-        }
     }
 }

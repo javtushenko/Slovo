@@ -40,7 +40,7 @@ public struct TagTransformer {
     }
 
     public static var brTransformer: TagTransformer {
-        return TagTransformer(tagName: "br", tagType: .start, replaceValue: "\n")
+        TagTransformer(tagName: "br", tagType: .start, replaceValue: "\n")
     }
 }
 
@@ -198,12 +198,12 @@ extension String {
 
     public func detectHashTags() -> [Range<String.Index>] {
 
-        return detect(regex: "#[^[:punct:][:space:]]+")
+        detect(regex: "#[^[:punct:][:space:]]+")
     }
 
     public func detectMentions() -> [Range<String.Index>] {
 
-        return detect(regex: "@[^[:punct:][:space:]]+")
+        detect(regex: "@[^[:punct:][:space:]]+")
     }
 
     public func detect(regex: String, options: NSRegularExpression.Options = []) -> [Range<String.Index>] {

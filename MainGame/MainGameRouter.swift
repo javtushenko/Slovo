@@ -32,14 +32,14 @@ final class MainGameRouter: MainGameRouterProtocol {
             completion: nil
         )
     }
-    
+
     /// Открыть обучение
     func openTutorialPopup() {
         guard let baseViewController = baseViewController else {
             return
         }
         let popup = TutorialModuleConfigurator.build()
-        
+
         baseViewController.present(
             popup,
             animated: false,

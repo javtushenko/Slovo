@@ -8,7 +8,9 @@
 import UIKit
 
 protocol BoardViewControllerDatasource: AnyObject {
-    func getGuesses() -> [[Key?]]
+    /// получить буквы
+    func getGuesses() -> [[GameKey?]]
+    /// получить цвет буквы на игровом поле
     func boxColor(at indexPath: IndexPath)
 }
 
@@ -34,13 +36,14 @@ class BoardView: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
-        
+
         collectionView.autoPinEdge(toSuperviewEdge: .top)
         collectionView.autoPinEdge(toSuperviewEdge: .bottom)
         collectionView.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         collectionView.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
     }
 
+    // обновить данные
     public func reloadData() {
         collectionView.reloadData()
     }
@@ -93,7 +96,7 @@ extension BoardView: UICollectionViewDelegateFlowLayout,
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
 
-        return UIEdgeInsets(
+        UIEdgeInsets(
             top: 2,
             left: 2,
             bottom: 2,

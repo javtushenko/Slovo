@@ -16,7 +16,6 @@ extension UIView {
     }
 }
 
-
 /// Анимировать появление вью
 public func animateShowView(
     _ view: UIView,

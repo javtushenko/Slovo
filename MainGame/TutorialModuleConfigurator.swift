@@ -22,7 +22,7 @@ final class TutorialModuleConfigurator {
         )
 
         view.presenter = presenter
-        
+
         presenter.interactor = interactor
         presenter.router = router
 
@@ -32,7 +32,7 @@ final class TutorialModuleConfigurator {
         router.popup = popup
         return popup
     }
-    
+
     // Создание попапа для контроллера
     private class func createPopup() -> PopupViewController {
         let popup = PopupViewController()

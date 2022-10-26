@@ -8,7 +8,7 @@
 import Foundation
 import SwiftyUserDefaults
 
-extension GameBoardStorage {    
+extension GameBoardStorage {
     /// записать можно ли перейти к следующей строке в хранилище
     public func saveIsCanGoNext(gamingRow: Int) {
         switch gamingRow {
@@ -28,9 +28,9 @@ extension GameBoardStorage {
             return
         }
     }
-    
+
     /// Получить можно ли перейти к следующей строке из хранилища
-    public func IsCanGoNextWithRow(gamingRow: Int) -> Bool {
+    public func isCanGoNextWithRow(gamingRow: Int) -> Bool {
         switch gamingRow {
         case 1:
             return Defaults[key: DefaultsKeys.isCanGoNext1]
@@ -48,7 +48,7 @@ extension GameBoardStorage {
             return false
         }
     }
-    
+
     // почитстить все строки в хранилище
     func clearIsCanGoNextDefault() {
         Defaults[key: DefaultsKeys.isCanGoNext1] = true

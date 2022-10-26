@@ -33,7 +33,7 @@ public enum MainUIConstatnts {
             return 60
         }
     }
-    
+
     /// нижний отступ от границы экрана
     static var bottomInset: CGFloat {
         switch Display.typeIsLike {
@@ -59,7 +59,7 @@ public enum MainUIConstatnts {
             return 50
         }
     }
-    
+
     /// вертикальный отступ элементов друг от друга
     static var itemVerticalInset: CGFloat {
         switch Display.typeIsLike {
@@ -85,7 +85,7 @@ public enum MainUIConstatnts {
             return 15
         }
     }
-    
+
     /// горизонтальный отступ нижних элементов друг от друга
     static var itemHorizontalInset: CGFloat {
         switch Display.typeIsLike {
@@ -111,7 +111,7 @@ public enum MainUIConstatnts {
             return 16
         }
     }
-    
+
     /// горизонтальный отступ верхних элементов друг от друга
     static var topItemHorizontalInset: CGFloat {
         switch Display.typeIsLike {
@@ -137,7 +137,7 @@ public enum MainUIConstatnts {
             return 15
         }
     }
-    
+
     /// размер элементов бонусов
     static var itemSizeBonusView: CGSize {
         switch Display.typeIsLike {
@@ -163,7 +163,7 @@ public enum MainUIConstatnts {
             return CGSize(width: 114, height: 60)
         }
     }
-    
+
     /// размер кошелька
     static var itemSizeValetView: CGSize {
         switch Display.typeIsLike {
@@ -189,7 +189,7 @@ public enum MainUIConstatnts {
             return CGSize(width: 160, height: 60)
         }
     }
-    
+
     /// размер серии побед
     static var itemWinStreakView: CGSize {
         switch Display.typeIsLike {
@@ -215,7 +215,7 @@ public enum MainUIConstatnts {
             return CGSize(width: 130, height: 60)
         }
     }
-    
+
     /// размер обучения
     static var itemSizeTutorialView: CGSize {
         switch Display.typeIsLike {
@@ -246,10 +246,10 @@ public enum MainUIConstatnts {
 public enum Price {
     /// цена бонуса лупы
     static let priseSearch: Int = 25
-    
+
     /// цена бонуса бомбы
     static let priseBoom: Int = 25
-    
+
     /// цена бонуса книги
     static let priseBook: Int = 90
 }
